@@ -1,0 +1,13 @@
+#stt-page .select-stt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 0.1rem solid #ddd;
+  margin-bottom: 3rem;
+}
+
+#stt-page .stt-panel {
+  padding: 2rem 0;
+}

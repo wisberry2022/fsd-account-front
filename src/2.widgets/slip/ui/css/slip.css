@@ -1,0 +1,49 @@
+.receipt-slip {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.receipt-slip thead tr th {
+  padding: 1.4rem 0;
+  font-size: 1.6rem;
+}
+
+.receipt-slip thead tr td {
+  padding: 0 2.5rem;
+}
+
+.receipt-slip thead tr input {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.receipt-slip tbody tr th.subject,
+.receipt-slip tbody tr th.credit {
+  padding: 1.5rem 0;
+  width: 5rem;
+}
+
+.receipt-slip tbody tr td.subject-item,
+.receipt-slip tbody tr td.credit-item {
+  width: 10rem;
+}
+
+.receipt-slip tbody .sub-head th {
+  padding: 1.3rem 0;
+}
+
+.receipt-slip tbody .desc td {
+  padding: 1.3rem 0;
+}
+
+.receipt-slip th,
+.receipt-slip td {
+  border: 1px solid #000;
+}
+
+.slip-head-color {
+  background-color: #f9f9f9;
+}

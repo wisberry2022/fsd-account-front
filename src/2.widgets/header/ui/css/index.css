@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #000;
+}
+
+.header > .gnb {
+  display: flex;
+}
+
+.header > .gnb > li {
+  display: block;
+  padding: 2rem;
+  font-size: 2.3rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.header > .gnb > li:hover {
+  background-color: #000;
+  color: #f9f9f9;
+}

@@ -1,0 +1,41 @@
+#add-entry {
+  padding: 0.8rem 0;
+  border: none;
+  width: 20%;
+  color: #333;
+  background-color: #f9f9f9;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#add-entry:hover {
+  background-color: #111;
+  color: #f9f9f9;
+}
+
+#finish-entry {
+  padding: 0.8rem 0;
+  border: none;
+  width: 20%;
+  color: #f9f9f9;
+  background-color: #111;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#finish-entry:hover {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+#delete-entry {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}

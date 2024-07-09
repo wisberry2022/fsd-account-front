@@ -1,0 +1,34 @@
+.entry td {
+  padding: 0.5rem 0;
+  border-right: 0.1rem solid #000;
+  border-bottom: 0.1rem solid #000;
+  font-size: 1.3rem;
+}
+
+.entry input {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 0.2rem;
+  width: 95%;
+}
+
+.entry .date {
+  font-weight: 600;
+  text-align: center;
+}
+
+.entry .amount {
+  font-weight: 600;
+}
+
+.closed .entry td > strong {
+  display: block;
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.closed .entry td.debit > strong,
+.closed .entry td.credit > strong {
+  font-weight: 400;
+}

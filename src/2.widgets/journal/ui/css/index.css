@@ -1,0 +1,71 @@
+.journal-wdg {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 0.1rem solid #999;
+}
+
+.journal-wdg .journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.journal-wdg.closed #date-format {
+  font-size: 1.7rem;
+}
+
+.journal-wdg .journal-date-select {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.journal-date-select label {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.journal-date-select input {
+  padding: 0.5rem 1rem;
+  width: 30rem;
+  font-weight: 600;
+}
+
+.journal-tb {
+  border: 0.1rem solid #000;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.journal-tb thead tr {
+  width: 100%;
+}
+
+.journal-tb thead tr th {
+  padding: 0.5rem 0;
+  border-bottom: 0.1rem solid #000;
+  border-right: 0.1rem solid #000;
+  font-size: 1.6rem;
+}
+
+.journal-tb thead tr .debit,
+.journal-tb thead tr .credit {
+  width: 15%;
+}
+
+.journal-tb thead tr .amount {
+  width: 10%;
+}
+
+.journal-tb thead tr .delete {
+  width: 3%;
+}
+
+.jnl-btn-box {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@remix-run/router':
+    specifier: ^1.17.1
+    version: 1.17.1
   path:
     specifier: ^0.12.7
     version: 0.12.7

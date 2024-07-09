@@ -11,11 +11,12 @@ type ClosedJournalHeaderProps = {
 const ClosedJournalHeader: FC<ClosedJournalHeaderProps> = (props) => {
   const { seq, date, modifyJournal } = props;
 
+  const dateVal = getDateFormat(date);
+
   return (
     <div className="journal-header">
       <div className="journal-date-select">
-        <label htmlFor="journal">일자</label>
-        <strong id="date-format">{getDateFormat(date)}</strong>
+        <strong id="date-format">{dateVal}</strong>
       </div>
       <ModifyJournal seq={seq} onClick={modifyJournal} />
     </div>

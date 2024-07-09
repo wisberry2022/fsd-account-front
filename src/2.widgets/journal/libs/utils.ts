@@ -1,12 +1,22 @@
 import { EntryModel } from "@/5.shared/types";
 
+const _LPAD = (num: number): string | number => {
+  const str = num.toString();
+
+  if (str.length > 1) {
+    return num;
+  }
+
+  return "0".concat(str);
+};
+
 export const getDateFormat = (dateObj: Date | null): string => {
   if (!dateObj) {
     return "일자 미지정";
   }
   const year = dateObj.getFullYear();
-  const month = dateObj.getMonth() + 1;
-  const date = dateObj.getDate();
+  const month = _LPAD(dateObj.getMonth() + 1);
+  const date = _LPAD(dateObj.getDate());
   const day = dateObj.getDay();
 
   const dayMapper: { [key: number]: string } = {

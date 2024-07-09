@@ -5,14 +5,14 @@ import { EntryModel } from "@/2.widgets/journal";
 const getNewJournal = (seq: number): JournalModel => ({
   seq: seq,
   status: "OPENED",
-  date: new Date(Date.now()),
+  date: null,
   entries: [
     {
       seq: 1,
       debit: "",
-      debitAmount: 0,
+      debitAmount: null,
       credit: "",
-      creditAmount: 0,
+      creditAmount: null,
     },
   ],
 });
@@ -20,15 +20,15 @@ const getNewJournal = (seq: number): JournalModel => ({
 const initialState: JournalModel[] = [
   {
     seq: 1,
-    date: new Date(Date.now()),
+    date: null,
     status: "OPENED",
     entries: [
       {
         seq: 1,
         debit: "",
-        debitAmount: 0,
+        debitAmount: null,
         credit: "",
-        creditAmount: 0,
+        creditAmount: null,
       },
     ],
   },

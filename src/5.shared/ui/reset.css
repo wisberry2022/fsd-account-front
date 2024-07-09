@@ -13,3 +13,9 @@ ol,
 li {
   list-style-type: none;
 }
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}

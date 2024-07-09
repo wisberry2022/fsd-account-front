@@ -1,9 +1,11 @@
-import { Journal } from "@/1.pages/journal";
 import { FC } from "react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/AppRouter";
+
 const App: FC = () => {
   return (
     <>
-      <Journal />
+      <RouterProvider router={router} />
     </>
   );
 };

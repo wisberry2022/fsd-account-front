@@ -1,0 +1,19 @@
+#slip {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#slip tbody tr .credit,
+#slip tbody tr .debit {
+  padding: 1.5rem 1rem;
+}
+
+#slip tbody tr td input {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.slip-bg-color {
+  background-color: rgba(0, 255, 255, 0.09);
+}

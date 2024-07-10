@@ -1,4 +1,4 @@
-#stt-page .select-stt {
+#slip-page .select-stt {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,6 +8,21 @@
   margin-bottom: 3rem;
 }
 
-#stt-page .stt-panel {
+#slip-page .stt-panel {
   padding: 2rem 0;
+}
+
+#slip-page .tab {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+#slip-page .tab > li {
+  padding: 0 1rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+#slip-page .tab > li:first-child {
+  border-right: 0.1rem solid #ddd;
 }

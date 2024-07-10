@@ -1,1 +1,2 @@
-export { ReceiptSlip } from "./ui/receipt-slip/ReceiptSlip";
+export { ReceiptSlip } from "./ui/ReceiptSlip";
+export { WithdrawalSlip } from './ui/WithdrawalSlip';

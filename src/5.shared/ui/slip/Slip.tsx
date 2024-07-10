@@ -1,14 +1,32 @@
-import "./css/receipt-slip.css";
+import { ObjType } from "@/5.shared/types";
+import "./slip.css";
 import { FC } from "react";
 
-export const ReceiptSlip: FC = () => {
+type BasicSlipProps = {
+  type: "RECEIPT" | "WITHDRAWAL";
+};
+
+export const BasicSlip: FC<BasicSlipProps> = (props) => {
+  const { type } = props;
+
+  const typeMapper: ObjType<ObjType<string>> = {
+    RECEIPT: {
+      title: "입금전표",
+      name: "credit",
+    },
+    WITHDRAWAL: {
+      title: "출금전표",
+      name: "debit",
+    },
+  };
+
   return (
     <div>
-      <table className="receipt-slip">
+      <table id="slip">
         <thead>
           <tr>
             <th colSpan={4} className="slip-head-color">
-              입금전표
+              {typeMapper[type].title}
             </th>
           </tr>
         </thead>
@@ -18,9 +36,14 @@ export const ReceiptSlip: FC = () => {
             <td className="subject-item">
               <input type="text" name="subject" className="slip-input" />
             </td>
-            <th className="credit slip-head-color">항목</th>
-            <td className="credit-item">
-              <input type="text" name="credit" className="slip-input" />
+            <th className="entry slip-head-color">항목</th>
+            <td className="entry-item">
+              {/* 입금전표일 경우 대변(credit), 출금전표일 경우 차변(debit) */}
+              <input
+                type="text"
+                name={typeMapper[type].name}
+                className="slip-input"
+              />
             </td>
           </tr>
           <tr className="sub-head">

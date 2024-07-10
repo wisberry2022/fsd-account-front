@@ -4,24 +4,24 @@
   gap: 1.5rem;
 }
 
-#rcpt-slip-header {
+#slip-header {
   display: flex;
   justify-content: space-between;
 }
 
-#rcpt-slip-header .date-select {
+#slip-header .date-select {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   width: 30%;
 }
 
-#rcpt-slip-header .date-select > label {
+#slip-header .date-select > label {
   font-size: 1.4rem;
   font-weight: 600;
 }
 
-#rcpt-slip-header .date-select > input {
+#slip-header .date-select > input {
   padding: 1rem;
   width: 60%;
   font-size: 1.5rem;

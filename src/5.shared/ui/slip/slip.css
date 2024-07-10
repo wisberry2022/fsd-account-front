@@ -1,51 +1,51 @@
-.receipt-slip {
+#slip {
   border: 1px solid #000;
   border-collapse: collapse;
   width: 100%;
 }
 
-.receipt-slip thead tr th {
+#slip thead tr th {
   padding: 1.4rem 0;
   font-size: 1.6rem;
 }
 
-.receipt-slip thead tr td {
+#slip thead tr td {
   padding: 0 2.5rem;
 }
 
-.receipt-slip thead tr input {
+#slip thead tr input {
   padding: 0.5rem 1rem;
   width: 100%;
   font-weight: 600;
   font-size: 1.6rem;
 }
 
-.receipt-slip tbody tr th.subject,
-.receipt-slip tbody tr th.credit {
+#slip tbody tr th.subject,
+#slip tbody tr th.entry {
   padding: 1.5rem 0;
   width: 5rem;
   font-size: 1.6rem;
   font-weight: 600;
 }
 
-.receipt-slip tbody tr td.subject-item,
-.receipt-slip tbody tr td.credit-item {
+#slip tbody tr td.subject-item,
+#slip tbody tr td.entry-item {
   padding: 1.3rem 1rem;
   width: 10rem;
   font-size: 1.6rem;
 }
 
-.receipt-slip tbody .sub-head th {
+#slip tbody .sub-head th {
   padding: 1.3rem 0;
   font-size: 1.6rem;
 }
 
-.receipt-slip tbody .content td {
+#slip tbody .content td {
   padding: 1.3rem 1rem;
 }
 
-.receipt-slip th,
-.receipt-slip td {
+#slip th,
+#slip td {
   border: 1px solid #000;
 }
 

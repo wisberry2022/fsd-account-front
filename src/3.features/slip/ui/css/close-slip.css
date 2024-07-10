@@ -1,0 +1,10 @@
+#close-slip {
+  display: block;
+  padding: 1rem 0.5rem;
+  width: 15rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #111;
+  color: #f9f9f9;
+}

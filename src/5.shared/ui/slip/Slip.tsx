@@ -1,13 +1,14 @@
 import { ObjType } from "@/5.shared/types";
 import "./slip.css";
-import { FC } from "react";
+import { ChangeEventHandler, FC } from "react";
 
 type BasicSlipProps = {
   type: "RECEIPT" | "WITHDRAWAL";
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const BasicSlip: FC<BasicSlipProps> = (props) => {
-  const { type } = props;
+  const { type, onChange } = props;
 
   const typeMapper: ObjType<ObjType<string>> = {
     RECEIPT: {
@@ -34,14 +35,20 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
           <tr>
             <th className="subject slip-head-color">과목</th>
             <td className="subject-item">
-              <input type="text" name="subject" className="slip-input" />
-            </td>
-            <th className="entry slip-head-color">항목</th>
-            <td className="entry-item">
               {/* 입금전표일 경우 대변(credit), 출금전표일 경우 차변(debit) */}
               <input
                 type="text"
                 name={typeMapper[type].name}
+                onChange={onChange}
+                className="slip-input"
+              />
+            </td>
+            <th className="entry slip-head-color">항목</th>
+            <td className="entry-item">
+              <input
+                type="text"
+                name="item"
+                onChange={onChange}
                 className="slip-input"
               />
             </td>
@@ -54,10 +61,20 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
           </tr>
           <tr className="content">
             <td colSpan={3}>
-              <input name="desc" type="text" className="slip-input" />
+              <input
+                name="desc"
+                type="text"
+                className="slip-input"
+                onChange={onChange}
+              />
             </td>
             <td>
-              <input name="amount" type="text" className="slip-input" />
+              <input
+                name="amount"
+                type="text"
+                className="slip-input"
+                onChange={onChange}
+              />
             </td>
           </tr>
         </tbody>

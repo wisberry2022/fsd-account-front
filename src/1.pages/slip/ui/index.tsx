@@ -6,9 +6,9 @@ import { SelectSlip } from "@/3.features/slip";
 import { Slip } from "@/5.shared/types";
 import { BasicTab } from "@/5.shared/ui";
 import { ChangeEventHandler, FC, useState } from "react";
+import { SlipProvider } from "../model/SlipProvider";
 
 export const Statement: FC = () => {
-  const [tab, setTab] = useState<string>("write");
   const [slip, setSlip] = useState<Slip>("RECEIPT");
 
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -26,9 +26,11 @@ export const Statement: FC = () => {
               <SelectSlip value={slip} onChange={onSelect} />
             </div>
             <div className="stt-panel">
-              {slip === "RECEIPT" && <ReceiptSlip />}
-              {slip === "WITHDRAWAL" && <WithdrawalSlip />}
-              {slip === "TRANSFER" && <TransferSlip />}
+              <SlipProvider>
+                {slip === "RECEIPT" && <ReceiptSlip />}
+                {slip === "WITHDRAWAL" && <WithdrawalSlip />}
+                {slip === "TRANSFER" && <TransferSlip />}
+              </SlipProvider>
             </div>
           </div>
           <div>전표 목록</div>

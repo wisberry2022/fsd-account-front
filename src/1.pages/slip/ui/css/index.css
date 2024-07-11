@@ -12,7 +12,7 @@
   padding: 2rem 0;
 }
 
-#slip-page .tab {
+/* #slip-page .tab {
   display: flex;
   margin-bottom: 3rem;
 }
@@ -25,4 +25,4 @@
 
 #slip-page .tab > li:first-child {
   border-right: 0.1rem solid #ddd;
-}
+} */

@@ -1,4 +1,4 @@
-import useSlipContext from "@/1.pages/slip/libs/SlipContext";
+import { useSlipContext } from "@/5.shared/hooks";
 import { BasicSlip } from "@/5.shared/ui";
 import { FC } from "react";
 

@@ -1,5 +1,5 @@
-import useSlipContext from "@/1.pages/slip/libs/SlipContext";
 import { CloseSlip } from "@/3.features/slip";
+import { useSlipContext } from "@/5.shared/hooks";
 import { FC } from "react";
 
 export const SlipHeader: FC = () => {

@@ -1,5 +1,5 @@
 import { PaperSlip } from "@/5.shared/types";
-import { ChangeEventHandler, createContext, useContext } from "react";
+import { ChangeEventHandler, createContext } from "react";
 
 type ReceiptContext = {
   slip: PaperSlip;
@@ -20,7 +20,3 @@ export const SlipContext = createContext<SlipContextType>({
     onChangeStatus: () => {},
   },
 });
-
-const useSlipContext = (slip: "receipt") => useContext(SlipContext)[slip];
-
-export default useSlipContext;

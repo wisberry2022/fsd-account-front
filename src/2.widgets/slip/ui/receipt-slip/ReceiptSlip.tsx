@@ -1,5 +1,5 @@
 import "../css/slip-global.css";
-import { ChangeEventHandler, FC } from "react";
+import {  FC } from "react";
 import { ReceiptSlip as Slip } from "@/4.entities/slip";
 import { SlipHeader } from "../SlipHeader";
 

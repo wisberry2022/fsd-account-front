@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { SlipContext } from "../libs/SlipContext";
 import { useReceiptSlip } from "./useReceiptSlip";
+import { SlipContext } from "@/5.shared/context";
 
 type SlipProviderProps = {
   children: ReactNode;
@@ -9,8 +9,6 @@ type SlipProviderProps = {
 export const SlipProvider: FC<SlipProviderProps> = (props) => {
   const { children } = props;
   const rcptSlip = useReceiptSlip();
-
-  console.log(rcptSlip.slip);
 
   return (
     <SlipContext.Provider value={{ receipt: rcptSlip }}>

@@ -1,0 +1,23 @@
+#slip-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#slip-header .date-select {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 30%;
+}
+
+#slip-header .date-select > label {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+#slip-header .date-select > input {
+  padding: 1rem;
+  width: 60%;
+  font-size: 1.5rem;
+  font-weight: 600;
+}

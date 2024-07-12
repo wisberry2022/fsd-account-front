@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SlipHeader } from "../SlipHeader";
+import { SlipHeader } from "../receipt-slip/ReceiptSlipHeader";
 import { AddSlipRow } from "@/3.features/slip";
 import { TransferSlip as Slip } from "@/4.entities/slip";
 

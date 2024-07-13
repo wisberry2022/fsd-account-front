@@ -1,10 +1,15 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useReducer } from "react";
 import { SlipContext } from "@/5.shared/context";
 
 import { PaperSlip } from "@/5.shared/types";
 import { ChangeEventHandler, useState } from "react";
-import { SlipStatus } from "@/5.shared/types/slip-type";
+import {
+  SlipStatus,
+  TransferEntry,
+  TransferSlip,
+} from "@/5.shared/types/slip-type";
 import { useSlipHandler } from "../libs/hooks";
+import { TransferActionType } from "../libs/types";
 
 // 입금전표
 const rcptSlipState: PaperSlip = {
@@ -84,6 +89,107 @@ const useWithdrawalSlip = () => {
   };
 };
 
+const transferState: TransferSlip = {
+  date: null,
+  status: "OPENED",
+  slip: "TRANSFER",
+  entries: [
+    {
+      seq: 1,
+      debit: {
+        subject: "",
+        desc: "",
+        amount: 0,
+      },
+      credit: {
+        subject: "",
+        desc: "",
+        amount: 0,
+      },
+    },
+  ],
+};
+
+const getNewEntry = (seq: number): TransferEntry => {
+  return {
+    seq,
+    debit: {
+      subject: "",
+      desc: "",
+      amount: 0,
+    },
+    credit: {
+      subject: "",
+      desc: "",
+      amount: 0,
+    },
+  };
+};
+
+const transferReducer = (
+  state: TransferSlip,
+  action: TransferActionType
+): TransferSlip => {
+  switch (action.type) {
+    case "ADD-ENTRY":
+      return {
+        ...state,
+        entries: state.entries.concat(getNewEntry(action.seq)),
+      };
+    case "ONCHANGE-DATE":
+      return { ...state, date: action.date };
+    case "ONCHANGE-ENTRY":
+      return {
+        ...state,
+        entries: state.entries.map((ent) => {
+          if (ent.seq === action.seq) {
+            return {
+              ...ent,
+              [action.name]: action.value,
+            };
+          }
+          return ent;
+        }),
+      };
+    case "CHANGE-STATUS":
+      return {
+        ...state,
+        status: action.status,
+      };
+    default:
+      return state;
+  }
+};
+
+const useTransferSlip = () => {
+  const [slip, dispatch] = useReducer(transferReducer, transferState);
+
+  const addEntry = () => {
+    const nextSeq = Math.max(...slip.entries.map((ent) => ent.seq)) + 1;
+    dispatch({ type: "ADD-ENTRY", seq: nextSeq });
+  };
+
+  const onChangeDate: ChangeEventHandler<HTMLInputElement> = (e) => {
+    dispatch({ type: "ONCHANGE-DATE", date: e.target.valueAsDate });
+  };
+
+  const onChangeEntry = (seq: number, name: string, value: string | number) => {
+    dispatch({ type: "ONCHANGE-ENTRY", seq, name, value });
+  };
+
+  const onChangeStatus = (status: SlipStatus) => {
+    dispatch({ type: "CHANGE-STATUS", status });
+  };
+
+  return {
+    slip,
+    addEntry,
+    onChangeDate,
+    onChangeEntry,
+    onChangeStatus,
+  };
+};
+
 type SlipProviderProps = {
   children: ReactNode;
 };
@@ -92,12 +198,12 @@ export const SlipProvider: FC<SlipProviderProps> = (props) => {
   const { children } = props;
   const receipt = useReceiptSlip();
   const withdrawal = useWithdrawalSlip();
-
-  console.log("RECEIPT", receipt.slip);
-  console.log("WITHDRAWAL ", withdrawal.slip);
+  const transfer = useTransferSlip();
 
   return (
-    <SlipContext.Provider value={{ RECEIPT: receipt, WITHDRAWAL: withdrawal }}>
+    <SlipContext.Provider
+      value={{ RECEIPT: receipt, WITHDRAWAL: withdrawal, TRANSFER: transfer }}
+    >
       {children}
     </SlipContext.Provider>
   );

@@ -1,6 +1,15 @@
 import "./css/add-slip.css";
 import { FC } from "react";
 
-export const AddSlipRow: FC = () => {
-  return <button id="add-slip-row">행 추가</button>;
+type AddSlipRowProps = {
+  addEntry: () => void;
+};
+
+export const AddSlipRow: FC<AddSlipRowProps> = (props) => {
+  const { addEntry } = props;
+  return (
+    <button id="add-slip-row" onClick={addEntry}>
+      행 추가
+    </button>
+  );
 };

@@ -1,17 +1,15 @@
 import { PaperSlip } from "@/5.shared/types";
-import { ChangeEventHandler, createContext } from "react";
-import { SlipStatus } from "../types/slip-type";
-
-type BasicSlipContext = {
-  slip: PaperSlip;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  onChangeDate: ChangeEventHandler<HTMLInputElement>;
-  onChangeStatus: (status: SlipStatus) => void;
-};
+import { createContext } from "react";
+import {
+  BasicSlipContext,
+  TransferSlip,
+  TransferSlipContext,
+} from "../types/slip-type";
 
 type SlipContextType = {
   RECEIPT: BasicSlipContext;
   WITHDRAWAL: BasicSlipContext;
+  TRANSFER: TransferSlipContext;
 };
 
 export const SlipContext = createContext<SlipContextType>({
@@ -25,6 +23,13 @@ export const SlipContext = createContext<SlipContextType>({
     slip: {} as PaperSlip,
     onChange: () => {},
     onChangeDate: () => {},
+    onChangeStatus: () => {},
+  },
+  TRANSFER: {
+    slip: {} as TransferSlip,
+    addEntry: () => {},
+    onChangeDate: () => {},
+    onChangeEntry: () => {},
     onChangeStatus: () => {},
   },
 });

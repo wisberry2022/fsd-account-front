@@ -1,0 +1,1 @@
+export { getDateFormat } from "./funcs";

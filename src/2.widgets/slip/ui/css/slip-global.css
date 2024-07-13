@@ -27,3 +27,14 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
+
+/* 미리보기 css */
+#preview-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#preview-header .slip-controller-box {
+  display: flex;
+  gap: 1rem;
+}

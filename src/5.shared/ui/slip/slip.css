@@ -57,3 +57,48 @@
   padding: 0.5rem 1rem;
   width: 100%;
 }
+
+/* 전표 미리보기 CSS */
+#preview-slip {
+  border-collapse: collapse;
+  border: 0.1rem solid #000;
+  width: 100%;
+}
+
+#preview-slip thead tr th {
+  border: 0.1rem solid #000;
+  padding: 1.4rem 0;
+  font-size: 1.6rem;
+}
+
+#preview-slip .pre-title {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+#preview-slip .pre-title strong {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+#preview-slip thead tr td {
+  border: 0.1rem solid #000;
+}
+
+#preview-slip thead tr td {
+  padding: 0 2.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+#preview-slip tbody td {
+  padding: 1.5rem 1rem;
+  border: 0.1rem solid #000;
+}
+
+#preview-slip tbody td.desc,
+#preview-slip tbody td.amount {
+  font-size: 1.5rem;
+}

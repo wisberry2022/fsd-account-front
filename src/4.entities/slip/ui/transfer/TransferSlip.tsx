@@ -1,5 +1,5 @@
 import { useSlipContext } from "@/5.shared/hooks";
-import "./css/transfer-slip.css";
+import "../css/transfer-slip.css";
 import { ChangeEvent, FC } from "react";
 import { TransferSlipContext } from "@/5.shared/types";
 import { FaTrash } from "react-icons/fa";

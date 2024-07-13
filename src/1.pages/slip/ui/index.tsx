@@ -21,7 +21,7 @@ export const Statement: FC = () => {
       <Header />
       <Container>
         <BasicTab tabs={["전표 작성", "전표 목록"]}>
-          <div>
+          <section id="slip-write">
             <div className="select-stt">
               <SelectSlip value={slip} onChange={onSelect} />
             </div>
@@ -32,8 +32,8 @@ export const Statement: FC = () => {
                 {slip === "TRANSFER" && <TransferSlip />}
               </SlipProvider>
             </div>
-          </div>
-          <div>전표 목록</div>
+          </section>
+          <section id="slip-list">전표 목록</section>
         </BasicTab>
       </Container>
     </div>

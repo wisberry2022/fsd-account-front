@@ -221,7 +221,11 @@ export const SlipProvider: FC<SlipProviderProps> = (props) => {
 
   return (
     <SlipContext.Provider
-      value={{ RECEIPT: receipt, WITHDRAWAL: withdrawal, TRANSFER: transfer }}
+      value={{
+        RECEIPT: receipt,
+        WITHDRAWAL: withdrawal,
+        TRANSFER: transfer,
+      }}
     >
       {children}
     </SlipContext.Provider>

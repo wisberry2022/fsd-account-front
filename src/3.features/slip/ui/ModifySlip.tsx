@@ -1,21 +1,21 @@
-import "./css/close-slip.css";
+import "./css/modify-slip.css";
 import { SlipStatus } from "@/5.shared/types";
 import { FC } from "react";
 
-type CloseSlipProps = {
+type ModifingSlipProps = {
   onChangeStatus: (status: SlipStatus) => void;
 };
 
-export const CloseSlip: FC<CloseSlipProps> = (props) => {
+export const ModifingSlip: FC<ModifingSlipProps> = (props) => {
   const { onChangeStatus } = props;
 
   const onClick = () => {
-    onChangeStatus("CLOSED");
+    onChangeStatus("MODIFYING");
   };
 
   return (
-    <button id="close-slip" onClick={onClick}>
-      전표 마감하기
+    <button id="modify-slip" onClick={onClick}>
+      전표 수정하기
     </button>
   );
 };

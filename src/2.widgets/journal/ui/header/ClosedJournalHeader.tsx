@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { getDateFormat } from "../../libs/utils";
 import { ModifyJournal } from "@/3.features/journal/";
+import { getDateFormat } from "@/5.shared/utils";
 
 type ClosedJournalHeaderProps = {
   seq: number;

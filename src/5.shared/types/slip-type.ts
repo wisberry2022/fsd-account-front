@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from "react";
 
 export type Slip = "RECEIPT" | "WITHDRAWAL" | "TRANSFER";
-export type SlipStatus = "OPENED" | "MODIFYING" | "CLOSED";
+export type SlipStatus = "OPENED" | "MODIFYING" | "STAGING" | "CLOSED";
 
 export type PaperSlip = {
   date: Date | null;

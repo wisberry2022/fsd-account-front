@@ -1,10 +1,10 @@
-import { PaperSlip } from "@/5.shared/types";
-import { createContext } from "react";
 import {
   BasicSlipContext,
+  PaperSlip,
   TransferSlip,
   TransferSlipContext,
-} from "../types/slip-type";
+} from "@/5.shared/types";
+import { createContext } from "react";
 
 type SlipContextType = {
   RECEIPT: BasicSlipContext;

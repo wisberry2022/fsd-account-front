@@ -4,10 +4,10 @@ import { SlipHeader } from "@/5.shared/ui/header";
 import { FC } from "react";
 
 const TransferSlipHeader: FC = () => {
-  const { onChangeDate, onChangeStatus } = useSlipContext("TRANSFER");
+  const { slip, onChangeDate, onChangeStatus } = useSlipContext("TRANSFER");
 
   return (
-    <SlipHeader onChangeDate={onChangeDate}>
+    <SlipHeader date={slip.date} onChangeDate={onChangeDate}>
       <StaingSlip onChangeStatus={onChangeStatus} />
     </SlipHeader>
   );

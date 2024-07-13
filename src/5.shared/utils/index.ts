@@ -1,1 +1,1 @@
-export { getDateFormat } from "./funcs";
+export { getDateFormat, getYYYYMMDDFormat } from "./funcs";

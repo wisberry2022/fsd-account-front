@@ -4,6 +4,6 @@ import { BasicSlip } from "@/5.shared/ui";
 import { FC } from "react";
 
 export const ReceiptSlip: FC = () => {
-  const { onChange } = useSlipContext("RECEIPT") as BasicSlipContext;
-  return <BasicSlip onChange={onChange} type="RECEIPT" />;
+  const { slip, onChange } = useSlipContext("RECEIPT") as BasicSlipContext;
+  return <BasicSlip slip={slip} onChange={onChange} />;
 };

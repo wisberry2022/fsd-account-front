@@ -1,14 +1,15 @@
-import { ObjType } from "@/5.shared/types";
+import { ObjType, PaperSlip } from "@/5.shared/types";
 import "./slip.css";
 import { ChangeEventHandler, FC } from "react";
 
 type BasicSlipProps = {
-  type: "RECEIPT" | "WITHDRAWAL";
+  // type?: "RECEIPT" | "WITHDRAWAL";
+  slip: PaperSlip;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const BasicSlip: FC<BasicSlipProps> = (props) => {
-  const { type, onChange } = props;
+  const { slip, onChange } = props;
 
   const typeMapper: ObjType<ObjType<string>> = {
     RECEIPT: {
@@ -27,7 +28,7 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
         <thead>
           <tr>
             <th colSpan={4} className="slip-head-color">
-              {typeMapper[type].title}
+              {typeMapper[slip.slip].title}
             </th>
           </tr>
         </thead>
@@ -38,8 +39,13 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
               {/* 입금전표일 경우 대변(credit), 출금전표일 경우 차변(debit) */}
               <input
                 type="text"
-                name={typeMapper[type].name}
+                name={typeMapper[slip.slip].name}
                 onChange={onChange}
+                value={
+                  slip.slip === "RECEIPT"
+                    ? slip.subject.credit
+                    : slip.subject.debit
+                }
                 className="slip-input"
               />
             </td>
@@ -50,6 +56,7 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
                 name="item"
                 onChange={onChange}
                 className="slip-input"
+                value={slip.item}
               />
             </td>
           </tr>
@@ -66,6 +73,7 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
                 type="text"
                 className="slip-input"
                 onChange={onChange}
+                value={slip.desc}
               />
             </td>
             <td>
@@ -74,6 +82,7 @@ export const BasicSlip: FC<BasicSlipProps> = (props) => {
                 type="text"
                 className="slip-input"
                 onChange={onChange}
+                value={slip.amount || ""}
               />
             </td>
           </tr>

@@ -4,7 +4,7 @@ import { BasicSlip } from "@/5.shared/ui";
 import { FC } from "react";
 
 export const WithdrawalSlip: FC = () => {
-  const { onChange } = useSlipContext("WITHDRAWAL") as BasicSlipContext;
+  const { slip, onChange } = useSlipContext("WITHDRAWAL") as BasicSlipContext;
 
-  return <BasicSlip type="WITHDRAWAL" onChange={onChange} />;
+  return <BasicSlip slip={slip} onChange={onChange} />;
 };

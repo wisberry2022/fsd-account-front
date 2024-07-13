@@ -29,3 +29,14 @@ export const getDateFormat = (dateObj: Date | null): string => {
 
   return `${year}-${month}-${date}-${dayMapper[day]}`;
 };
+
+export const getYYYYMMDDFormat = (dateObj: Date | null): string => {
+  if (!dateObj) {
+    return "";
+  }
+  const year = dateObj.getFullYear();
+  const month = _LPAD(dateObj.getMonth() + 1);
+  const date = _LPAD(dateObj.getDate());
+
+  return `${year}-${month}-${date}`;
+};

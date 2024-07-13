@@ -53,6 +53,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="debit"
                     name="subject"
                     onChange={(e) => onChange(ent.seq, e)}
+                    value={ent.debit.subject}
                   />
                 </td>
                 <td className="debit">
@@ -61,6 +62,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="debit"
                     name="desc"
                     onChange={(e) => onChange(ent.seq, e)}
+                    value={ent.debit.desc}
                   />
                 </td>
                 <td className="debit">
@@ -69,6 +71,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="debit"
                     name="amount"
                     onChange={(e) => onChange(ent.seq, e)}
+                    value={ent.debit.amount || ""}
                   />
                 </td>
                 <td className="credit">
@@ -77,6 +80,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="credit"
                     name="subject"
                     onChange={(e) => onChange(ent.seq, e)}
+                    value={ent.credit.subject}
                   />
                 </td>
                 <td className="credit">
@@ -85,6 +89,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="credit"
                     name="desc"
                     onChange={(e) => onChange(ent.seq, e)}
+                    value={ent.credit.desc}
                   />
                 </td>
                 <td className="credit">
@@ -93,6 +98,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="credit"
                     name="amount"
                     onChange={(e) => onChange(ent.seq, e)}
+                    value={ent.credit.amount || ""}
                   />
                 </td>
                 <td className="remove">

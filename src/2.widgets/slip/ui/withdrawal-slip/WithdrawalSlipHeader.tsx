@@ -4,10 +4,10 @@ import { SlipHeader } from "@/5.shared/ui/header";
 import { FC } from "react";
 
 const WithdrawalSlipHeader: FC = () => {
-  const { onChangeDate, onChangeStatus } = useSlipContext("WITHDRAWAL");
+  const { slip, onChangeDate, onChangeStatus } = useSlipContext("WITHDRAWAL");
 
   return (
-    <SlipHeader onChangeDate={onChangeDate}>
+    <SlipHeader date={slip.date} onChangeDate={onChangeDate}>
       <StaingSlip onChangeStatus={onChangeStatus} />
     </SlipHeader>
   );

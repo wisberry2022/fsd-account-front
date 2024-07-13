@@ -1,3 +1,4 @@
+import "./slip.css";
 import { FC } from "react";
 import { ObjType, PaperSlip } from "@/5.shared/types";
 import { getDateFormat } from "@/5.shared/utils";
@@ -34,24 +35,32 @@ export const BasicSlipPreview: FC<BasicSlipPreviewProps> = (props) => {
           <td>{slip.item}</td>
         </tr>
         <tr>
-          <th colSpan={2} className="slip-head-color">
+          <th colSpan={3} className="slip-head-color">
             적요
           </th>
-          <th colSpan={2} className="slip-head-color">
+          <th colSpan={1} className="slip-head-color">
             금액
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td colSpan={2} className="desc">
+          <td colSpan={3} className="desc">
             {slip.desc}
           </td>
-          <td colSpan={2} className="amount">
+          <td colSpan={1} className="amount">
             {slip.amount}원
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <th colSpan={3} className="slip-head-color">
+            합계
+          </th>
+          <td>{slip.amount}원</td>
+        </tr>
+      </tfoot>
     </table>
   );
 };

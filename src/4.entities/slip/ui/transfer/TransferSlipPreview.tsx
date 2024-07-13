@@ -50,6 +50,24 @@ export const TransferSlipPreview: FC = () => {
             );
           })}
         </tbody>
+        <tfoot>
+          <tr>
+            <th colSpan={2} className="totAmt slip-bg-color">
+              합계
+            </th>
+            <td>
+              {slip.entries.reduce((acc, cur) => (acc += cur.debit.amount), 0)}
+              원
+            </td>
+            <th colSpan={2} className="totAmt slip-bg-color">
+              합계
+            </th>
+            <td>
+              {slip.entries.reduce((acc, cur) => (acc += cur.credit.amount), 0)}
+              원
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   );

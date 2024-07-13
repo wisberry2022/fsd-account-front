@@ -13,7 +13,12 @@ export const TransferSlip: FC = () => {
     const { dataset, name, value } = e.target;
     const { ledger } = dataset;
 
-    onChangeEntry(seq, ledger as "debit" | "credit", name, value);
+    onChangeEntry(
+      seq,
+      ledger as "debit" | "credit",
+      name,
+      name === "amount" ? Number.parseInt(value) : value
+    );
   };
 
   return (

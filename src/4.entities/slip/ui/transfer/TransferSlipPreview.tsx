@@ -40,12 +40,24 @@ export const TransferSlipPreview: FC = () => {
           {slip.entries.map((ent) => {
             return (
               <tr key={ent.seq}>
-                <td className="debit">{ent.debit.subject}</td>
-                <td className="debit">{ent.debit.desc}</td>
-                <td className="debit">{ent.debit.amount}</td>
-                <td className="credit">{ent.credit.subject}</td>
-                <td className="credit">{ent.credit.desc}</td>
-                <td className="credit">{ent.credit.amount}</td>
+                <td className={`debit ${!ent.debit.subject && "empty"}`}>
+                  {ent.debit.subject}
+                </td>
+                <td className={`debit ${!ent.debit.subject && "empty"}`}>
+                  {ent.debit.desc}
+                </td>
+                <td className={`debit ${!ent.debit.subject && "empty"}`}>
+                  {ent.debit.amount ? ent.debit.amount : ""}
+                </td>
+                <td className={`credit ${!ent.credit.subject && "empty"}`}>
+                  {ent.credit.subject}
+                </td>
+                <td className={`credit ${!ent.credit.subject && "empty"}`}>
+                  {ent.credit.desc}
+                </td>
+                <td className={`credit ${!ent.credit.subject && "empty"}`}>
+                  {ent.credit.amount ? ent.credit.amount : ""}
+                </td>
               </tr>
             );
           })}

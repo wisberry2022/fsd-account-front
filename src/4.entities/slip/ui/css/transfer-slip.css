@@ -55,10 +55,23 @@
 }
 
 #transfer-slip-preview tbody tr td {
+  position: relative;
   padding: 1.5rem 0;
   border: 0.1rem solid #000;
   font-size: 1.5rem;
   text-align: center;
+  overflow: hidden;
+}
+
+#transfer-slip-preview tbody tr .debit.empty::after,
+#transfer-slip-preview tbody tr .credit.empty::after {
+  content: "";
+  position: absolute;
+  background-color: #ddd;
+  width: 0.1rem;
+  height: 22rem;
+  rotate: -77deg;
+  transform: translate(10600%, -10%);
 }
 
 #transfer-slip-preview tfoot tr > * {

@@ -136,6 +136,11 @@ const transferReducer = (
         ...state,
         entries: state.entries.concat(getNewEntry(action.seq)),
       };
+    case "DELETE-ENTRY":
+      return {
+        ...state,
+        entries: state.entries.filter((ent) => ent.seq !== action.seq),
+      };
     case "ONCHANGE-DATE":
       return { ...state, date: action.date };
     case "ONCHANGE-ENTRY":
@@ -145,7 +150,10 @@ const transferReducer = (
           if (ent.seq === action.seq) {
             return {
               ...ent,
-              [action.name]: action.value,
+              [action.ledger]: {
+                ...ent[action.ledger],
+                [action.name]: action.value,
+              },
             };
           }
           return ent;
@@ -169,21 +177,32 @@ const useTransferSlip = () => {
     dispatch({ type: "ADD-ENTRY", seq: nextSeq });
   };
 
+  const deleteEntry = (seq: number) => {
+    dispatch({ type: "DELETE-ENTRY", seq: seq });
+  };
+
   const onChangeDate: ChangeEventHandler<HTMLInputElement> = (e) => {
     dispatch({ type: "ONCHANGE-DATE", date: e.target.valueAsDate });
   };
 
-  const onChangeEntry = (seq: number, name: string, value: string | number) => {
-    dispatch({ type: "ONCHANGE-ENTRY", seq, name, value });
+  const onChangeEntry = (
+    seq: number,
+    ledger: "debit" | "credit",
+    name: string,
+    value: string | number
+  ) => {
+    dispatch({ type: "ONCHANGE-ENTRY", ledger, seq, name, value });
   };
 
   const onChangeStatus = (status: SlipStatus) => {
     dispatch({ type: "CHANGE-STATUS", status });
+    console.log("slip ", slip);
   };
 
   return {
     slip,
     addEntry,
+    deleteEntry,
     onChangeDate,
     onChangeEntry,
     onChangeStatus,

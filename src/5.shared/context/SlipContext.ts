@@ -28,6 +28,7 @@ export const SlipContext = createContext<SlipContextType>({
   TRANSFER: {
     slip: {} as TransferSlip,
     addEntry: () => {},
+    deleteEntry: () => {},
     onChangeDate: () => {},
     onChangeEntry: () => {},
     onChangeStatus: () => {},

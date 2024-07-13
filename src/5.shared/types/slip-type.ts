@@ -45,7 +45,13 @@ export type BasicSlipContext = {
 export type TransferSlipContext = {
   slip: TransferSlip;
   addEntry: () => void;
+  deleteEntry: (seq: number) => void;
   onChangeDate: ChangeEventHandler<HTMLInputElement>;
-  onChangeEntry: (seq: number, name: string, value: string | number) => void;
+  onChangeEntry: (
+    seq: number,
+    ledger: "debit" | "credit",
+    name: string,
+    value: string | number
+  ) => void;
   onChangeStatus: (status: SlipStatus) => void;
 };

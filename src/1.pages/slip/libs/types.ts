@@ -8,6 +8,7 @@ type TransferEntryOnChangeDateAction = {
 type TransferEntryOnChangeAction = {
   type: "ONCHANGE-ENTRY";
   seq: number;
+  ledger: "debit" | "credit";
   name: string;
   value: string | number;
 };
@@ -15,9 +16,14 @@ type TransferEntryChangeStatusAction = {
   type: "CHANGE-STATUS";
   status: SlipStatus;
 };
+type TransferEntryDeleteAction = {
+  type: "DELETE-ENTRY";
+  seq: number;
+};
 
 export type TransferActionType =
   | TransferEntryAddAction
+  | TransferEntryDeleteAction
   | TransferEntryOnChangeDateAction
   | TransferEntryOnChangeAction
   | TransferEntryChangeStatusAction;

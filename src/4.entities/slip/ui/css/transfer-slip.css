@@ -17,3 +17,14 @@
 .slip-bg-color {
   background-color: rgba(0, 255, 255, 0.09);
 }
+
+#slip thead tr .delete {
+  width: 5rem;
+}
+
+#slip tbody #remove-icon {
+  margin: 0 auto;
+  display: block;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

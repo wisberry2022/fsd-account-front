@@ -1,15 +1,15 @@
 import { CloseSlip, ModifingSlip } from "@/3.features/slip";
 import { useSlipContext } from "@/5.shared/hooks";
-import { BasicSlipContext, Slip } from "@/5.shared/types";
+import { Slip } from "@/5.shared/types";
 import { FC } from "react";
 
-type BasicSlipPreviewHeaderProps = {
-  type: Omit<Slip, "TRANSFER">;
+type SlipPreviewHeaderProps = {
+  type: Slip;
 };
 
-const BasicSlipPreviewHeader: FC<BasicSlipPreviewHeaderProps> = (props) => {
+const SlipPreviewHeader: FC<SlipPreviewHeaderProps> = (props) => {
   const { type } = props;
-  const { onChangeStatus } = useSlipContext(type as Slip) as BasicSlipContext;
+  const { onChangeStatus } = useSlipContext(type as Slip);
 
   return (
     <div id="preview-header">
@@ -21,4 +21,4 @@ const BasicSlipPreviewHeader: FC<BasicSlipPreviewHeaderProps> = (props) => {
   );
 };
 
-export default BasicSlipPreviewHeader;
+export default SlipPreviewHeader;

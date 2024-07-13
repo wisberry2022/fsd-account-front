@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { AddSlipRow } from "@/3.features/slip";
-import { TransferSlip as Slip } from "@/4.entities/slip";
+import { TransferSlip as Slip, TransferSlipPreview } from "@/4.entities/slip";
 import TransferSlipHeader from "./TransferSlipHeader";
 import { useSlipContext } from "@/5.shared/hooks";
 import { TransferSlipContext } from "@/5.shared/types";
@@ -23,6 +23,7 @@ export const TransferSlip: FC = () => {
     return (
       <div className="slip-area">
         <SlipPreviewHeader type={slip.slip} />
+        <TransferSlipPreview />
       </div>
     );
   }

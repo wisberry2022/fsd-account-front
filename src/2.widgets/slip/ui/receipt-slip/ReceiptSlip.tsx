@@ -3,7 +3,7 @@ import { FC } from "react";
 import { ReceiptSlipPreview, ReceiptSlip as Slip } from "@/4.entities/slip";
 import { ReceiptSlipHeader } from "./ReceiptSlipHeader";
 import { useSlipContext } from "@/5.shared/hooks";
-import ReceiptSlipPreviewHeader from "./ReceiptSlipPreviewHeader";
+import BasicSlipPreviewHeader from "../BasicSlipPreviewHeader";
 
 export const ReceiptSlip: FC = () => {
   const { slip } = useSlipContext("RECEIPT");
@@ -20,7 +20,8 @@ export const ReceiptSlip: FC = () => {
   if (slip.status === "STAGING") {
     return (
       <div className="slip-area">
-        <ReceiptSlipPreviewHeader />
+        {/* <ReceiptSlipPreviewHeader /> */}
+        <BasicSlipPreviewHeader type={slip.slip} />
         <ReceiptSlipPreview />
       </div>
     );

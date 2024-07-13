@@ -4,8 +4,8 @@ import { WithdrawalSlip as Slip } from "@/4.entities/slip";
 import WithdrawalSlipHeader from "./WithdrawalSlipHeader";
 import { useSlipContext } from "@/5.shared/hooks";
 import { BasicSlipContext } from "@/5.shared/types";
-import WithdrawalSlipPreviewHeader from "./WithdrawalSlipPreviewHeader";
 import { WithdrawalSlipPreview } from "@/4.entities/slip/ui/withdrawal/WithdrawalSlipPreview";
+import BasicSlipPreviewHeader from "../BasicSlipPreviewHeader";
 
 export const WithdrawalSlip: FC = () => {
   const { slip } = useSlipContext("WITHDRAWAL") as BasicSlipContext;
@@ -22,7 +22,7 @@ export const WithdrawalSlip: FC = () => {
   if (slip.status === "STAGING") {
     return (
       <div className="slip-area">
-        <WithdrawalSlipPreviewHeader />
+        <BasicSlipPreviewHeader type={slip.slip} />
         <WithdrawalSlipPreview />
       </div>
     );

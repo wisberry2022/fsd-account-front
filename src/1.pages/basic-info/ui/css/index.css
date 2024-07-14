@@ -1,0 +1,9 @@
+#basic-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+#basic-info > h2 {
+  font-size: 2.5rem;
+}

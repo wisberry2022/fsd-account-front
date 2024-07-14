@@ -1,0 +1,49 @@
+.basic-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #f9f9f9;
+  background-color: #fff;
+  width: 50%;
+  box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px,
+    rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px,
+    rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px,
+    rgba(42, 51, 70, 0.04) 0px 6px 6px -3px,
+    rgba(14, 63, 126, 0.04) 0px 12px 12px -6px,
+    rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+}
+
+.basic-card .title-area {
+  display: flex;
+}
+
+.basic-card .title-area h3 {
+  font-size: 1.8rem;
+}
+
+.basic-card .card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.basic-card .card-content > p {
+  font-size: 1.4rem;
+}
+
+.basic-card .card-content > .btn-box {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.basic-card .card-content > .btn-box > * {
+  padding: 0.5rem 1rem;
+  max-width: 10rem;
+  min-width: 10rem;
+}
+
+.fullWidth {
+  width: 100%;
+}

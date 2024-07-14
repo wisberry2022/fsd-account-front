@@ -15,6 +15,7 @@ export const BasicInfo: FC = () => {
           {BasicInfos.map((info) => (
             <InfoCard
               key={info.id}
+              type={info.type}
               title={info.name as string}
               desc={info.desc as string}
             />

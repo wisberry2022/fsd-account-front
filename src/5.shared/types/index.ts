@@ -10,3 +10,4 @@ export type {
   TransferEntry,
   TransferSlip,
 } from "./slip-type";
+export type { BasicInfo } from "./basic-info";

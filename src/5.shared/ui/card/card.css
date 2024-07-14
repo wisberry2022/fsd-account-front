@@ -31,6 +31,9 @@
 
 .basic-card .card-content > p {
   font-size: 1.4rem;
+  white-space: pre-line;
+  line-height: 2.3rem;
+  font-weight: 500;
 }
 
 .basic-card .card-content > .btn-box {

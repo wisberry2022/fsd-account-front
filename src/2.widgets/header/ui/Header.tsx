@@ -10,7 +10,7 @@ export const Header: FC = () => {
           <Link to="/">홈</Link>
         </li>
         <li>
-          <Link to="/statement">전표</Link>
+          <Link to="/slip">전표</Link>
         </li>
         <li>
           <Link to="/journal">분개장</Link>

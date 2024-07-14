@@ -30,7 +30,7 @@ export const CloseSlip: FC<CloseSlipProps> = (props) => {
       <OkCancelDialog
         open={popover.open}
         onClose={popover.onClose}
-        content={`마감한 전표는 수정 및 삭제가 불가능합니다.
+        content={`마감한 전표는 전표 목록에서 수정/삭제할 수 있습니다.
           마감하시겠습니까?`}
         onClick={onCloseSlip}
       />

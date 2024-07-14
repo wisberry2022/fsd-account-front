@@ -1,0 +1,15 @@
+/* 미리보기 css */
+#preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#preview-header > h3 {
+  font-size: 2.3rem;
+}
+
+#preview-header .slip-controller-box {
+  display: flex;
+  gap: 1rem;
+}

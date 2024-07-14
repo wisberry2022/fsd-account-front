@@ -1,0 +1,50 @@
+#sply-reg-tbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#sply-reg-tbl tbody th,
+#sply-reg-tbl tbody td {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+#sply-reg-tbl tbody tr {
+  border-bottom: 0.1rem solid #ddd;
+}
+
+#sply-reg-tbl tbody tr th {
+  width: 25%;
+}
+
+#sply-reg-tbl tbody tr td {
+  text-align: center;
+}
+
+#sply-reg-tbl tbody tr td > input {
+  border: none;
+  border-bottom: 0.1rem solid #ddd;
+  padding: 0.5rem 1.5rem;
+}
+
+#sply-reg-tbl tbody .full td > input {
+  width: 100%;
+}
+
+#sply-reg-tbl tbody tr .radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+#sply-reg-tbl .radio-group > .radio-dl {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+#sply-reg-tbl .radio-group > .radio-dl > dt {
+  font-size: 1.4rem;
+  font-weight: 500;
+}

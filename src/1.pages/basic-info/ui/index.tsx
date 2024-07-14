@@ -1,4 +1,4 @@
-import { InfoCard } from "@/2.widgets/card";
+import { InfoCard } from "@/2.widgets/basic-info-card";
 import "./css/index.css";
 import { Container } from "@/2.widgets/container";
 import { Header } from "@/2.widgets/header";

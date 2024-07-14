@@ -1,10 +1,12 @@
 /* 스크롤 */
 .scroll-bar {
+  overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
 .scroll-bar::-webkit-scrollbar {
+  overflow-y: scroll;
   display: none;
 }
 

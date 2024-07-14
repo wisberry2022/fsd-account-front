@@ -1,0 +1,80 @@
+.left > h4 {
+  font-size: 1.5rem;
+}
+
+.sply-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.sply-area > .sply-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.sply-area > .sply-header > button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sply-header > .reg {
+  background-color: #00bfff;
+  color: #fff;
+}
+
+.sply-header .delete {
+  background-color: #f00;
+  color: #fff;
+}
+
+.sply-list {
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+/* 거래처 등록 화면 css */
+.sply-reg-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.sply-reg-area .sply-header > .left {
+  display: flex;
+}
+
+.sply-reg-area .sply-footer button,
+.sply-reg-area .sply-header button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  width: 10rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sply-reg-area .sply-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sply-reg-area .sply-footer .right {
+  display: flex;
+  gap: 1rem;
+}
+
+.sply-reg-area .sply-footer .right > .reg {
+  background-color: #00bfff;
+  color: #fff;
+}
+
+.sply-reg-area .reg-body {
+  display: flex;
+  height: 25vh;
+}

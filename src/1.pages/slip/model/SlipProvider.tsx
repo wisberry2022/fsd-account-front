@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useReducer } from "react";
+import { FC, ReactNode, useReducer } from "react";
 import { SlipContext } from "@/5.shared/context";
 
 import { PaperSlip } from "@/5.shared/types";

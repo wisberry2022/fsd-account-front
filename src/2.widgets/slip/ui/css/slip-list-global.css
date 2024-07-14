@@ -1,0 +1,76 @@
+/* 전표 필터 CSS */
+#slip-list .filter-bar {
+  display: flex;
+  gap: 3rem;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid #f9f9f9;
+  box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.3);
+}
+
+.filter-label {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.filter-sec {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.filter-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.filter-content input {
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+}
+
+.filter-content .search-box {
+  position: relative;
+  display: flex;
+}
+
+.filter-content .adornment {
+  position: absolute;
+  top: 19%;
+  right: 2%;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 30rem;
+  font-weight: 400;
+}
+
+#period-box {
+  display: flex;
+  gap: 4rem;
+}
+
+#period-box > .date-input {
+  width: 20rem;
+  font-weight: 600;
+}
+
+#period-box > input:first-child {
+  position: relative;
+  display: block;
+  overflow: visible;
+}
+
+#period-box > input:first-child::after {
+  content: "~";
+  display: block;
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 600;
+  top: 10%;
+  right: -2.5rem;
+  color: #111;
+}

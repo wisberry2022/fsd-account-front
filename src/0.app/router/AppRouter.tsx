@@ -1,6 +1,6 @@
 import { Home } from "@/1.pages/home";
 import { Journal } from "@/1.pages/journal";
-import { Statement } from "@/1.pages/slip";
+import { Slip } from "@/1.pages/slip";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -9,8 +9,8 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/statement",
-    element: <Statement />,
+    path: "/slip",
+    element: <Slip />,
   },
   {
     path: "/journal",

@@ -1,1 +1,1 @@
-export { Statement } from "./ui/index";
+export { Slip } from "./ui/index";

@@ -1,3 +1,4 @@
+import "./css/slip-table.css";
 import { Slips } from "@/4.entities/slip";
 import { FC } from "react";
 

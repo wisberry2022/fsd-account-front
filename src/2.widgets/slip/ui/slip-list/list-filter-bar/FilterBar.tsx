@@ -1,4 +1,4 @@
-import "../css/slip-list-global.css";
+import "../css/slip-filter.css";
 import { IoMdSearch } from "react-icons/io";
 import { FC } from "react";
 

@@ -9,13 +9,13 @@ type SlipPreviewHeaderProps = {
 
 const SlipPreviewHeader: FC<SlipPreviewHeaderProps> = (props) => {
   const { type } = props;
-  const { onChangeStatus } = useSlipContext(type as Slip);
+  const { init, onChangeStatus } = useSlipContext(type as Slip);
 
   return (
     <div id="preview-header">
       <div className="slip-controller-box">
         <ModifingSlip onChangeStatus={onChangeStatus} />
-        <CloseSlip onChangeStatus={onChangeStatus} />
+        <CloseSlip init={init} onChangeStatus={onChangeStatus} />
       </div>
     </div>
   );

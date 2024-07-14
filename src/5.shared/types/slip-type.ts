@@ -40,6 +40,7 @@ export type BasicSlipContext = {
   onChange: ChangeEventHandler<HTMLInputElement>;
   onChangeDate: ChangeEventHandler<HTMLInputElement>;
   onChangeStatus: (status: SlipStatus) => void;
+  init: () => void;
 };
 
 export type TransferSlipContext = {
@@ -54,4 +55,5 @@ export type TransferSlipContext = {
     value: string | number
   ) => void;
   onChangeStatus: (status: SlipStatus) => void;
+  init: () => void;
 };

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useReducer } from "react";
+import { FC, ReactNode, useEffect, useReducer } from "react";
 import { SlipContext } from "@/5.shared/context";
 
 import { PaperSlip } from "@/5.shared/types";
@@ -42,11 +42,16 @@ const useReceiptSlip = () => {
     onChangeSlipStatus(status);
   };
 
+  const init = () => {
+    setSlip(rcptSlipState);
+  };
+
   return {
     slip,
     onChangeDate,
     onChange,
     onChangeStatus,
+    init,
   };
 };
 
@@ -81,11 +86,16 @@ const useWithdrawalSlip = () => {
     onChangeSlipStatus(status);
   };
 
+  const init = () => {
+    setSlip(wdrSlipState);
+  };
+
   return {
     slip,
     onChange,
     onChangeDate,
     onChangeStatus,
+    init,
   };
 };
 
@@ -164,6 +174,10 @@ const transferReducer = (
         ...state,
         status: action.status,
       };
+    case "INIT":
+      return {
+        ...transferState,
+      };
     default:
       return state;
   }
@@ -196,7 +210,10 @@ const useTransferSlip = () => {
 
   const onChangeStatus = (status: SlipStatus) => {
     dispatch({ type: "CHANGE-STATUS", status });
-    console.log("slip ", slip);
+  };
+
+  const init = () => {
+    dispatch({ type: "INIT" });
   };
 
   return {
@@ -206,6 +223,7 @@ const useTransferSlip = () => {
     onChangeDate,
     onChangeEntry,
     onChangeStatus,
+    init,
   };
 };
 

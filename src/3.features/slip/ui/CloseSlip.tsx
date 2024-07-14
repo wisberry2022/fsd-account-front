@@ -5,11 +5,12 @@ import { FC } from "react";
 import { OkCancelDialog } from "@/5.shared/ui";
 
 type CloseSlipProps = {
+  init: () => void;
   onChangeStatus: (status: SlipStatus) => void;
 };
 
 export const CloseSlip: FC<CloseSlipProps> = (props) => {
-  const { onChangeStatus } = props;
+  const { init, onChangeStatus } = props;
   const popover = usePopover();
 
   const onClick = () => {
@@ -18,6 +19,7 @@ export const CloseSlip: FC<CloseSlipProps> = (props) => {
 
   const onCloseSlip = () => {
     onChangeStatus("CLOSED");
+    init();
   };
 
   return (

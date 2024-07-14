@@ -18,12 +18,14 @@ export const SlipContext = createContext<SlipContextType>({
     onChange: () => {},
     onChangeDate: () => {},
     onChangeStatus: () => {},
+    init: () => {},
   },
   WITHDRAWAL: {
     slip: {} as PaperSlip,
     onChange: () => {},
     onChangeDate: () => {},
     onChangeStatus: () => {},
+    init: () => {},
   },
   TRANSFER: {
     slip: {} as TransferSlip,
@@ -32,5 +34,6 @@ export const SlipContext = createContext<SlipContextType>({
     onChangeDate: () => {},
     onChangeEntry: () => {},
     onChangeStatus: () => {},
+    init: () => {},
   },
 });

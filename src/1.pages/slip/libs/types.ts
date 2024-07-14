@@ -20,10 +20,14 @@ type TransferEntryDeleteAction = {
   type: "DELETE-ENTRY";
   seq: number;
 };
+type TransferInitAction = {
+  type: "INIT";
+};
 
 export type TransferActionType =
   | TransferEntryAddAction
   | TransferEntryDeleteAction
   | TransferEntryOnChangeDateAction
   | TransferEntryOnChangeAction
-  | TransferEntryChangeStatusAction;
+  | TransferEntryChangeStatusAction
+  | TransferInitAction;

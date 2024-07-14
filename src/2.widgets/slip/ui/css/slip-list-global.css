@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding-bottom: 1rem;
   border-bottom: 0.1rem solid #f9f9f9;
+  margin-bottom: 2.5rem;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.3);
 }
 
@@ -73,4 +74,32 @@
   top: 10%;
   right: -2.5rem;
   color: #111;
+}
+
+/* 전표 목록 css */
+#slip-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#slip-table thead tr th {
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  border: 0.1rem solid #000;
+}
+
+#slip-table thead .seq {
+  width: 5%;
+}
+
+#slip-table thead .type {
+  width: 15%;
+}
+
+#slip-table thead .sup-date {
+  width: 15%;
+}
+
+#slip-table thead .reg-date {
+  width: 15%;
 }

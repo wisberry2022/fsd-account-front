@@ -10,13 +10,13 @@ export const Header: FC = () => {
           <Link to="/">홈</Link>
         </li>
         <li>
+          <Link to="/basic-info">기초정보</Link>
+        </li>
+        <li>
           <Link to="/slip">전표</Link>
         </li>
         <li>
           <Link to="/journal">분개장</Link>
-        </li>
-        <li>
-          <Link to="/test3">메뉴3</Link>
         </li>
         <li>
           <Link to="/test4">메뉴4</Link>

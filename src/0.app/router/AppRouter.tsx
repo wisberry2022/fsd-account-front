@@ -1,3 +1,4 @@
+import { BasicInfo } from "@/1.pages/basic-info";
 import { Home } from "@/1.pages/home";
 import { Journal } from "@/1.pages/journal";
 import { Slip } from "@/1.pages/slip";
@@ -15,5 +16,9 @@ export const router = createBrowserRouter([
   {
     path: "/journal",
     element: <Journal />,
+  },
+  {
+    path: "/basic-info",
+    element: <BasicInfo />,
   },
 ]);

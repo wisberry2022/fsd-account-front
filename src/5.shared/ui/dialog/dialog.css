@@ -1,0 +1,65 @@
+#dialog-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: 1rem;
+  width: 30%;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#dialog-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 0.1rem solid #ddd;
+}
+
+#close-dlog {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#dialog-body {
+  padding: 1rem;
+  border-bottom: 0.1rem solid #ddd;
+}
+
+#dialog-body .content {
+  padding: 1.5rem 0;
+}
+
+#dialog-body .content > p {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  white-space: pre-line;
+  line-height: 1.6em;
+}
+
+#dialog-footer {
+  padding: 1rem;
+}
+
+#dialog-footer .btn-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#dialog-footer .btn-box > button {
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  width: 20%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#dialog-footer .btn-box > .ok {
+  background-color: #f00;
+  color: #fff;
+}

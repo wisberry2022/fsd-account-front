@@ -3,10 +3,11 @@ import { FC, ReactNode, useEffect, useRef } from "react";
 type DialogWrapperProps = {
   children: ReactNode;
   onClose: () => void;
+  width?: number;
 };
 
 const DialogWrapper: FC<DialogWrapperProps> = (props) => {
-  const { children, onClose } = props;
+  const { children, onClose, width = 30 } = props;
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const DialogWrapper: FC<DialogWrapperProps> = (props) => {
   }, [ref, onClose]);
 
   return (
-    <div id="dialog-wrapper" ref={ref}>
+    <div id="dialog-wrapper" ref={ref} style={{ width: `${width}%` }}>
       {children}
     </div>
   );

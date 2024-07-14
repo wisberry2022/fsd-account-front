@@ -1,0 +1,37 @@
+#sply-tbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#sply-tbl thead th {
+  padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+}
+
+#sply-tbl thead .check {
+  width: 1%;
+}
+
+#sply-tbl thead .seq {
+  width: 5%;
+}
+
+#sply-tbl thead .name {
+  width: 50%;
+}
+
+#sply-tbl thead .repr {
+  width: 25%;
+}
+
+#sply-tbl thead .reg-dttm {
+  width: 20%;
+}
+
+#sply-tbl tbody tr td {
+  padding: 1.5rem 1rem;
+  border-bottom: 0.1rem solid #ddd;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+}

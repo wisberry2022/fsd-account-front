@@ -14,10 +14,6 @@
   width: 100%;
 }
 
-.slip-bg-color {
-  background-color: rgba(0, 255, 255, 0.09);
-}
-
 #slip thead tr .delete {
   width: 5rem;
 }
@@ -82,8 +78,4 @@
 
 #transfer-slip-preview tfoot tr th + td {
   text-align: center;
-}
-
-.slip-bg-color {
-  background-color: rgba(0, 255, 255, 0.09);
 }

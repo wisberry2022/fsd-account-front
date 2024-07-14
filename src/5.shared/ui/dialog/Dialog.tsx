@@ -1,4 +1,3 @@
-import "./core.css";
 import { FC, ReactNode } from "react";
 import DialogWrapper from "./kit/DialogWrapper";
 import DialogHeader from "./kit/DialogHeader";
@@ -21,6 +20,7 @@ type DialogProps = {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
+  width?: number;
 };
 
 type DialogComposite = {
@@ -30,9 +30,15 @@ type DialogComposite = {
 };
 
 export const Dialog: FC<DialogProps> & DialogComposite = (props) => {
-  const { open, onClose, children } = props;
+  const { open, onClose, children, width = 30 } = props;
 
-  return open && <DialogWrapper onClose={onClose}>{children}</DialogWrapper>;
+  return (
+    open && (
+      <DialogWrapper onClose={onClose} width={width}>
+        {children}
+      </DialogWrapper>
+    )
+  );
 };
 
 Dialog.Header = DialogHeader;

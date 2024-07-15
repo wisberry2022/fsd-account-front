@@ -1,0 +1,23 @@
+.act-list-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.act-list-area .act-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.act-list-area .act-header > button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.act-list-area > .act-list {
+  height: 50vh;
+}

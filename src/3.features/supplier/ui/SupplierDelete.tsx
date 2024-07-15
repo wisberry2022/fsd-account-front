@@ -8,7 +8,7 @@ type SupplierDeleteProps = {
 export const SupplierDelete: FC<SupplierDeleteProps> = (props) => {
   const { onClick } = props;
   return (
-    <button id="sply-del-btn" onClick={onClick}>
+    <button className="dlog-head-btn" id="sply-del-btn" onClick={onClick}>
       거래처 삭제
     </button>
   );

@@ -1,9 +1,4 @@
 #sply-del-btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.7rem;
-  font-weight: 600;
-  cursor: pointer;
   background-color: #f00;
   color: #fff;
 }

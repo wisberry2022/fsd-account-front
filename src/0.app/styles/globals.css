@@ -1,3 +1,12 @@
+/* 버튼 */
+.dlog-head-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* 스크롤 */
 .scroll-bar {
   overflow-y: scroll;
@@ -18,6 +27,18 @@
 .slip-head-color,
 .tbl-head-color {
   background-color: #f9f9f9;
+}
+
+table thead th,
+table thead td {
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+
+table tbody td {
+  padding: 1rem;
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 /* 다이얼로그  */

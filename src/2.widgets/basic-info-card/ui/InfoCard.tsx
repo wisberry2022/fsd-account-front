@@ -4,6 +4,7 @@ import { BasicInfo } from "@/5.shared/types";
 import { Card } from "@/5.shared/ui";
 import { FC } from "react";
 import SupplierManager from "./suppliier/SupplierManager";
+import AccountManager from "./account/AccountManager";
 
 type InfoCardProps = {
   title: string;
@@ -22,6 +23,9 @@ export const InfoCard: FC<InfoCardProps> = (props) => {
       </Card>
       {type === "SUPPLIER" && (
         <SupplierManager open={popover.open} onClose={popover.onClose} />
+      )}
+      {type === "ACCOUNT" && (
+        <AccountManager open={popover.open} onClose={popover.onClose} />
       )}
     </>
   );

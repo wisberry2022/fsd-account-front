@@ -1,0 +1,23 @@
+#act-list-tbl thead .check {
+  width: 5%;
+}
+
+#act-list-tbl thead .seq {
+  width: 10%;
+}
+
+#act-list-tbl thead .code {
+  width: 20%;
+}
+
+#act-list-tbl thead .name {
+  width: 50%;
+}
+
+#act-list-tbl thead .reg-dttm {
+  width: 15%;
+}
+
+#act-list-tbl tbody tr:nth-child(-n + 1) {
+  border-bottom: 0.1rem solid #ddd;
+}

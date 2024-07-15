@@ -1,0 +1,10 @@
+/* {요소}-{배경색}-{텍스트 컬러} */
+.btn-sky-white {
+  background-color: #00bfff;
+  color: #fff;
+}
+
+.btn-red-white {
+  background-color: #f00;
+  color: #fff;
+}

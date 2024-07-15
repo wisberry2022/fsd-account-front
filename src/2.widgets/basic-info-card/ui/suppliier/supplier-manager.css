@@ -61,8 +61,3 @@
   display: flex;
   height: 25vh;
 }
-
-#dialog-footer > .btn-box > button:last-child {
-  background-color: #00bfff;
-  color: #fff;
-}

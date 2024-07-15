@@ -49,7 +49,9 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
         </Dialog.Body>
         <Dialog.Footer>
           <div className="btn-box">
-            <button onClick={onClose}>확인</button>
+            <button className="btn-sky-white" onClick={onClose}>
+              확인
+            </button>
           </div>
         </Dialog.Footer>
         <SupplierDeleteDialog open={popover.open} onClose={popover.onClose} />
@@ -70,7 +72,9 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
         </Dialog.Body>
         <Dialog.Footer>
           <div className="btn-box">
-            <button onClick={onMain}>뒤로가기</button>
+            <button className="btn-sky-white" onClick={onMain}>
+              뒤로가기
+            </button>
             <button onClick={onMain}>등록하기</button>
           </div>
         </Dialog.Footer>
@@ -82,7 +86,7 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
     <Dialog open={open} onClose={onClose} width={50}>
       <Dialog.Header>
         <div className="left">
-          <h4>거래처 정보 관리</h4>
+          <h4>거래처 관리</h4>
         </div>
         <div className="right">
           <IoCloseSharp id="close-dlog" onClick={onClose} />

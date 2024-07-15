@@ -1,0 +1,9 @@
+#sply-reg-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #00bfff;
+  color: #fff;
+}

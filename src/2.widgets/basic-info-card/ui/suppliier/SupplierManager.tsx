@@ -1,9 +1,14 @@
 import { SupplierRegister, Suppliers } from "@/4.entities/supplier";
+import {
+  SupplierDelete,
+  SupplierRegister as SupplierRegisterBtn,
+} from "@/3.features/supplier";
 import "./supplier-manager.css";
 import { Dialog } from "@/5.shared/ui";
 import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { ObjType } from "@/5.shared/types";
+import { usePopover } from "@/5.shared/hooks";
 
 type SupplierManagerProps = {
   open: boolean;
@@ -13,6 +18,7 @@ type SupplierManagerProps = {
 const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const { open, onClose } = props;
   const [state, setState] = useState("MAIN");
+  const popover = usePopover();
 
   const onSplyReg = () => {
     setState("REGISTER");
@@ -22,40 +28,51 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
     setState("MAIN");
   };
 
+  const onSplyDelete = () => {
+    popover.onToggle();
+  };
+
   const stateMapper: ObjType<() => JSX.Element> = {
     MAIN: () => (
-      <div className="sply-area">
-        <div className="sply-header">
-          <button className="reg" onClick={onSplyReg}>
-            신규 거래처 등록하기
-          </button>
-          <button className="delete">거래처 삭제</button>
-        </div>
-        <div className="sply-list scroll-bar">
-          <Suppliers />
-        </div>
-      </div>
+      <>
+        <Dialog.Body>
+          <div className="sply-area">
+            <div className="sply-header">
+              <SupplierRegisterBtn onClick={onSplyReg} />
+              <SupplierDelete onClick={onSplyDelete} />
+            </div>
+            <div className="sply-list scroll-bar">
+              <Suppliers />
+            </div>
+          </div>
+        </Dialog.Body>
+        <Dialog.Footer>
+          <div className="btn-box">
+            <button onClick={onClose}>확인</button>
+          </div>
+        </Dialog.Footer>
+      </>
     ),
     REGISTER: () => (
-      <div className="sply-reg-area">
-        <div className="sply-header">
-          <div className="left">
-            <button className="go-back" onClick={onMain}>
-              메인으로
-            </button>
+      <>
+        <Dialog.Body>
+          <div className="sply-reg-area">
+            <div className="sply-header">
+              <div className="left"></div>
+              <div className="right"></div>
+            </div>
+            <div className="reg-body scroll-bar">
+              <SupplierRegister />
+            </div>
           </div>
-          <div className="right"></div>
-        </div>
-        <div className="reg-body scroll-bar">
-          <SupplierRegister />
-        </div>
-        <div className="sply-footer">
-          <div className="left"></div>
-          <div className="right">
-            <button className="reg">등록하기</button>
+        </Dialog.Body>
+        <Dialog.Footer>
+          <div className="btn-box">
+            <button onClick={onMain}>뒤로가기</button>
+            <button onClick={onMain}>등록하기</button>
           </div>
-        </div>
-      </div>
+        </Dialog.Footer>
+      </>
     ),
   };
 
@@ -69,12 +86,7 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
           <IoCloseSharp id="close-dlog" onClick={onClose} />
         </div>
       </Dialog.Header>
-      <Dialog.Body>{stateMapper[state]()}</Dialog.Body>
-      <Dialog.Footer>
-        <div className="btn-box">
-          <button onClick={onClose}>확인</button>
-        </div>
-      </Dialog.Footer>
+      {stateMapper[state]()}
     </Dialog>
   );
 };

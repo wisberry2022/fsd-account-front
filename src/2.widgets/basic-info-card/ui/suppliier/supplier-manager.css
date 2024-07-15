@@ -48,7 +48,6 @@
   display: flex;
 }
 
-.sply-reg-area .sply-footer button,
 .sply-reg-area .sply-header button {
   padding: 0.5rem 1rem;
   border: none;
@@ -58,23 +57,12 @@
   cursor: pointer;
 }
 
-.sply-reg-area .sply-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sply-reg-area .sply-footer .right {
-  display: flex;
-  gap: 1rem;
-}
-
-.sply-reg-area .sply-footer .right > .reg {
-  background-color: #00bfff;
-  color: #fff;
-}
-
 .sply-reg-area .reg-body {
   display: flex;
   height: 25vh;
+}
+
+#dialog-footer > .btn-box > button:last-child {
+  background-color: #00bfff;
+  color: #fff;
 }

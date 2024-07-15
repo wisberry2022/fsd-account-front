@@ -4,7 +4,7 @@ import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { Accounts } from "@/4.entities/account";
-import { useKeywordPopover, usePopover } from "@/5.shared/hooks";
+import { useKeywordPopover } from "@/5.shared/hooks";
 import AccountRegisterBranch from "./AccountRegisterBranch";
 
 type AccountManagerProps = {

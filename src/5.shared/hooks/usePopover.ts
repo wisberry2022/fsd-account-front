@@ -22,3 +22,21 @@ export const usePopover = () => {
     onToggle,
   };
 };
+
+export const useKeywordPopover = <T = string>() => {
+  const [popup, setPopup] = useState<T | null>(null);
+
+  const onOpen = (keyword: T) => {
+    setPopup(keyword);
+  };
+
+  const onClose = () => {
+    setPopup(null);
+  };
+
+  return {
+    open: popup,
+    onOpen,
+    onClose,
+  };
+};

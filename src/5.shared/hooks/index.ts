@@ -1,4 +1,4 @@
 import useSlipContext from "./useSlipContext";
 
 export { useSlipContext };
-export { usePopover } from "./usePopover";
+export { usePopover, useKeywordPopover } from "./usePopover";

@@ -8,17 +8,18 @@ type OkCancelDialogProps = {
   onClose: () => void;
   content: string;
   onClick: () => void;
+  width?: number;
 };
 
 export const OkCancelDialog: FC<OkCancelDialogProps> = (props) => {
-  const { open, onClose, content, onClick } = props;
+  const { open, onClose, content, onClick, width = 30 } = props;
   const onConfirm = () => {
     onClick();
     onClose();
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} width={width}>
       <Dialog.Header>
         <div className="left"></div>
         <div className="right">

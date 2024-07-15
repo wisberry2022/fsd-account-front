@@ -1,6 +1,7 @@
 import { SupplierRegister, Suppliers } from "@/4.entities/supplier";
 import {
   SupplierDelete,
+  SupplierDeleteDialog,
   SupplierRegister as SupplierRegisterBtn,
 } from "@/3.features/supplier";
 import "./supplier-manager.css";
@@ -51,6 +52,7 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
             <button onClick={onClose}>확인</button>
           </div>
         </Dialog.Footer>
+        <SupplierDeleteDialog open={popover.open} onClose={popover.onClose} />
       </>
     ),
     REGISTER: () => (

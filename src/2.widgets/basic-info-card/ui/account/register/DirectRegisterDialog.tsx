@@ -2,7 +2,6 @@ import "./dir-reg-dlog.css";
 import { AccountRegisterTable } from "@/4.entities/account";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
-import { createPortal } from "react-dom";
 
 type DirectRegisterDialogProps = {
   open: boolean;

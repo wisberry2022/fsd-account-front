@@ -1,0 +1,16 @@
+.auto-reg-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  height: 50vh;
+}
+
+.auto-reg-body > p {
+  position: sticky;
+  top: 0;
+  padding: 1rem 0;
+  background-color: #fff;
+  font-size: 1.3rem;
+  font-weight: 500;
+}

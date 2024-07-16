@@ -8,6 +8,7 @@ import {
 } from "@/3.features/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import DirectRegisterDialog from "./register/DirectRegisterDialog";
+import AutoRegisterDialog from "./register/AutoRegisterDialog";
 
 type AccountRegisterBranchProps = {
   open: boolean;
@@ -34,6 +35,9 @@ const AccountRegisterBranch: FC<AccountRegisterBranchProps> = (props) => {
         </Dialog.Body>
         {popover.open === "DIRECT" && (
           <DirectRegisterDialog open={!!open} onClose={popover.onClose} />
+        )}
+        {popover.open === "AUTO" && (
+          <AutoRegisterDialog open={!!open} onClose={popover.onClose} />
         )}
       </Dialog>
     </>

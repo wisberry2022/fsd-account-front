@@ -1,0 +1,8 @@
+#fixed-act-list-tbl > thead > tr {
+  position: sticky;
+  top: 3.7rem;
+}
+
+#fixed-act-list-tbl > tbody > tr {
+  border-bottom: 0.1rem solid #ddd;
+}

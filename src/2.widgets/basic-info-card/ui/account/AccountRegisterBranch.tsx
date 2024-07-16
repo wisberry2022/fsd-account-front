@@ -1,7 +1,4 @@
 import "./act-reg-branch.css";
-import { ImPencil2 } from "react-icons/im";
-import { MdSystemUpdateAlt } from "react-icons/md";
-import { PiMicrosoftExcelLogoFill } from "react-icons/pi";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
 import {

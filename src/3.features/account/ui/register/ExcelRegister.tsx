@@ -17,16 +17,4 @@ export const ExcelRegister: FC<ExcelRegisterProps> = (props) => {
       onClick={onClick}
     />
   );
-  //   <div className="branch">
-  //   <figure>
-  //     <PiMicrosoftExcelLogoFill className="title-img" />
-  //   </figure>
-  //   <div className="desc-box">
-  //     <h4>엑셀등록</h4>
-  //     <p>
-  //       엑셀파일을 업로드하여 <br />
-  //       일괄 등록할 수 있습니다.
-  //     </p>
-  //   </div>
-  // </div>
 };

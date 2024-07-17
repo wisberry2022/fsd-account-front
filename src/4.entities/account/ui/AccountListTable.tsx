@@ -14,7 +14,7 @@ export const AccountListTable: FC = () => {
         </tr>
       </thead>
       <tbody>
-        {Array.from({ length: 40 }).map((v, i) => (
+        {Array.from({ length: 40 }).map((_, i) => (
           <tr key={i}>
             <td>자산</td>
             <td>유동자산</td>

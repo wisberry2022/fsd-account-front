@@ -28,7 +28,7 @@ const AutoRegisterDialog: FC<AutoRegisterDialogProps> = (props) => {
       </Dialog.Body>
       <Dialog.Footer>
         <div className="btn-box">
-          <button>취소</button>
+          <button onClick={onClose}>취소</button>
           <button className="btn-sky-white">확인</button>
         </div>
       </Dialog.Footer>

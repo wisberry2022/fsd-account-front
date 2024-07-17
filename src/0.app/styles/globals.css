@@ -1,4 +1,15 @@
 /* 버튼 */
+.basic-btn {
+  align-self: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.7rem;
+  width: 11rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .dlog-head-btn {
   padding: 0.5rem 1rem;
   border: none;

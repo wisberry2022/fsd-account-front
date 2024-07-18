@@ -16,7 +16,7 @@ type SupplierManagerProps = {
   onClose: () => void;
 };
 
-const SupplierManager: FC<SupplierManagerProps> = (props) => {
+export const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const { open, onClose } = props;
   const [state, setState] = useState("MAIN");
   const popover = usePopover();
@@ -96,5 +96,3 @@ const SupplierManager: FC<SupplierManagerProps> = (props) => {
     </Dialog>
   );
 };
-
-export default SupplierManager;

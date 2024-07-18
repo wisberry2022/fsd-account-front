@@ -5,8 +5,8 @@ import { Header } from "@/2.widgets/header";
 import { FC } from "react";
 import BasicInfos from "../model/BasicInfos";
 import { useKeywordPopover } from "@/5.shared/hooks";
-import SupplierManager from "@/2.widgets/basic-info-card/ui/suppliier/SupplierManager";
 import { AccountManager } from "@/2.widgets/account-manager";
+import { SupplierManager } from "@/2.widgets/supplier-manager";
 
 export const BasicInfo: FC = () => {
   const popover = useKeywordPopover<string>();

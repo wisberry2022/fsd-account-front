@@ -1,8 +1,11 @@
+import { AxiosResponse } from "axios";
 import { axiosInstance } from "../axiosInstance/axiosInstance";
 
 export const RestService = {
-  get: async <T = unknown>(path: string): Promise<T> => {
-    return await axiosInstance.get(path);
+  get: async <T = unknown>(
+    path: string
+  ): Promise<AxiosResponse<T, unknown>> => {
+    return await axiosInstance.get<T>(path);
   },
   post: async <T = unknown, K = unknown>(
     path: string,

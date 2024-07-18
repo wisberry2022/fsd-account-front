@@ -1,11 +1,4 @@
-export type SupplierRequest = {
-  name: string;
-  representationName: string;
-  corpCode: string;
-  address: string;
-  category: string;
-  main: "MAIN" | "SUB";
-};
+import { SupplierRequest } from "@/5.shared/types";
 
 export const Supplier: SupplierRequest = {
   name: "",

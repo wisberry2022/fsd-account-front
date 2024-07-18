@@ -1,5 +1,6 @@
 import { useDataHandler } from "@/5.shared/hooks";
-import { Supplier, SupplierRequest } from "./Supplier";
+import { Supplier } from "./Supplier";
+import { SupplierRequest } from "@/5.shared/types";
 
 export const useAddSupplier = () => {
   const handler = useDataHandler<SupplierRequest>(Supplier);

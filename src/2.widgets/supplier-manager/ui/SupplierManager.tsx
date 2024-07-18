@@ -8,10 +8,11 @@ import "./supplier-manager.css";
 import { Dialog } from "@/5.shared/ui";
 import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
-import { ObjType } from "@/5.shared/types";
+import { ObjType, SupplierResponse } from "@/5.shared/types";
 import { usePopover } from "@/5.shared/hooks";
 import { useAddSupplier } from "../model/useAddSupplier";
 import { add } from "../api/AddSupply";
+import { useGetSuppliers } from "../libs/useGetSupplier";
 
 type SupplierManagerProps = {
   open: boolean;
@@ -21,6 +22,7 @@ type SupplierManagerProps = {
 export const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const { open, onClose } = props;
   const [state, setState] = useState("MAIN");
+  const suppliers = useGetSuppliers();
   const { state: sply, onChangeInput, onRadio } = useAddSupplier();
   const popover = usePopover();
 
@@ -51,7 +53,7 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
               <SupplierDelete onClick={onSplyDelete} />
             </div>
             <div className="sply-list scroll-bar">
-              <Suppliers />
+              <Suppliers splys={suppliers} />
             </div>
           </div>
         </Dialog.Body>

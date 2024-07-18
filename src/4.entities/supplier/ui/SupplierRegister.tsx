@@ -1,4 +1,4 @@
-import { SupplierRequest } from "@/2.widgets/supplier-manager/model/Supplier";
+import { SupplierRequest } from "@/5.shared/types";
 import "./sply-reg.css";
 import { ChangeEventHandler, FC } from "react";
 

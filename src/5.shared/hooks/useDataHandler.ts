@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 
 export const useDataHandler = <T = unknown>(init: T) => {
   const [state, setState] = useState<T>(init);

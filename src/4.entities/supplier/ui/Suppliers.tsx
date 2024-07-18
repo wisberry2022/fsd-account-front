@@ -1,7 +1,13 @@
+import { SupplierResponse } from "@/5.shared/types";
 import "./suppliers.css";
 import { FC } from "react";
 
-export const Suppliers: FC = () => {
+type SupplierProps = {
+  splys: SupplierResponse[];
+};
+
+export const Suppliers: FC<SupplierProps> = (props) => {
+  const { splys } = props;
   return (
     <table id="sply-tbl">
       <thead>
@@ -16,15 +22,16 @@ export const Suppliers: FC = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        {splys.map(sply => <tr>
           <td>
             <input type="checkbox" />
           </td>
-          <td>1</td>
-          <td>무한상사</td>
-          <td>김무한</td>
+          <td>{sply.id}</td>
+          <td>{sply.name}</td>
+          <td>{sply.representationName}</td>
           <td>2024-05-05</td>
-        </tr>
+        </tr>)}
+        
       </tbody>
     </table>
   );

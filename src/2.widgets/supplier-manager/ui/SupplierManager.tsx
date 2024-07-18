@@ -10,6 +10,8 @@ import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { ObjType } from "@/5.shared/types";
 import { usePopover } from "@/5.shared/hooks";
+import { useAddSupplier } from "../model/useAddSupplier";
+import { add } from "../api/AddSupply";
 
 type SupplierManagerProps = {
   open: boolean;
@@ -19,6 +21,7 @@ type SupplierManagerProps = {
 export const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const { open, onClose } = props;
   const [state, setState] = useState("MAIN");
+  const { state: sply, onChangeInput, onRadio } = useAddSupplier();
   const popover = usePopover();
 
   const onSplyReg = () => {
@@ -31,6 +34,11 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
 
   const onSplyDelete = () => {
     popover.onToggle();
+  };
+
+  const onSave = async () => {
+    await add(sply);
+    setState("MAIN");
   };
 
   const stateMapper: ObjType<() => JSX.Element> = {
@@ -66,7 +74,11 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
               <div className="right"></div>
             </div>
             <div className="reg-body scroll-bar">
-              <SupplierRegister />
+              <SupplierRegister
+                sply={sply}
+                onChangeInput={onChangeInput}
+                onRadio={onRadio}
+              />
             </div>
           </div>
         </Dialog.Body>
@@ -75,7 +87,7 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
             <button className="btn-sky-white" onClick={onMain}>
               뒤로가기
             </button>
-            <button onClick={onMain}>등록하기</button>
+            <button onClick={onSave}>등록하기</button>
           </div>
         </Dialog.Footer>
       </>

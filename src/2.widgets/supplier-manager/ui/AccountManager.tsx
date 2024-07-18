@@ -1,18 +1,18 @@
-import { AccountDelete, AccountRegister } from "@/3.features/account";
 import "./account-manager.css";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { Accounts } from "@/4.entities/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
-import AccountRegisterBranch from "./AccountRegisterBranch";
+import { AccountDelete, AccountRegister } from "@/3.features/account";
+import AccountRegisterBranch from "./register/AccountRegisterBranch";
 
 type AccountManagerProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const AccountManager: FC<AccountManagerProps> = (props) => {
+export const AccountManager: FC<AccountManagerProps> = (props) => {
   const { open, onClose } = props;
   const popover = useKeywordPopover();
 
@@ -63,5 +63,3 @@ const AccountManager: FC<AccountManagerProps> = (props) => {
     </>
   );
 };
-
-export default AccountManager;

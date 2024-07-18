@@ -7,9 +7,9 @@ import {
   ExcelRegister,
 } from "@/3.features/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
-import DirectRegisterDialog from "./register/DirectRegisterDialog";
-import AutoRegisterDialog from "./register/AutoRegisterDialog";
-import ExcelRegisterDialog from "./register/ExcelRegisterDialog";
+import DirectRegisterDialog from "./DirectRegisterDialog";
+import AutoRegisterDialog from "./AutoRegisterDialog";
+import ExcelRegisterDialog from "./ExcelRegisterDialog";
 
 type AccountRegisterBranchProps = {
   open: boolean;

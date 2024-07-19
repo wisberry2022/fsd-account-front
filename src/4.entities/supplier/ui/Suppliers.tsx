@@ -5,10 +5,11 @@ import { convert2DateFormat } from "@/5.shared/utils";
 
 type SupplierProps = {
   splys: SupplierResponse[] | undefined;
+  onRowClick: (id: number) => void;
 };
 
 export const Suppliers: FC<SupplierProps> = (props) => {
-  const { splys } = props;
+  const { splys, onRowClick } = props;
   return (
     <table id="sply-tbl">
       <thead>
@@ -28,10 +29,14 @@ export const Suppliers: FC<SupplierProps> = (props) => {
             <td>
               <input type="checkbox" />
             </td>
-            <td>{sply.id}</td>
-            <td>{sply.name}</td>
-            <td>{sply.representationName}</td>
-            <td>{convert2DateFormat(sply.regDttm)}</td>
+            <td onClick={() => onRowClick(sply.id)}>{sply.id}</td>
+            <td onClick={() => onRowClick(sply.id)}>{sply.name}</td>
+            <td onClick={() => onRowClick(sply.id)}>
+              {sply.representationName}
+            </td>
+            <td onClick={() => onRowClick(sply.id)}>
+              {convert2DateFormat(sply.regDttm)}
+            </td>
           </tr>
         ))}
       </tbody>

@@ -1,0 +1,23 @@
+#sply-read-tbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#sply-read-tbl tbody th,
+#sply-read-tbl tbody td {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+#sply-read-tbl tbody tr {
+  border-bottom: 0.1rem solid #ddd;
+}
+
+#sply-read-tbl tbody tr th {
+  width: 25%;
+}
+
+#sply-read-tbl tbody tr td {
+  text-align: center;
+}

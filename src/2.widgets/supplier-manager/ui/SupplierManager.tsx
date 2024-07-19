@@ -22,7 +22,7 @@ type SupplierManagerProps = {
 export const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const { open, onClose } = props;
   const [state, setState] = useState("MAIN");
-  const suppliers = useGetSuppliers();
+  const swr = useGetSuppliers();
   const { state: sply, onChangeInput, onRadio } = useAddSupplier();
   const popover = usePopover();
 
@@ -53,7 +53,7 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
               <SupplierDelete onClick={onSplyDelete} />
             </div>
             <div className="sply-list scroll-bar">
-              <Suppliers splys={suppliers} />
+              <Suppliers splys={swr.data} />
             </div>
           </div>
         </Dialog.Body>

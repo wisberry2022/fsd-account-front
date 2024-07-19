@@ -3,7 +3,7 @@ import "./suppliers.css";
 import { FC } from "react";
 
 type SupplierProps = {
-  splys: SupplierResponse[];
+  splys: SupplierResponse[] | undefined;
 };
 
 export const Suppliers: FC<SupplierProps> = (props) => {
@@ -22,16 +22,17 @@ export const Suppliers: FC<SupplierProps> = (props) => {
         </tr>
       </thead>
       <tbody>
-        {splys.map(sply => <tr>
-          <td>
-            <input type="checkbox" />
-          </td>
-          <td>{sply.id}</td>
-          <td>{sply.name}</td>
-          <td>{sply.representationName}</td>
-          <td>2024-05-05</td>
-        </tr>)}
-        
+        {splys?.map((sply) => (
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>{sply.id}</td>
+            <td>{sply.name}</td>
+            <td>{sply.representationName}</td>
+            <td>2024-05-05</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

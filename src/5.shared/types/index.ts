@@ -15,3 +15,4 @@ export type {
   SupplierRequest,
   SupplierResponse,
 } from "./basic-info";
+export type { SWRType } from "./common";

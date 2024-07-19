@@ -1,16 +1,11 @@
-import { SupplierResponse } from "@/5.shared/types";
+import { SupplierResponse, SWRType } from "@/5.shared/types";
 import { useEffect, useState } from "react";
-import { getSuppliers } from "../api/GetSupply";
+import useSWR, { useSWRConfig } from "swr";
+import { Paths } from "@/5.shared/constants";
 
-export const useGetSuppliers = () => {
-  const [suppliers, setSuppliers] = useState<SupplierResponse[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const list = await getSuppliers();
-      setSuppliers(list);
-    })();
-  }, []);
-
-  return suppliers;
+export const useGetSuppliers = ():SWRType<SupplierResponse[]> => {
+  const { data, mutate } = useSWR<SupplierResponse[]>(
+    Paths.basicInfo.supplier.getAll
+  );
+  return { data, mutate };
 };

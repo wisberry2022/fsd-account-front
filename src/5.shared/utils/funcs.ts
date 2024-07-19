@@ -40,3 +40,12 @@ export const getYYYYMMDDFormat = (dateObj: Date | null): string => {
 
   return `${year}-${month}-${date}`;
 };
+
+export const convert2DateFormat = (dateObj: string | null): string | null => {
+  if (!dateObj) {
+    return null;
+  }
+
+  const date = new Date(dateObj);
+  return getYYYYMMDDFormat(date);
+};

@@ -1,6 +1,7 @@
 import { SupplierResponse } from "@/5.shared/types";
 import "./suppliers.css";
 import { FC } from "react";
+import { convert2DateFormat } from "@/5.shared/utils";
 
 type SupplierProps = {
   splys: SupplierResponse[] | undefined;
@@ -30,7 +31,7 @@ export const Suppliers: FC<SupplierProps> = (props) => {
             <td>{sply.id}</td>
             <td>{sply.name}</td>
             <td>{sply.representationName}</td>
-            <td>2024-05-05</td>
+            <td>{convert2DateFormat(sply.regDttm)}</td>
           </tr>
         ))}
       </tbody>

@@ -1,18 +1,18 @@
-import { SupplierRegister, Suppliers } from "@/4.entities/supplier";
 import {
   SupplierDelete,
   SupplierDeleteDialog,
   SupplierRegister as SupplierRegisterBtn,
 } from "@/3.features/supplier";
-import "./supplier-manager.css";
+import { SupplierRegister, Suppliers } from "@/4.entities/supplier";
+import { usePopover } from "@/5.shared/hooks";
+import { ObjType } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
-import { ObjType, SupplierResponse } from "@/5.shared/types";
-import { usePopover } from "@/5.shared/hooks";
-import { useAddSupplier } from "../model/useAddSupplier";
 import { add } from "../api/AddSupply";
-import { useGetSuppliers } from "../libs/useGetSupplier";
+import { useGetSuppliers } from "../api/useGetSupplier";
+import { useAddSupplier } from "../model/useAddSupplier";
+import "./supplier-manager.css";
 
 type SupplierManagerProps = {
   open: boolean;
@@ -40,6 +40,7 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
 
   const onSave = async () => {
     await add(sply);
+    swr.mutate();
     setState("MAIN");
   };
 

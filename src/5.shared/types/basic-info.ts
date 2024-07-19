@@ -7,8 +7,8 @@ export type SupplierRequest = {
   address: string;
   category: string;
   main: "MAIN" | "SUB";
-  regDttm: number[];
-  modDttm: number[];
+  regDttm: string;
+  modDttm: string;
 };
 
 export type SupplierResponse = SupplierRequest & {

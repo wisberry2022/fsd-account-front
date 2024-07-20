@@ -14,3 +14,13 @@ export type SupplierRequest = {
 export type SupplierResponse = SupplierRequest & {
   id: number;
 };
+
+export type SupplierModifyRequest = {
+  id: number;
+  name: string;
+  representationName: string;
+  corpCode: string;
+  address: string;
+  category: string;
+  main: "MAIN" | "SUB";
+};

@@ -15,7 +15,8 @@
 }
 
 #sply-reg-tbl tbody tr th {
-  width: 25%;
+  width: 20%;
+  font-size: 1.2rem;
 }
 
 #sply-reg-tbl tbody tr td {

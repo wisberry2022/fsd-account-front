@@ -1,8 +1,10 @@
 import { Dialog } from "@/5.shared/ui";
-import { FC } from "react";
+import { FC, useState } from "react";
 import useGetSuppliy from "../api/useGetSuppliy";
-import { Supplier } from "@/4.entities/supplier";
+import { Supplier, SupplierRegister } from "@/4.entities/supplier";
 import { SupplierResponse } from "@/5.shared/types";
+import { useDataHandler } from "@/5.shared/hooks";
+import { modifySupplier } from "../api/ModifySupply";
 
 type SupplierDetailProps = {
   open: boolean;
@@ -13,6 +15,18 @@ type SupplierDetailProps = {
 const SupplierDetail: FC<SupplierDetailProps> = (props) => {
   const { open, onClose, id } = props;
   const { data, mutate } = useGetSuppliy(id);
+  const [state, setState] = useState<string>("detail");
+  const handler = useDataHandler<SupplierResponse>(data as SupplierResponse);
+
+  const onModifyState = () => {
+    setState("modify");
+  };
+
+  const onModify = async () => {
+    await modifySupplier(handler.state);
+    mutate();
+    setState("detail");
+  };
 
   return (
     <Dialog open={open} onClose={onClose} width={80}>
@@ -24,13 +38,36 @@ const SupplierDetail: FC<SupplierDetailProps> = (props) => {
       </Dialog.Header>
       <Dialog.Body>
         <div className="sply-dtl-body">
-          <Supplier sply={data ?? ({} as SupplierResponse)} />
+          {state === "detail" && (
+            <Supplier sply={data ?? ({} as SupplierResponse)} />
+          )}
+          {state === "modify" && (
+            <SupplierRegister
+              sply={handler.state ?? ({} as SupplierResponse)}
+              onChangeInput={handler.onChangeInput}
+              onRadio={handler.onRadio}
+            />
+          )}
         </div>
       </Dialog.Body>
       <Dialog.Footer>
         <div className="btn-box">
-          <button onClick={onClose}>취소</button>
-          <button className="btn-sky-white">거래처 수정하기</button>
+          {state === "detail" && (
+            <>
+              <button onClick={onClose}>취소</button>
+              <button className="btn-sky-white" onClick={onModifyState}>
+                거래처 수정하기
+              </button>
+            </>
+          )}
+          {state === "modify" && (
+            <>
+              <button onClick={() => setState("detail")}>취소</button>
+              <button className="btn-sky-white" onClick={onModify}>
+                수정하기
+              </button>
+            </>
+          )}
         </div>
       </Dialog.Footer>
     </Dialog>

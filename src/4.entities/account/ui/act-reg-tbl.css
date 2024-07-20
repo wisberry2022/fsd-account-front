@@ -20,11 +20,11 @@
   border-bottom: 0.1rem solid #ddd;
 }
 
-#act-reg-tbl tbody > tr:nth-child(4) th:nth-child(3) {
+#act-reg-tbl tbody > tr:nth-child(2) th:nth-child(3) {
   width: 25%;
 }
 
-#act-reg-tbl tbody > tr:nth-child(3n + 1) td > input {
+#act-reg-tbl tbody > tr:nth-child(n + 1) td > input {
   padding: 0.2rem 1rem;
   border: none;
   border-bottom: 0.1rem solid #ddd;

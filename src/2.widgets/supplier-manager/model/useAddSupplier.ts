@@ -6,11 +6,11 @@ import { useEffect } from "react";
 export const useAddSupplier = (state: string) => {
   const handler = useDataHandler<SupplierRequest>(Supplier);
 
-  // useEffect(() => {
-  //   if(state === "MAIN") {
-  //     handler.setState(Supplier)
-  //   }
-  // }, [state])
+  useEffect(() => {
+    if (state === "MAIN") {
+      handler.setState(Supplier);
+    }
+  }, [state, handler]);
 
   return handler;
 };

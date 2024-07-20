@@ -11,9 +11,11 @@ export type {
   TransferSlip,
 } from "./slip-type";
 export type {
+  AccountCategory,
   BasicInfo,
   SupplierRequest,
   SupplierResponse,
   SupplierModifyRequest,
+  AccountAddRequest,
 } from "./basic-info";
 export type { SWRType } from "./common";

@@ -1,7 +1,11 @@
 import "./dir-reg-dlog.css";
 import { AccountRegisterTable } from "@/4.entities/account";
+import { useDataHandler } from "@/5.shared/hooks";
+import { AccountAddRequest } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
+import { Account } from "../../model/Account";
+import { add } from "../../api/fetcher";
 
 type DirectRegisterDialogProps = {
   open: boolean;
@@ -10,6 +14,12 @@ type DirectRegisterDialogProps = {
 
 const DirectRegisterDialog: FC<DirectRegisterDialogProps> = (props) => {
   const { open, onClose } = props;
+  const handler = useDataHandler<AccountAddRequest>(Account);
+
+  const onSave = async () => {
+    await add(handler.state);
+    onClose();
+  };
 
   return (
     <Dialog open={open} onClose={onClose} width={100}>
@@ -20,13 +30,18 @@ const DirectRegisterDialog: FC<DirectRegisterDialogProps> = (props) => {
       </Dialog.Header>
       <Dialog.Body>
         <div className="act-reg-body">
-          <AccountRegisterTable />
+          <AccountRegisterTable
+            account={handler.state}
+            onSelect={handler.onSelect}
+            onRadio={handler.onRadioBoolean}
+            onChangeInput={handler.onChangeInput}
+          />
         </div>
       </Dialog.Body>
       <Dialog.Footer>
         <div className="btn-box">
           <button onClick={onClose}>닫기</button>
-          <button onClick={() => {}} className="btn-sky-white">
+          <button onClick={onSave} className="btn-sky-white">
             저장
           </button>
         </div>

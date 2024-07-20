@@ -47,6 +47,13 @@ export const useDataHandler = <T = unknown>(init: T) => {
     }));
   };
 
+  const onRadioBoolean = (name: string, value: boolean) => {
+    setState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
     const { name, value } = e.target;
     setState((prev) => ({
@@ -61,6 +68,7 @@ export const useDataHandler = <T = unknown>(init: T) => {
     onChangeInput,
     onCheck,
     onRadio,
+    onRadioBoolean,
     onSelect,
   };
 };

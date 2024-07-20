@@ -3,8 +3,27 @@
   font-weight: 600;
 }
 
+#act-reg-tbl tbody tr.category {
+  border-bottom: 0.1rem solid #ddd;
+}
+
 #act-reg-tbl tbody tr.category > th {
   width: 25%;
+}
+
+#act-reg-tbl .category > .act-actv-area > div {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.act-actv-area .radio-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.act-actv-area .radio-group > dt {
+  font-size: 1.2rem;
 }
 
 #act-reg-tbl tbody tr > td {

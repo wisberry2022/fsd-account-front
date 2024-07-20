@@ -1,3 +1,9 @@
+export type AccountCategory =
+  | "CAPITAL"
+  | "ASSET"
+  | "DEBT"
+  | "REVENUE"
+  | "EXPENSE";
 export type BasicInfo = "SUPPLIER" | "ACCOUNT";
 
 export type SupplierRequest = {
@@ -23,4 +29,11 @@ export type SupplierModifyRequest = {
   address: string;
   category: string;
   main: "MAIN" | "SUB";
+};
+
+export type AccountAddRequest = {
+  category: AccountCategory;
+  name: string;
+  code: string;
+  activated: boolean;
 };

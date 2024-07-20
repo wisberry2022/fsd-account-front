@@ -1,9 +1,9 @@
-import { AccountAddRequest } from "@/5.shared/types";
-import { Dialog, OkCancelDialog } from "@/5.shared/ui";
-import { FC } from "react";
-import { autoAdd } from "../api/fetcher";
-import { useSWRConfig } from "swr";
 import { Paths } from "@/5.shared/constants";
+import { AccountAddRequest } from "@/5.shared/types";
+import { OkCancelDialog } from "@/5.shared/ui";
+import { FC } from "react";
+import { useSWRConfig } from "swr";
+import { autoAdd } from "../api/fetcher";
 
 type AccountAutoRegisterModalProps = {
   open: boolean;

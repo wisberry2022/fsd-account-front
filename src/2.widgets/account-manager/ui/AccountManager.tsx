@@ -1,12 +1,12 @@
-import "./account-manager.css";
-import { Dialog } from "@/5.shared/ui";
-import { FC, useEffect } from "react";
-import { IoCloseSharp } from "react-icons/io5";
+import { AccountDelete, AccountRegister } from "@/3.features/account";
 import { Accounts } from "@/4.entities/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
-import { AccountDelete, AccountRegister } from "@/3.features/account";
-import AccountRegisterBranch from "./register/AccountRegisterBranch";
+import { Dialog } from "@/5.shared/ui";
+import { FC } from "react";
+import { IoCloseSharp } from "react-icons/io5";
 import { useGetAllAccountSWR } from "../api/useGetAccountSWR";
+import "./account-manager.css";
+import AccountRegisterBranch from "./register/AccountRegisterBranch";
 
 type AccountManagerProps = {
   open: boolean;
@@ -15,7 +15,7 @@ type AccountManagerProps = {
 
 export const AccountManager: FC<AccountManagerProps> = (props) => {
   const { open, onClose } = props;
-  const { data, mutate } = useGetAllAccountSWR();
+  const { data } = useGetAllAccountSWR();
   const popover = useKeywordPopover();
 
   const onOpenRegister = () => {
@@ -25,7 +25,6 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
   const onOpenDelete = () => {
     popover.onOpen("DELETE");
   };
-
 
   return (
     <>

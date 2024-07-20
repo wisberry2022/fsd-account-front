@@ -1,14 +1,13 @@
-import "./dir-reg-dlog.css";
 import { AccountRegisterTable } from "@/4.entities/account";
+import { Paths } from "@/5.shared/constants";
 import { useDataHandler } from "@/5.shared/hooks";
 import { AccountAddRequest } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
-import { Account } from "../../model/Account";
+import { useSWRConfig } from "swr";
 import { add } from "../../api/fetcher";
-import useSWRMutation from "swr/mutation";
-import { Paths } from "@/5.shared/constants";
-import useSWR, { useSWRConfig } from "swr";
+import { Account } from "../../model/Account";
+import "./dir-reg-dlog.css";
 
 type DirectRegisterDialogProps = {
   open: boolean;

@@ -3,11 +3,6 @@
   width: 100%;
 }
 
-/* #sply-tbl thead th {
-  padding: 1rem 1.5rem;
-  font-size: 1.4rem;
-} */
-
 #sply-tbl thead .check {
   width: 1%;
 }
@@ -26,4 +21,8 @@
 
 #sply-tbl thead .reg-dttm {
   width: 20%;
+}
+
+#sply-tbl tbody tr {
+  border-bottom: 0.1rem solid #ddd;
 }

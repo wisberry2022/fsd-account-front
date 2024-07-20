@@ -2,6 +2,7 @@ import "./css/ok-cancel-dialog.css";
 import { IoCloseSharp } from "react-icons/io5";
 import { FC } from "react";
 import { Dialog } from "./Dialog";
+import { ObjType } from "@/5.shared/types";
 
 type OkCancelDialogProps = {
   open: boolean;
@@ -9,13 +10,19 @@ type OkCancelDialogProps = {
   content: string;
   onClick: () => void;
   width?: number;
+  color?: string;
 };
 
 export const OkCancelDialog: FC<OkCancelDialogProps> = (props) => {
-  const { open, onClose, content, onClick, width = 30 } = props;
+  const { open, onClose, content, onClick, width = 30, color = "red" } = props;
   const onConfirm = () => {
     onClick();
     onClose();
+  };
+
+  const colors: ObjType<string> = {
+    red: "btn-red-white",
+    blue: "btn-sky-white",
   };
 
   return (
@@ -31,7 +38,7 @@ export const OkCancelDialog: FC<OkCancelDialogProps> = (props) => {
       </Dialog.Body>
       <Dialog.Footer>
         <div className="btn-box">
-          <button className="ok" onClick={onConfirm}>
+          <button className={colors[color]} onClick={onConfirm}>
             확인
           </button>
           <button className="cancel" onClick={onClose}>

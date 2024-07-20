@@ -1,7 +1,15 @@
+import { AccountAddRequest } from "@/5.shared/types";
 import "./act-list-tbl.css";
 import { FC } from "react";
+import { CategoryMapper } from "../libs/constants";
 
-export const AccountListTable: FC = () => {
+type AccountListTableProps = {
+  accounts: AccountAddRequest[];
+};
+
+export const AccountListTable: FC<AccountListTableProps> = (props) => {
+  const { accounts } = props;
+
   return (
     <table id="fixed-act-list-tbl">
       <thead>
@@ -12,11 +20,11 @@ export const AccountListTable: FC = () => {
         </tr>
       </thead>
       <tbody>
-        {Array.from({ length: 40 }).map((_, i) => (
-          <tr key={i}>
-            <td>자산</td>
-            <td>보통예금</td>
-            <td>101-001</td>
+        {accounts.map((act) => (
+          <tr key={act.code}>
+            <td>{CategoryMapper[act.category]}</td>
+            <td>{act.name}</td>
+            <td>{act.code}</td>
           </tr>
         ))}
       </tbody>

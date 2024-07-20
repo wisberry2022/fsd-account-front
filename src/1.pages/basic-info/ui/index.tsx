@@ -1,4 +1,3 @@
-import { InfoCard } from "@/2.widgets/basic-info-card";
 import "./css/index.css";
 import { Container } from "@/2.widgets/container";
 import { Header } from "@/2.widgets/header";
@@ -7,6 +6,7 @@ import BasicInfos from "../model/BasicInfos";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { AccountManager } from "@/2.widgets/account-manager";
 import { SupplierManager } from "@/2.widgets/supplier-manager";
+import { InfoCard } from "@/3.features/basic-info";
 
 export const BasicInfo: FC = () => {
   const popover = useKeywordPopover<string>();

@@ -1,7 +1,7 @@
-import { ShowInfoButton } from "@/3.features/basic-info";
 import { BasicInfo } from "@/5.shared/types";
 import { Card } from "@/5.shared/ui";
 import { FC } from "react";
+import { ShowInfoButton } from "./ShowInfo";
 
 type InfoCardProps = {
   title: string;

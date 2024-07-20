@@ -1,6 +1,14 @@
+import { AccountResponse } from "@/5.shared/types";
 import "./accounts.css";
+import { FC } from "react";
+import { convert2DateFormat } from "@/5.shared/utils";
 
-export const Accounts = () => {
+type AccountsProps = {
+  accounts: AccountResponse[] | undefined;
+};
+
+export const Accounts: FC<AccountsProps> = (props) => {
+  const { accounts } = props;
   return (
     <table id="act-list-tbl">
       <thead>
@@ -15,15 +23,19 @@ export const Accounts = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <input type="checkbox" />
-          </td>
-          <td>1</td>
-          <td>101-001</td>
-          <td>선급금</td>
-          <td>2024-01-01</td>
-        </tr>
+        {accounts?.map((act) => {
+          return (
+            <tr key={act.id}>
+              <td>
+                <input type="checkbox" />
+              </td>
+              <td>{act.id}</td>
+              <td>{act.code}</td>
+              <td>{act.name}</td>
+              <td>{convert2DateFormat(act.regDttm)}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

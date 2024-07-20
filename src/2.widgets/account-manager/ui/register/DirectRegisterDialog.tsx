@@ -6,6 +6,9 @@ import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
 import { Account } from "../../model/Account";
 import { add } from "../../api/fetcher";
+import useSWRMutation from "swr/mutation";
+import { Paths } from "@/5.shared/constants";
+import useSWR, { useSWRConfig } from "swr";
 
 type DirectRegisterDialogProps = {
   open: boolean;
@@ -15,9 +18,11 @@ type DirectRegisterDialogProps = {
 const DirectRegisterDialog: FC<DirectRegisterDialogProps> = (props) => {
   const { open, onClose } = props;
   const handler = useDataHandler<AccountAddRequest>(Account);
+  const { mutate } = useSWRConfig();
 
   const onSave = async () => {
     await add(handler.state);
+    mutate(Paths.basicInfo.accountSubject.getAll);
     onClose();
   };
 

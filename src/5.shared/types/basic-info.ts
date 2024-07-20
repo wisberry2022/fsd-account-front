@@ -1,3 +1,5 @@
+import { AuditType } from "./common";
+
 export type AccountCategory =
   | "CAPITAL"
   | "ASSET"
@@ -37,3 +39,11 @@ export type AccountAddRequest = {
   code: string;
   activated: boolean;
 };
+
+export interface AccountResponse extends AuditType {
+  id: number;
+  category: AccountCategory;
+  name: string;
+  code: string;
+  activated: boolean;
+}

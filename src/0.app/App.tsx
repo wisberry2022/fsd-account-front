@@ -12,7 +12,6 @@ const App: FC = () => {
     <>
       <SWRConfig
         value={{
-          refreshInterval: 3000,
           fetcher: async (url) => {
             const response = await axiosInstance.get(url);
             return response.data;

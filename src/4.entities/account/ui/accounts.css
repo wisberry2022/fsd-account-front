@@ -18,6 +18,6 @@
   width: 15%;
 }
 
-#act-list-tbl tbody tr:nth-child(-n + 1) {
+#act-list-tbl tbody tr:nth-child(n + 1) {
   border-bottom: 0.1rem solid #ddd;
 }

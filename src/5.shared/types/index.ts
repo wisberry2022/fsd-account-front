@@ -18,5 +18,6 @@ export type {
   SupplierModifyRequest,
   AccountAddRequest,
   AccountResponse,
+  AccountModifyRequest,
 } from "./basic-info";
 export type { SWRType, AuditType } from "./common";

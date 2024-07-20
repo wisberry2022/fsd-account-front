@@ -5,10 +5,11 @@ import { convert2DateFormat } from "@/5.shared/utils";
 
 type AccountsProps = {
   accounts: AccountResponse[] | undefined;
+  onRowClick: (id: number) => void;
 };
 
 export const Accounts: FC<AccountsProps> = (props) => {
-  const { accounts } = props;
+  const { accounts, onRowClick } = props;
   return (
     <table id="act-list-tbl">
       <thead>
@@ -29,10 +30,12 @@ export const Accounts: FC<AccountsProps> = (props) => {
               <td>
                 <input type="checkbox" />
               </td>
-              <td>{act.id}</td>
-              <td>{act.code}</td>
-              <td>{act.name}</td>
-              <td>{convert2DateFormat(act.regDttm)}</td>
+              <td onClick={() => onRowClick(act.id)}>{act.id}</td>
+              <td onClick={() => onRowClick(act.id)}>{act.code}</td>
+              <td onClick={() => onRowClick(act.id)}>{act.name}</td>
+              <td onClick={() => onRowClick(act.id)}>
+                {convert2DateFormat(act.regDttm)}
+              </td>
             </tr>
           );
         })}

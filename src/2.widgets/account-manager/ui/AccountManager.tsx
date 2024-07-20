@@ -2,11 +2,12 @@ import { AccountDelete, AccountRegister } from "@/3.features/account";
 import { Accounts } from "@/4.entities/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { Dialog } from "@/5.shared/ui";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useGetAllAccountSWR } from "../api/useGetAccountSWR";
 import "./account-manager.css";
 import AccountRegisterBranch from "./register/AccountRegisterBranch";
+import AccountDetail from "./AccountDetail";
 
 type AccountManagerProps = {
   open: boolean;
@@ -24,6 +25,13 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
 
   const onOpenDelete = () => {
     popover.onOpen("DELETE");
+  };
+
+  const [detail, setDetail] = useState<number>(0);
+
+  const onOpenDetail = (id: number) => {
+    popover.onOpen("DETAIL");
+    setDetail(id);
   };
 
   return (
@@ -44,7 +52,7 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
               <AccountDelete onClick={onOpenDelete} />
             </div>
             <div className="act-list scroll-bar">
-              <Accounts accounts={data} />
+              <Accounts accounts={data} onRowClick={onOpenDetail} />
             </div>
           </div>
         </Dialog.Body>
@@ -59,6 +67,13 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
           <AccountRegisterBranch
             open={!!popover.open}
             onClose={popover.onClose}
+          />
+        )}
+        {popover.open === "DETAIL" && (
+          <AccountDetail
+            id={detail}
+            onClose={popover.onClose}
+            open={!!popover.open}
           />
         )}
       </Dialog>

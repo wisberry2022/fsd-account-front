@@ -7,3 +7,9 @@ export const useGetAllAccountSWR = (): SWRType<AccountResponse[]> => {
 
   return { data, mutate };
 };
+
+export const useGetAccountSWR = (id: number): SWRType<AccountResponse> => {
+  const { data, mutate } = useSWR(Paths.basicInfo.accountSubject.get(id));
+
+  return { data, mutate };
+};

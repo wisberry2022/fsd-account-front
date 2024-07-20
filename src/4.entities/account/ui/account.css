@@ -1,0 +1,7 @@
+#act-tbl tbody tr {
+  border-bottom: 0.1rem solid #ddd;
+}
+
+#act-tbl tbody tr th {
+  font-size: 1.4rem;
+}

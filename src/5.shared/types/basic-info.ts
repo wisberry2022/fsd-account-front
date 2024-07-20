@@ -47,3 +47,10 @@ export interface AccountResponse extends AuditType {
   code: string;
   activated: boolean;
 }
+
+export type AccountModifyRequest = {
+  category: AccountCategory;
+  name: string;
+  code: string;
+  activated: boolean;
+}

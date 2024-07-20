@@ -14,7 +14,8 @@ export const Paths = {
         `/api/v${apiVersion}/basic-info/account-subject/${id}`,
       getAll: `/api/v${apiVersion}/basic-info/account-subject`,
       add: `/api/v${apiVersion}/basic-info/account-subject`,
-      update: `/api/v${apiVersion}/basic-info/account-subject`,
+      update: (id: number) =>
+        `/api/v${apiVersion}/basic-info/account-subject/${id}`,
       delete: `/api/v${apiVersion}/basic-info/account-subject`,
     },
   },

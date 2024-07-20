@@ -3,6 +3,7 @@ import "./excel-reg-body.css";
 import { AccountListTable } from "@/4.entities/account";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
+import { AutoSet } from "../../model/Account";
 
 type ExcelRegisterDialogProps = {
   open: boolean;
@@ -27,7 +28,7 @@ const ExcelRegisterDialog: FC<ExcelRegisterDialogProps> = (props) => {
             <Reset onClick={() => {}} />
           </div>
           <div className="act-excel-list">
-            <AccountListTable />
+            <AccountListTable accounts={AutoSet} />
           </div>
         </div>
       </Dialog.Body>

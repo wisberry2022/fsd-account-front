@@ -1,13 +1,12 @@
+import { Account, AccountRegisterTable } from "@/4.entities/account";
+import { Paths } from "@/5.shared/constants";
+import { useDataHandler } from "@/5.shared/hooks";
+import { AccountResponse } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC, useState } from "react";
-import { useGetAccountSWR } from "../api/useGetAccountSWR";
-import { Account, AccountRegisterTable } from "@/4.entities/account";
-import { AccountResponse } from "@/5.shared/types";
-import { useDataHandler } from "@/5.shared/hooks";
-import { AccountRegister } from "@/3.features/account";
-import { modify } from "../api/fetcher";
 import { useSWRConfig } from "swr";
-import { Paths } from "@/5.shared/constants";
+import { modify } from "../api/fetcher";
+import { useGetAccountSWR } from "../api/useGetAccountSWR";
 
 type AccountDetailProps = {
   id: number;

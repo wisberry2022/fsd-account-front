@@ -6,8 +6,8 @@ import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useGetAllAccountSWR } from "../api/useGetAccountSWR";
 import "./account-manager.css";
-import AccountRegisterBranch from "./register/AccountRegisterBranch";
 import AccountDetail from "./AccountDetail";
+import AccountRegisterBranch from "./register/AccountRegisterBranch";
 
 type AccountManagerProps = {
   open: boolean;

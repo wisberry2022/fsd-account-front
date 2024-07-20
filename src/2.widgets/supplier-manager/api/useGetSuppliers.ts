@@ -8,3 +8,9 @@ export const useGetSuppliers = (): SWRType<SupplierResponse[]> => {
   );
   return { data, mutate };
 };
+
+export const useGetSupplier = (id: number): SWRType<SupplierResponse> => {
+  const { data, mutate } = useSWR(Paths.basicInfo.supplier.get(id));
+
+  return { data, mutate };
+};

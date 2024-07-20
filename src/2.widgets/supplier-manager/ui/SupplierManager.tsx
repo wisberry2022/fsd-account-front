@@ -9,12 +9,11 @@ import { ObjType } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
-import { add } from "../api/AddSupply";
-import { deleteSupplier } from "../api/DeleteSupplier";
 import { useGetSuppliers } from "../api/useGetSuppliers";
 import { useAddSupplier } from "../model/useAddSupplier";
 import "./supplier-manager.css";
 import SupplierDetail from "./SupplierDetail";
+import { add } from "../api/fetcher";
 
 type SupplierManagerProps = {
   open: boolean;
@@ -54,12 +53,6 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
     setState("MAIN");
   };
 
-  const onDelete = async () => {
-    await deleteSupplier(checks);
-    swr.mutate();
-    setState("MAIN");
-  };
-
   const stateMapper: ObjType<() => JSX.Element> = {
     MAIN: () => (
       <>
@@ -90,8 +83,7 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
           <SupplierDeleteDialog
             open={!!popover.open}
             onClose={popover.onClose}
-            count={checks.length}
-            onClick={onDelete}
+            checks={checks}
           />
         )}
         {popover.open === "detail" && (

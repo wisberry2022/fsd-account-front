@@ -1,10 +1,12 @@
 import { Dialog } from "@/5.shared/ui";
 import { FC, useState } from "react";
-import useGetSuppliy from "../api/useGetSuppliy";
 import { Supplier, SupplierRegister } from "@/4.entities/supplier";
 import { SupplierResponse } from "@/5.shared/types";
 import { useDataHandler } from "@/5.shared/hooks";
-import { modifySupplier } from "../api/ModifySupply";
+import { useGetSupplier } from "../api/useGetSuppliers";
+import { modify } from "../api/fetcher";
+import { useSWRConfig } from "swr";
+import { Paths } from "@/5.shared/constants";
 
 type SupplierDetailProps = {
   open: boolean;
@@ -14,7 +16,8 @@ type SupplierDetailProps = {
 
 const SupplierDetail: FC<SupplierDetailProps> = (props) => {
   const { open, onClose, id } = props;
-  const { data, mutate } = useGetSuppliy(id);
+  const { data, mutate } = useGetSupplier(id);
+  const { mutate: listMutate } = useSWRConfig();
   const [state, setState] = useState<string>("detail");
   const handler = useDataHandler<SupplierResponse>(data as SupplierResponse);
 
@@ -23,7 +26,8 @@ const SupplierDetail: FC<SupplierDetailProps> = (props) => {
   };
 
   const onModify = async () => {
-    await modifySupplier(handler.state);
+    await modify(handler.state);
+    listMutate(Paths.basicInfo.supplier.getAll);
     mutate();
     setState("detail");
   };

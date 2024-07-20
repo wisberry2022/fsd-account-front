@@ -1,4 +1,8 @@
-import { AccountDelete, AccountRegister } from "@/3.features/account";
+import {
+  AccountDelete,
+  AccountDeleteModal,
+  AccountRegister,
+} from "@/3.features/account";
 import { Accounts } from "@/4.entities/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { Dialog } from "@/5.shared/ui";
@@ -34,6 +38,8 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
     setDetail(id);
   };
 
+  const [checks, setCheck] = useState<number[]>([]);
+
   return (
     <>
       <Dialog open={open} onClose={onClose} width={50}>
@@ -52,7 +58,12 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
               <AccountDelete onClick={onOpenDelete} />
             </div>
             <div className="act-list scroll-bar">
-              <Accounts accounts={data} onRowClick={onOpenDetail} />
+              <Accounts
+                accounts={data}
+                onRowClick={onOpenDetail}
+                checks={checks}
+                setCheck={setCheck}
+              />
             </div>
           </div>
         </Dialog.Body>
@@ -74,6 +85,13 @@ export const AccountManager: FC<AccountManagerProps> = (props) => {
             id={detail}
             onClose={popover.onClose}
             open={!!popover.open}
+          />
+        )}
+        {popover.open === "DELETE" && (
+          <AccountDeleteModal
+            open={!!popover.open}
+            onClose={popover.onClose}
+            targets={checks}
           />
         )}
       </Dialog>

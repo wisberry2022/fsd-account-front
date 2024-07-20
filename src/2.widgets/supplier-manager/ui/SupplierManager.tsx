@@ -7,13 +7,14 @@ import { SupplierRegister, Suppliers } from "@/4.entities/supplier";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { ObjType } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
-import { FC, useState } from "react";
+import { ChangeEventHandler, FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { add } from "../api/AddSupply";
 import { useGetSuppliers } from "../api/useGetSuppliers";
 import { useAddSupplier } from "../model/useAddSupplier";
 import "./supplier-manager.css";
 import SupplierDetail from "./SupplierDetail";
+import { deleteSupplier } from "../api/DeleteSupplier";
 
 type SupplierManagerProps = {
   open: boolean;
@@ -22,11 +23,9 @@ type SupplierManagerProps = {
 
 export const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const { open, onClose } = props;
-  const [state, setState] = useState("MAIN");
   const swr = useGetSuppliers();
-  const { state: sply, onChangeInput, onRadio } = useAddSupplier();
-  const popover = useKeywordPopover();
-  const [detail, setDetail] = useState<number>(0);
+  const [state, setState] = useState("MAIN");
+  const { state: sply, onChangeInput, onRadio } = useAddSupplier(state);
 
   const onSplyReg = () => {
     setState("REGISTER");
@@ -35,6 +34,10 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
   const onMain = () => {
     setState("MAIN");
   };
+
+  const popover = useKeywordPopover();
+  const [detail, setDetail] = useState<number>(0);
+  const [checks, setCheck] = useState<number[]>([]);
 
   const onSplyDeletePopup = () => {
     popover.onOpen("delete");
@@ -45,8 +48,14 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
     setDetail(id);
   };
 
-  const onSave = async () => {
+  const onAdd = async () => {
     await add(sply);
+    swr.mutate();
+    setState("MAIN");
+  };
+
+  const onDelete = async () => {
+    await deleteSupplier(checks);
     swr.mutate();
     setState("MAIN");
   };
@@ -61,7 +70,12 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
               <SupplierDelete onClick={onSplyDeletePopup} />
             </div>
             <div className="sply-list scroll-bar">
-              <Suppliers splys={swr.data} onRowClick={onRowClick} />
+              <Suppliers
+                splys={swr.data}
+                checks={checks}
+                onRowClick={onRowClick}
+                setCheck={setCheck}
+              />
             </div>
           </div>
         </Dialog.Body>
@@ -76,6 +90,8 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
           <SupplierDeleteDialog
             open={!!popover.open}
             onClose={popover.onClose}
+            count={checks.length}
+            onClick={onDelete}
           />
         )}
         {popover.open === "detail" && (
@@ -109,7 +125,7 @@ export const SupplierManager: FC<SupplierManagerProps> = (props) => {
             <button className="btn-sky-white" onClick={onMain}>
               뒤로가기
             </button>
-            <button onClick={onSave}>등록하기</button>
+            <button onClick={onAdd}>등록하기</button>
           </div>
         </Dialog.Footer>
       </>

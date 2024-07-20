@@ -7,12 +7,12 @@ export type SupplierRequest = {
   address: string;
   category: string;
   main: "MAIN" | "SUB";
-  regDttm: string;
-  modDttm: string;
 };
 
 export type SupplierResponse = SupplierRequest & {
   id: number;
+  regDttm: string;
+  modDttm: string;
 };
 
 export type SupplierModifyRequest = {

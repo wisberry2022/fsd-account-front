@@ -16,7 +16,12 @@ export const RestService = {
   ): Promise<K> => {
     return await axiosInstance.put(path, sendData);
   },
-  delete: async <T = unknown>(path: string): Promise<T> => {
-    return await axiosInstance.delete(path);
+  delete: async <T = unknown, K = unknown>(
+    path: string,
+    sendData?: T
+  ): Promise<K> => {
+    return await axiosInstance.delete(path, {
+      data: sendData,
+    });
   },
 };

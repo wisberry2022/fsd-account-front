@@ -1,7 +1,13 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 
 export const useDataHandler = <T = unknown>(init: T) => {
   const [state, setState] = useState<T>(init);
+
+  useEffect(() => {
+    if (init) {
+      setState(init);
+    }
+  }, [init]);
 
   const onChangeInput = (
     type: "string" | "number" | "date"

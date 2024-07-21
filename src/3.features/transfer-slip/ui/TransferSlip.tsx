@@ -13,6 +13,7 @@ export const TransferSlip: FC = () => {
     const { dataset, name, value } = e.target;
     const { ledger } = dataset;
 
+    // ToDo: Number.parseInt 시 0.5와 같은 소수점 입력 불가
     onChangeEntry(
       seq,
       ledger as "debit" | "credit",

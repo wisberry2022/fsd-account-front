@@ -43,19 +43,19 @@ export const TransferSlipPreview: FC = () => {
                 <td className={`debit ${!ent.debit.subject && "empty"}`}>
                   {ent.debit.subject}
                 </td>
-                <td className={`debit ${!ent.debit.subject && "empty"}`}>
+                <td className={`debit ${!ent.debit.desc && "empty"}`}>
                   {ent.debit.desc}
                 </td>
-                <td className={`debit ${!ent.debit.subject && "empty"}`}>
+                <td className={`debit ${!ent.debit.amount && "empty"}`}>
                   {ent.debit.amount ? ent.debit.amount : ""}
                 </td>
                 <td className={`credit ${!ent.credit.subject && "empty"}`}>
                   {ent.credit.subject}
                 </td>
-                <td className={`credit ${!ent.credit.subject && "empty"}`}>
+                <td className={`credit ${!ent.credit.desc && "empty"}`}>
                   {ent.credit.desc}
                 </td>
-                <td className={`credit ${!ent.credit.subject && "empty"}`}>
+                <td className={`credit ${!ent.credit.amount && "empty"}`}>
                   {ent.credit.amount ? ent.credit.amount : ""}
                 </td>
               </tr>

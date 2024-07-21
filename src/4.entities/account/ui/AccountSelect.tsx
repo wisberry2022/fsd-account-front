@@ -1,10 +1,11 @@
 import { Dialog } from "@/5.shared/ui";
-import { FC, useState } from "react";
+import { ChangeEventHandler, FC, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useGetAccountsSWR } from "../api/useGetAccountsSWR";
 import { AccountHandlerListTable } from "./AccountHandlerListTable";
 import "./act-select-pop.css";
 import { AccountResponse } from "@/5.shared/types";
+import { CategoryMapper } from "../libs/constants";
 
 type AccountSelectPopupProps = {
   open: boolean;
@@ -26,6 +27,26 @@ export const AccountSelectPopup: FC<AccountSelectPopupProps> = (props) => {
     onClose();
   };
 
+  const [keyword, setKeyword] = useState<string>("");
+
+  const onSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const getViewData = (dataSet: AccountResponse[]): AccountResponse[] => {
+    if (!keyword) {
+      return dataSet;
+    }
+    return dataSet.filter((dat) => {
+      const category = CategoryMapper[dat.category].includes(keyword);
+      const name = dat.name.includes(keyword);
+      const code = dat.code.includes(keyword);
+      return (category || name || code) && dat;
+    });
+  };
+
+  const viewData = getViewData(data ?? []);
+
   return (
     <Dialog open={open} onClose={onClose} width={50}>
       <Dialog.Header>
@@ -41,14 +62,12 @@ export const AccountSelectPopup: FC<AccountSelectPopupProps> = (props) => {
           <div className="act-srch-area">
             <input
               type="text"
-              placeholder="계정과목명, 코드로 검색할 수 있습니다."
+              placeholder="분류, 계정과목명, 코드로 검색할 수 있습니다."
+              onChange={onSearch}
             />
           </div>
           <div className="act-pop-list scroll-bar">
-            <AccountHandlerListTable
-              accounts={data ?? []}
-              onSelect={onSelect}
-            />
+            <AccountHandlerListTable accounts={viewData} onSelect={onSelect} />
           </div>
         </div>
       </Dialog.Body>

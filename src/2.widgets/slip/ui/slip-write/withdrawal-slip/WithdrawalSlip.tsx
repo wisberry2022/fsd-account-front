@@ -1,10 +1,10 @@
 import "../css/slip-global.css";
 import { FC } from "react";
-import { WithdrawalSlip as Slip } from "@/4.entities/slip";
 import WithdrawalSlipHeader from "./WithdrawalSlipHeader";
 import { useSlipContext } from "@/5.shared/hooks";
 import { BasicSlipContext } from "@/5.shared/types";
 import { WithdrawalSlipPreview } from "@/4.entities/slip/ui/withdrawal/WithdrawalSlipPreview";
+import { WithdrawalSlip as Slip } from "@/3.features/withdrawal-slip";
 import SlipPreviewHeader from "../common-ui/SlipPreviewHeader";
 
 export const WithdrawalSlip: FC = () => {

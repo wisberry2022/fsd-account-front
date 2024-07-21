@@ -1,9 +1,8 @@
 import { ObjType, PaperSlip } from "@/5.shared/types";
-import "./slip.css";
+import "./css/slip.css";
 import { ChangeEventHandler, FC } from "react";
 
 type BasicSlipProps = {
-  // type?: "RECEIPT" | "WITHDRAWAL";
   slip: PaperSlip;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };

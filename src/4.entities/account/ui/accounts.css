@@ -1,3 +1,8 @@
+#act-list-tbl thead {
+  position: sticky;
+  top: 0;
+}
+
 #act-list-tbl thead .check {
   width: 5%;
 }

@@ -1,0 +1,12 @@
+#fixed-act-hdl-list-tbl > thead {
+  position: sticky;
+  top: 0;
+}
+
+#fixed-act-hdl-list-tbl > tbody > tr {
+  border-bottom: 0.1rem solid #ddd;
+}
+
+#fixed-act-hdl-list-tbl > thead > tr > th:first-child {
+  width: 5%;
+}

@@ -68,6 +68,7 @@ table tbody td {
 #dialog-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
   border-bottom: 0.1rem solid var(--border-color);
 }

@@ -1,0 +1,16 @@
+#popup-trg-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  border-bottom: 0.1rem solid #111;
+  cursor: pointer;
+}
+
+#popup-trg-box > strong {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+#popup-trg-box > svg {
+  margin-right: 1rem;
+}

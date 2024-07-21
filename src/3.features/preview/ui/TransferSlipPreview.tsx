@@ -1,4 +1,4 @@
-import "../css/transfer-slip.css";
+import "./transfer-slip.css";
 import { useSlipContext } from "@/5.shared/hooks";
 import { TransferSlipContext } from "@/5.shared/types";
 import { getDateFormat } from "@/5.shared/utils";

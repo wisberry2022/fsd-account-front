@@ -1,10 +1,10 @@
 import "../css/slip-global.css";
 import { FC } from "react";
-import { ReceiptSlipPreview } from "@/4.entities/slip";
 import { ReceiptSlipHeader } from "./ReceiptSlipHeader";
 import { useSlipContext } from "@/5.shared/hooks";
 import { ReceiptSlip as Slip } from "@/3.features/receipt-slip";
 import SlipPreviewHeader from "../common-ui/SlipPreviewHeader";
+import { ReceiptSlipPreview } from "@/3.features/preview";
 
 export const ReceiptSlip: FC = () => {
   const { slip } = useSlipContext("RECEIPT");

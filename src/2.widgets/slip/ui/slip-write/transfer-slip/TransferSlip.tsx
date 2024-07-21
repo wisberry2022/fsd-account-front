@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { AddSlipRow } from "@/3.features/slip";
-import { TransferSlip as Slip, TransferSlipPreview } from "@/4.entities/slip";
+import { TransferSlip as Slip } from "@/3.features/transfer-slip";
 import TransferSlipHeader from "./TransferSlipHeader";
 import { useSlipContext } from "@/5.shared/hooks";
 import { TransferSlipContext } from "@/5.shared/types";
 import SlipPreviewHeader from "../common-ui/SlipPreviewHeader";
+import { TransferSlipPreview } from "@/3.features/preview";
 
 export const TransferSlip: FC = () => {
   const { slip, addEntry } = useSlipContext("TRANSFER") as TransferSlipContext;

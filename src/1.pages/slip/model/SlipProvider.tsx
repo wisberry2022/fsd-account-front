@@ -17,7 +17,9 @@ const rcptSlipState: PaperSlip = {
   status: "OPENED",
   slip: "RECEIPT",
   subject: {
+    creditId: 0,
     credit: "",
+    debitId: 0,
     debit: "현금",
   },
   desc: "",
@@ -48,6 +50,7 @@ const useReceiptSlip = () => {
 
   return {
     slip,
+    setSlip,
     onChangeDate,
     onChange,
     onChangeStatus,
@@ -61,7 +64,9 @@ const wdrSlipState: PaperSlip = {
   slip: "WITHDRAWAL",
   status: "OPENED",
   subject: {
+    creditId: 0,
     credit: "현금",
+    debitId: 0,
     debit: "",
   },
   item: "",
@@ -92,6 +97,7 @@ const useWithdrawalSlip = () => {
 
   return {
     slip,
+    setSlip,
     onChange,
     onChangeDate,
     onChangeStatus,

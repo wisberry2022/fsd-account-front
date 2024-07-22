@@ -6,7 +6,9 @@ import { FC, useState } from "react";
 import "./receipt-slip.css";
 
 export const ReceiptSlip: FC = () => {
-  const { slip, onChange } = useSlipContext("RECEIPT") as BasicSlipContext;
+  const { slip, onChange, setSlip } = useSlipContext(
+    "RECEIPT"
+  ) as BasicSlipContext;
   const popover = usePopover();
 
   const typeMapper: ObjType<ObjType<string>> = {
@@ -24,8 +26,18 @@ export const ReceiptSlip: FC = () => {
     {} as AccountResponse
   );
 
+  console.log(slip, slip.status, account);
+
   const onSelect = (value: AccountResponse) => {
     setAccount(value);
+    setSlip((prev) => ({
+      ...prev,
+      subject: {
+        ...prev.subject,
+        creditId: value.id,
+        credit: value.name,
+      },
+    }));
   };
 
   return (
@@ -43,18 +55,14 @@ export const ReceiptSlip: FC = () => {
             <th className="subject slip-head-color">과목</th>
             <td className="subject-item">
               {/* 입금전표일 경우 대변(credit), 출금전표일 경우 차변(debit) */}
-              {/* <input
-                type="text"
-                name={typeMapper[slip.slip].name}
-                onChange={onChange}
+              <PopupTriggerBox
                 value={
-                  slip.slip === "RECEIPT"
+                  slip.status === "MODIFYING"
                     ? slip.subject.credit
-                    : slip.subject.debit
+                    : account.name
                 }
-                className="slip-input"
-              /> */}
-              <PopupTriggerBox value={account.name} onClick={popover.onOpen} />
+                onClick={popover.onOpen}
+              />
             </td>
             <th className="entry slip-head-color">항목</th>
             <td className="entry-item">

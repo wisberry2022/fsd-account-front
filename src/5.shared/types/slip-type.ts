@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 
 export type Slip = "RECEIPT" | "WITHDRAWAL" | "TRANSFER";
 export type SlipStatus = "OPENED" | "MODIFYING" | "STAGING" | "CLOSED";
@@ -8,7 +8,9 @@ export type PaperSlip = {
   status: SlipStatus;
   slip: Slip;
   subject: {
+    creditId: number;
     credit: string;
+    debitId: number;
     debit: string;
   };
   desc: string;
@@ -37,6 +39,7 @@ export type SimpleEntry = {
 
 export type BasicSlipContext = {
   slip: PaperSlip;
+  setSlip: Dispatch<SetStateAction<PaperSlip>>;
   onChange: ChangeEventHandler<HTMLInputElement>;
   onChangeDate: ChangeEventHandler<HTMLInputElement>;
   onChangeStatus: (status: SlipStatus) => void;

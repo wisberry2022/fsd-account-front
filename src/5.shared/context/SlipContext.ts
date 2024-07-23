@@ -35,6 +35,7 @@ export const SlipContext = createContext<SlipContextType>({
     deleteEntry: () => {},
     onChangeDate: () => {},
     onChangeEntry: () => {},
+    onChangeSubject: () => {},
     onChangeStatus: () => {},
     init: () => {},
   },

@@ -113,11 +113,13 @@ const transferState: TransferSlip = {
     {
       seq: 1,
       debit: {
+        id: null,
         subject: "",
         desc: "",
         amount: 0,
       },
       credit: {
+        id: null,
         subject: "",
         desc: "",
         amount: 0,
@@ -130,11 +132,13 @@ const getNewEntry = (seq: number): TransferEntry => {
   return {
     seq,
     debit: {
+      id: null,
       subject: "",
       desc: "",
       amount: 0,
     },
     credit: {
+      id: null,
       subject: "",
       desc: "",
       amount: 0,
@@ -184,6 +188,23 @@ const transferReducer = (
       return {
         ...transferState,
       };
+    case "CHANGE-SUBJECT":
+      return {
+        ...state,
+        entries: state.entries.map((ent) => {
+          if (ent.seq === action.seq) {
+            return {
+              ...ent,
+              [action.ledger]: {
+                ...ent[action.ledger],
+                id: action.id,
+                subject: action.name,
+              },
+            };
+          }
+          return ent;
+        }),
+      };
     default:
       return state;
   }
@@ -214,6 +235,10 @@ const useTransferSlip = () => {
     dispatch({ type: "ONCHANGE-ENTRY", ledger, seq, name, value });
   };
 
+  const onChangeSubject = (seq: number, ledger: "debit" | "credit", id:number, name: string) => {
+    dispatch({type: "CHANGE-SUBJECT", seq, ledger, id, name})
+  }
+
   const onChangeStatus = (status: SlipStatus) => {
     dispatch({ type: "CHANGE-STATUS", status });
   };
@@ -228,6 +253,7 @@ const useTransferSlip = () => {
     deleteEntry,
     onChangeDate,
     onChangeEntry,
+    onChangeSubject,
     onChangeStatus,
     init,
   };

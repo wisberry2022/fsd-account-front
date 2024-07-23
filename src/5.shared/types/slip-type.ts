@@ -32,6 +32,7 @@ export type TransferEntry = {
 };
 
 export type SimpleEntry = {
+  id: number | null | undefined;
   subject: string;
   desc: string;
   amount: number;
@@ -58,5 +59,11 @@ export type TransferSlipContext = {
     value: string | number
   ) => void;
   onChangeStatus: (status: SlipStatus) => void;
+  onChangeSubject: (
+    seq: number,
+    ledger: "debit" | "credit",
+    id: number,
+    name: string
+  ) => void;
   init: () => void;
 };

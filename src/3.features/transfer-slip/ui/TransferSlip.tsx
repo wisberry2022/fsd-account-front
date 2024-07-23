@@ -1,11 +1,22 @@
-import { useSlipContext } from "@/5.shared/hooks";
+import {
+  useKeywordPopover,
+  usePopover,
+  useSlipContext,
+} from "@/5.shared/hooks";
 import "./transfer-slip.css";
-import { ChangeEvent, FC } from "react";
-import { TransferSlipContext } from "@/5.shared/types";
+import { ChangeEvent, FC, useState } from "react";
+import { AccountResponse, TransferSlipContext } from "@/5.shared/types";
 import { FaTrash } from "react-icons/fa";
+import { PopupTriggerBox } from "@/5.shared/ui";
+import { AccountSelectPopup } from "@/4.entities/account";
+
+type Entry = {
+  seq: number;
+  name: string;
+};
 
 export const TransferSlip: FC = () => {
-  const { slip, onChangeEntry, deleteEntry } = useSlipContext(
+  const { slip, onChangeEntry, onChangeSubject, deleteEntry } = useSlipContext(
     "TRANSFER"
   ) as TransferSlipContext;
 
@@ -20,6 +31,43 @@ export const TransferSlip: FC = () => {
       name,
       name === "amount" ? Number.parseInt(value) : value
     );
+  };
+
+  const popover = useKeywordPopover();
+  const [debit, setDebit] = useState<Entry>({ seq: 0, name: "" });
+  const [credit, setCredit] = useState<Entry>({ seq: 0, name: "" });
+
+  const onDebitOpen = (seq: number) => {
+    popover.onOpen("debit");
+    setDebit((prev) => ({
+      ...prev,
+      seq: seq,
+    }));
+  };
+
+  const onCreditOpen = (seq: number) => {
+    popover.onOpen("credit");
+    setCredit((prev) => ({
+      ...prev,
+      seq: seq,
+    }));
+  };
+
+  const onChangeDebit = (seq: number, id: number, name: string) => {
+    onChangeSubject(seq, "debit", id, name);
+  };
+
+  const onChangeCredit = (seq: number, id: number, name: string) => {
+    onChangeSubject(seq, "credit", id, name);
+  };
+
+  const onConfirm = (value: AccountResponse) => {
+    if (popover.open === "debit") {
+      onChangeDebit(debit.seq, value.id, value.name);
+    }
+    if (popover.open === "credit") {
+      onChangeCredit(credit.seq, value.id, value.name);
+    }
   };
 
   return (
@@ -49,11 +97,8 @@ export const TransferSlip: FC = () => {
             return (
               <tr key={ent.seq}>
                 <td className="debit">
-                  <input
-                    type="text"
-                    data-ledger="debit"
-                    name="subject"
-                    onChange={(e) => onChange(ent.seq, e)}
+                  <PopupTriggerBox
+                    onClick={() => onDebitOpen(ent.seq)}
                     value={ent.debit.subject}
                   />
                 </td>
@@ -76,11 +121,8 @@ export const TransferSlip: FC = () => {
                   />
                 </td>
                 <td className="credit">
-                  <input
-                    type="text"
-                    data-ledger="credit"
-                    name="subject"
-                    onChange={(e) => onChange(ent.seq, e)}
+                  <PopupTriggerBox
+                    onClick={() => onCreditOpen(ent.seq)}
                     value={ent.credit.subject}
                   />
                 </td>
@@ -115,6 +157,13 @@ export const TransferSlip: FC = () => {
           })}
         </tbody>
       </table>
+      {
+        <AccountSelectPopup
+          open={!!popover.open}
+          onClose={popover.onClose}
+          onConfirm={onConfirm}
+        />
+      }
     </div>
   );
 };

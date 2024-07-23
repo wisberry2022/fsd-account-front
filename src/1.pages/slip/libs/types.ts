@@ -23,6 +23,13 @@ type TransferEntryDeleteAction = {
 type TransferInitAction = {
   type: "INIT";
 };
+type TransferEntrySubjectAction = {
+  type: "CHANGE-SUBJECT";
+  seq: number;
+  ledger: "credit" | "debit";
+  name: string;
+  id: number;
+};
 
 export type TransferActionType =
   | TransferEntryAddAction
@@ -30,4 +37,5 @@ export type TransferActionType =
   | TransferEntryOnChangeDateAction
   | TransferEntryOnChangeAction
   | TransferEntryChangeStatusAction
-  | TransferInitAction;
+  | TransferInitAction
+  | TransferEntrySubjectAction;

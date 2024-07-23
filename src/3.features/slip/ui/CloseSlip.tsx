@@ -1,24 +1,38 @@
 import { usePopover } from "@/5.shared/hooks";
 import "./css/close-slip.css";
-import { SlipStatus } from "@/5.shared/types";
+import { PaperSlip, SlipStatus, TransferSlip } from "@/5.shared/types";
 import { FC } from "react";
 import { OkCancelDialog } from "@/5.shared/ui";
+import {
+  toReceiptSlipRequest,
+  toWithdrawalSlipRequest,
+} from "../libs/converter";
+import { write } from "../api/fetcher";
 
 type CloseSlipProps = {
+  slip: PaperSlip | TransferSlip;
   init: () => void;
   onChangeStatus: (status: SlipStatus) => void;
 };
 
 export const CloseSlip: FC<CloseSlipProps> = (props) => {
-  const { init, onChangeStatus } = props;
+  const { slip, init, onChangeStatus } = props;
   const popover = usePopover();
 
   const onClick = () => {
     popover.onOpen();
   };
 
-  const onCloseSlip = () => {
+  const onCloseSlip = async () => {
     onChangeStatus("CLOSED");
+    if (slip.slip === "RECEIPT") {
+      const sendData = toReceiptSlipRequest(slip as PaperSlip);
+      await write(sendData);
+    }
+    if (slip.slip === "WITHDRAWAL") {
+      const sendData = toWithdrawalSlipRequest(slip as PaperSlip);
+      await write(sendData);
+    }
     init();
   };
 

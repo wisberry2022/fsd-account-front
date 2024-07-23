@@ -5,7 +5,9 @@ import { PopupTriggerBox } from "@/5.shared/ui";
 import { FC, useState } from "react";
 
 export const WithdrawalSlip: FC = () => {
-  const { slip, onChange } = useSlipContext("WITHDRAWAL") as BasicSlipContext;
+  const { slip, onChange, setSlip } = useSlipContext(
+    "WITHDRAWAL"
+  ) as BasicSlipContext;
   const popover = usePopover();
 
   const typeMapper: ObjType<ObjType<string>> = {
@@ -25,6 +27,14 @@ export const WithdrawalSlip: FC = () => {
 
   const onSelect = (value: AccountResponse) => {
     setAccount(value);
+    setSlip((prev) => ({
+      ...prev,
+      subject: {
+        ...prev.subject,
+        debitId: value.id,
+        debit: value.name,
+      },
+    }));
   };
 
   return (

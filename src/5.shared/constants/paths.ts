@@ -17,7 +17,10 @@ export const Paths = {
       update: (id: number) =>
         `/api/v${apiVersion}/basic-info/account-subject/${id}`,
       delete: `/api/v${apiVersion}/basic-info/account-subject`,
-      autoAdd: `/api/v${apiVersion}/basic-info/account-subject/auto`
+      autoAdd: `/api/v${apiVersion}/basic-info/account-subject/auto`,
     },
+  },
+  slip: {
+    write: `/api/v${apiVersion}/slip`,
   },
 };

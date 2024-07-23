@@ -26,8 +26,6 @@ export const ReceiptSlip: FC = () => {
     {} as AccountResponse
   );
 
-  console.log(slip, slip.status, account);
-
   const onSelect = (value: AccountResponse) => {
     setAccount(value);
     setSlip((prev) => ({

@@ -1,14 +1,10 @@
-import {
-  useKeywordPopover,
-  usePopover,
-  useSlipContext,
-} from "@/5.shared/hooks";
-import "./transfer-slip.css";
-import { ChangeEvent, FC, useState } from "react";
-import { AccountResponse, TransferSlipContext } from "@/5.shared/types";
-import { FaTrash } from "react-icons/fa";
-import { PopupTriggerBox } from "@/5.shared/ui";
 import { AccountSelectPopup } from "@/4.entities/account";
+import { useKeywordPopover, useSlipContext } from "@/5.shared/hooks";
+import { AccountResponse, TransferSlipContext } from "@/5.shared/types";
+import { PopupTriggerBox } from "@/5.shared/ui";
+import { ChangeEvent, FC, useState } from "react";
+import { FaTrash } from "react-icons/fa";
+import "./transfer-slip.css";
 
 type Entry = {
   seq: number;

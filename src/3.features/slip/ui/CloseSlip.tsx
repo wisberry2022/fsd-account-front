@@ -5,6 +5,7 @@ import { FC } from "react";
 import { OkCancelDialog } from "@/5.shared/ui";
 import {
   toReceiptSlipRequest,
+  toTransferSlipRequest,
   toWithdrawalSlipRequest,
 } from "../libs/converter";
 import { write } from "../api/fetcher";
@@ -31,6 +32,10 @@ export const CloseSlip: FC<CloseSlipProps> = (props) => {
     }
     if (slip.slip === "WITHDRAWAL") {
       const sendData = toWithdrawalSlipRequest(slip as PaperSlip);
+      await write(sendData);
+    }
+    if (slip.slip === "TRANSFER") {
+      const sendData = toTransferSlipRequest(slip as TransferSlip);
       await write(sendData);
     }
     init();

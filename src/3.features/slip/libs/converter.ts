@@ -1,8 +1,10 @@
-import { PaperSlip } from "@/5.shared/types";
+import { PaperSlip, TransferSlip } from "@/5.shared/types";
 import {
   ReceiptSlipWriteRequest,
+  TransferSlipWriteRequest,
   WithdrawalSlipWriteRequest,
 } from "../model/types";
+import { extractSlipEntryRequest } from "./funs";
 
 export const toReceiptSlipRequest = (
   slip: PaperSlip
@@ -27,5 +29,16 @@ export const toWithdrawalSlipRequest = (
     slipType: slip.slip,
     transactionDateTime: slip.date,
     debitId: slip.subject.debitId,
+  };
+};
+
+export const toTransferSlipRequest = (
+  slip: TransferSlip
+): TransferSlipWriteRequest => {
+  return {
+    slipType: slip.slip,
+    transactionDateTime: slip.date,
+    credits: extractSlipEntryRequest(slip.entries.map((ent) => ent.credit)),
+    debits: extractSlipEntryRequest(slip.entries.map((ent) => ent.debit)),
   };
 };

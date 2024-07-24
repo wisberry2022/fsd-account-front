@@ -10,7 +10,7 @@ type SlipHeaderProps = {
 
 export const SlipHeader: FC<SlipHeaderProps> = (props) => {
   const { date, onChangeDate, children } = props;
-  console.log(date?.toDateString());
+
   return (
     <div id="slip-header">
       <div className="date-select">

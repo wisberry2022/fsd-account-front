@@ -1,0 +1,26 @@
+#page-box {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+}
+
+#page-box > .page-dir-arw {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+#page-box > .page-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.page-list > li {
+  padding: 1rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.page-list > li.current {
+  font-weight: 600;
+}

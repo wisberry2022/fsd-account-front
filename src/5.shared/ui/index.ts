@@ -1,3 +1,4 @@
+export { Pagination } from "./pagination/Pagination";
 export { OkCancelDialog } from "./dialog/OkCancelDialog";
 export { BasicTab } from "./tab/BasicTab";
 export { Card } from "./card/Card";

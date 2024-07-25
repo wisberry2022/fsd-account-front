@@ -1,4 +1,14 @@
 /* 전표 목록 css */
+#slips {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#slips > .tbl-box {
+  height: 50rem;
+}
+
 #slip-table {
   border-collapse: collapse;
   width: 100%;

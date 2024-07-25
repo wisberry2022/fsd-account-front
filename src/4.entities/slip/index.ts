@@ -1,1 +1,1 @@
-export { Slips } from "./ui/Slips";
+export { SlipRow } from "./ui/SlipRow";

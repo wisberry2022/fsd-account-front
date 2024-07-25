@@ -1,8 +1,13 @@
 import "./css/slip-table.css";
-import { Slips } from "@/4.entities/slip";
-import { FC } from "react";
+import { SlipRow } from "@/4.entities/slip";
+import { FC, useState } from "react";
+import { useGetSlips } from "../../api/useGetSlipSWR";
 
 export const SlipTable: FC = () => {
+  const [page, setPage] = useState<number>(0);
+  const [size, setSize] = useState<number>(10);
+  const { data: slips } = useGetSlips(page, size);
+
   return (
     <div id="slips">
       <table id="slip-table">
@@ -16,8 +21,8 @@ export const SlipTable: FC = () => {
           </tr>
         </thead>
         <tbody>
-          {Array.from({ length: 10 }).map((_, idx) => (
-            <Slips key={idx} />
+          {slips?.map((slip) => (
+            <SlipRow key={slip.id} slip={slip} />
           ))}
         </tbody>
       </table>

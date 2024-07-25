@@ -9,6 +9,7 @@ export type {
   SlipStatus,
   TransferEntry,
   TransferSlip,
+  SlipList,
 } from "./slip-type";
 export type {
   AccountCategory,

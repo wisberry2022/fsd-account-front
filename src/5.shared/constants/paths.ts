@@ -21,6 +21,7 @@ export const Paths = {
     },
   },
   slip: {
+    getAll: (page: number, size: number) => `/api/v${apiVersion}/slip/list?page=${page}&size=${size}`,
     write: `/api/v${apiVersion}/slip`,
   },
 };

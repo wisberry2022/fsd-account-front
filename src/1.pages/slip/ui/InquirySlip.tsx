@@ -1,5 +1,5 @@
 import { FilterBar, SlipTable } from "@/2.widgets/slip";
-import { FC } from "react";
+import { FC, useState } from "react";
 
 const InquirySlip: FC = () => {
   return (

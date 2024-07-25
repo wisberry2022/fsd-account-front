@@ -38,6 +38,14 @@ export type SimpleEntry = {
   amount: number;
 };
 
+export type SlipList = {
+  id: number;
+  type: Slip;
+  desc: string;
+  transDttm: string | null;
+  regDttm: string | null;
+};
+
 export type BasicSlipContext = {
   slip: PaperSlip;
   setSlip: Dispatch<SetStateAction<PaperSlip>>;

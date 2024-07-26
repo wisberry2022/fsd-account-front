@@ -1,33 +1,40 @@
-import "./pagination.css";
 import { FC } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import "./pagination.css";
 
 type PaginationProps = {
   onClick: (page: number) => void;
   currentPage: number;
-  range?: number;
+  limit: number;
+  range: number;
+  onLeft: () => void;
+  onRight: () => void;
 };
 
 export const Pagination: FC<PaginationProps> = (props) => {
-  const { onClick, currentPage, range = 10 } = props;
+  const { onClick, currentPage, range, limit, onLeft, onRight } = props;
 
   return (
     <div id="page-box">
-      <FaArrowLeft className="page-dir-arw" />
+      {!range || <FaArrowLeft className="page-dir-arw" onClick={onLeft} />}
       <ul className="page-list">
-        {Array.from({ length: range }).map((_, i) => {
+        {Array.from({
+          length: limit,
+        }).map((_, i) => {
           return (
             <li
               key={i}
-              className={`${currentPage === i && "current"}`}
-              onClick={() => onClick(i)}
+              className={`${currentPage === i + range && "current"}`}
+              onClick={() => onClick(i + range)}
             >
-              {i + 1}
+              {range + i + 1}
             </li>
           );
         })}
       </ul>
-      <FaArrowRight className="page-dir-arw" />
+      {limit === 10 && (
+        <FaArrowRight className="page-dir-arw" onClick={onRight} />
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
-export { Pagination } from "./pagination/Pagination";
+export { BasicPagination } from "./pagination/BasicPagination";
+export { CorePaginaition } from "./pagination/CorePagination";
 export { OkCancelDialog } from "./dialog/OkCancelDialog";
 export { BasicTab } from "./tab/BasicTab";
 export { Card } from "./card/Card";

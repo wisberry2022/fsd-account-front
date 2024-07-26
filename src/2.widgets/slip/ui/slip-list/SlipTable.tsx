@@ -1,5 +1,7 @@
 import { SlipRow } from "@/4.entities/slip";
-import { Pagination } from "@/5.shared/ui";
+import { PagingProvider } from "@/5.shared/provider";
+import { Page } from "@/5.shared/types";
+import { BasicPagination } from "@/5.shared/ui";
 import { FC, useState } from "react";
 import { useGetSlips } from "../../api/useGetSlipSWR";
 import "./css/slip-table.css";
@@ -8,26 +10,6 @@ export const SlipTable: FC = () => {
   const [page, setPage] = useState<number>(0);
   const [size, setSize] = useState<number>(10);
   const { data: pageable } = useGetSlips(page, size);
-  const [range, setRange] = useState<number>(0);
-
-  const limit =
-    range + 10 < (pageable?.totalPages as number)
-      ? size
-      : (pageable?.totalPages as number) - range;
-
-  const onLeft = () => {
-    setRange((prev) => prev - 10);
-    setPage(range - 1);
-  };
-
-  const onRight = () => {
-    setRange((prev) => prev + 10);
-    setPage(range + 10);
-  };
-
-  const onClick = (page: number) => {
-    setPage(page);
-  };
 
   return (
     <div id="slips">
@@ -49,14 +31,14 @@ export const SlipTable: FC = () => {
           </tbody>
         </table>
       </div>
-      <Pagination
-        currentPage={page}
-        onClick={onClick}
-        limit={limit}
-        onLeft={onLeft}
-        onRight={onRight}
-        range={range}
-      />
+      <PagingProvider
+        pageable={pageable as Page}
+        page={page}
+        setPage={setPage}
+        size={size}
+      >
+        <BasicPagination />
+      </PagingProvider>
     </div>
   );
 };

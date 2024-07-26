@@ -23,3 +23,4 @@ export type {
 } from "./basic-info";
 export type { SWRType, AuditType } from "./common";
 export type { Page } from "./page-type";
+export type { PagingContextType } from "./ctx-prv-type";

@@ -2,17 +2,19 @@ import { FC } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./pagination.css";
 
-type PaginationProps = {
+type CorePaginaitionProps = {
   onClick: (page: number) => void;
-  currentPage: number;
+  page: number;
   limit: number;
   range: number;
   onLeft: () => void;
   onRight: () => void;
 };
 
-export const Pagination: FC<PaginationProps> = (props) => {
-  const { onClick, currentPage, range, limit, onLeft, onRight } = props;
+export const CorePaginaition: FC<CorePaginaitionProps> = (props) => {
+  const { onClick, page, range, limit, onLeft, onRight } = props;
+
+  console.log("limit ", limit);
 
   return (
     <div id="page-box">
@@ -24,7 +26,7 @@ export const Pagination: FC<PaginationProps> = (props) => {
           return (
             <li
               key={i}
-              className={`${currentPage === i + range && "current"}`}
+              className={`${page === i + range && "current"}`}
               onClick={() => onClick(i + range)}
             >
               {range + i + 1}

@@ -1,0 +1,31 @@
+#slip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+#slip-list > #list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#list-header > h2 {
+  font-size: 2.3rem;
+}
+
+#list-header > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+}
+
+#list-header > div > #setting-icon {
+  font-size: 1.6rem;
+}
+
+#list-header > div > strong {
+  font-size: 1.4rem;
+}

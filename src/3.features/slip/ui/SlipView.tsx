@@ -3,6 +3,7 @@ import { BasicSlipPreview } from "@/4.entities/preview";
 import { PaperSlip } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
+import { useGetSlip } from "../api/useGetSlipSWR";
 
 type SlipViewProps = {
   id: number;
@@ -11,6 +12,7 @@ type SlipViewProps = {
 
 export const SlipView: FC<SlipViewProps> = (props) => {
   const { id, onClose } = props;
+  const { data: slip } = useGetSlip(id);
 
   return (
     <Dialog open={!!id} onClose={onClose} width={50}>
@@ -19,24 +21,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
       </Dialog.Header>
       <Dialog.Body>
         <div id="slip-view-body">
-          <BasicSlipPreview
-            slip={
-              {
-                date: null,
-                status: "CLOSED",
-                slip: "RECEIPT",
-                subject: {
-                  creditId: 1,
-                  credit: "과목1",
-                  debitId: 2,
-                  debit: "과목2",
-                },
-                desc: "asd",
-                amount: 0,
-                item: "",
-              } as PaperSlip
-            }
-          />
+          <BasicSlipPreview slip={slip} />
         </div>
       </Dialog.Body>
       <Dialog.Footer>

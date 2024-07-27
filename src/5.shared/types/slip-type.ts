@@ -8,9 +8,9 @@ export type PaperSlip = {
   status: SlipStatus;
   slip: Slip;
   subject: {
-    creditId: number;
+    creditId?: number;
     credit: string;
-    debitId: number;
+    debitId?: number;
     debit: string;
   };
   desc: string;

@@ -2,7 +2,7 @@ import { KeyedMutator } from "swr";
 
 export type SWRType<T> = {
   data: T | undefined;
-  mutate: KeyedMutator<T>;
+  mutate?: KeyedMutator<T>;
 };
 
 export interface AuditType {

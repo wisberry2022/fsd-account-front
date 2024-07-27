@@ -1,9 +1,8 @@
-import "./css/slip-view.css";
 import { BasicSlipPreview } from "@/4.entities/preview";
-import { PaperSlip } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
 import { useGetSlip } from "../api/useGetSlipSWR";
+import "./css/slip-view.css";
 
 type SlipViewProps = {
   id: number;

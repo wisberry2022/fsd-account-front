@@ -10,7 +10,7 @@ import { SlipView } from "@/3.features/slip";
 
 export const SlipTable: FC = () => {
   const [page, setPage] = useState<number>(0);
-  const [size, setSize] = useState<number>(10);
+  const [size] = useState<number>(10);
   const { data: pageable } = useGetSlips(page, size);
 
   const detail = useKeywordPopover<number>();

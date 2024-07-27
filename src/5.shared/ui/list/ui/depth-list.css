@@ -1,0 +1,53 @@
+.def-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.def-list > dt {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.def-list > dd {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.def-list > dd > dl {
+  display: flex;
+  /* gap: 2.5rem; */
+  align-items: center;
+}
+
+.def-list > dd > dl > dt {
+  margin-left: 3rem;
+  font-size: 1.4rem;
+  width: 15%;
+}
+
+.def-list > dd > dl > dd {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+
+.def-list > dd > dl > dd > input {
+  width: 30rem;
+}
+
+.def-list > dd > dl > dd > select {
+  width: 30rem;
+}
+
+.srch-content {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 0.1rem solid #ddd;
+  width: 45% !important;
+}
+
+.full-width {
+  width: 100% !important;
+}

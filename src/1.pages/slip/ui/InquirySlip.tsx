@@ -3,6 +3,7 @@ import { usePopover } from "@/5.shared/hooks";
 import { FC } from "react";
 import { FiSettings } from "react-icons/fi";
 import "./css/inquiry-slip.css";
+import { SearchFilter } from "@/3.features/filter";
 
 const InquirySlip: FC = () => {
   const popover = usePopover();
@@ -17,6 +18,7 @@ const InquirySlip: FC = () => {
         </div>
       </div>
       <SlipTable />
+      <SearchFilter open={popover.open} onClose={popover.onClose} />
     </section>
   );
 };

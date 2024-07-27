@@ -1,6 +1,6 @@
 import "./srch-filter.css";
 import { Dialog } from "@/5.shared/ui";
-import { DepthList } from "@/5.shared/ui/list";
+import { DepthList } from "@/5.shared/ui";
 import { FC } from "react";
 
 type SearchFilterProps = {

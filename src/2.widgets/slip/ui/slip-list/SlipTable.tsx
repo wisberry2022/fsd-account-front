@@ -5,11 +5,19 @@ import { BasicPagination } from "@/5.shared/ui";
 import { FC, useState } from "react";
 import { useGetSlips } from "../../api/useGetSlipSWR";
 import "./css/slip-table.css";
+import { useKeywordPopover } from "@/5.shared/hooks";
+import { SlipView } from "@/3.features/slip";
 
 export const SlipTable: FC = () => {
   const [page, setPage] = useState<number>(0);
   const [size, setSize] = useState<number>(10);
   const { data: pageable } = useGetSlips(page, size);
+
+  const detail = useKeywordPopover<number>();
+
+  const onRowClick = (seq: number) => {
+    detail.onOpen(seq);
+  };
 
   return (
     <div id="slips">
@@ -26,7 +34,7 @@ export const SlipTable: FC = () => {
           </thead>
           <tbody>
             {pageable?.content?.map((slip) => (
-              <SlipRow key={slip.id} slip={slip} />
+              <SlipRow key={slip.id} slip={slip} onClick={onRowClick} />
             ))}
           </tbody>
         </table>
@@ -39,6 +47,7 @@ export const SlipTable: FC = () => {
       >
         <BasicPagination />
       </PagingProvider>
+      <SlipView id={detail.open as number} onClose={detail.onClose} />
     </div>
   );
 };

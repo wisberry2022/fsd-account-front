@@ -6,13 +6,14 @@ import "./css/slips.css";
 
 type SlipRowProps = {
   slip: SlipList;
+  onClick?: (seq: number) => void;
 };
 
 export const SlipRow: FC<SlipRowProps> = (props) => {
-  const { slip } = props;
+  const { slip, onClick = () => {} } = props;
 
   return (
-    <tr className="slip-content">
+    <tr className="slip-content" onClick={() => onClick(slip?.id)}>
       <td className="seq">{slip.id}</td>
       <td className="type">{SlipTypeMapper[slip.type]}</td>
       <td className="desc">{slip.desc ?? "적요 공란"}</td>

@@ -59,3 +59,58 @@
   font-size: 1.5rem;
   text-align: center;
 }
+
+/* 대체전표 미리보기 css  */
+#transfer-slip-preview {
+  border-collapse: collapse;
+  border: 0.1rem solid #000;
+  width: 100%;
+}
+
+#transfer-slip-preview thead .pre-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#transfer-slip-preview thead .pre-title strong {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#transfer-slip-preview thead tr th {
+  padding: 1.5rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: 0.1rem solid #000;
+}
+
+#transfer-slip-preview tbody tr td {
+  position: relative;
+  padding: 1.5rem 0;
+  border: 0.1rem solid #000;
+  font-size: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+#transfer-slip-preview tbody tr .debit.empty::after,
+#transfer-slip-preview tbody tr .credit.empty::after {
+  content: "";
+  position: absolute;
+  background-color: #ddd;
+  width: 0.1rem;
+  height: 22rem;
+  rotate: -77deg;
+  transform: translate(10600%, -10%);
+}
+
+#transfer-slip-preview tfoot tr > * {
+  border: 0.1rem solid #000;
+  padding: 1.5rem 0;
+  font-size: 1.5rem;
+}
+
+#transfer-slip-preview tfoot tr th + td {
+  text-align: center;
+}

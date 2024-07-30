@@ -12,6 +12,9 @@ export const getDateFormat = (dateObj: Date | null): string => {
   if (!dateObj) {
     return "일자 미지정";
   }
+
+  console.log("dateObj ", dateObj);
+
   const year = dateObj.getFullYear();
   const month = _LPAD(dateObj.getMonth() + 1);
   const date = _LPAD(dateObj.getDate());

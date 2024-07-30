@@ -1,9 +1,9 @@
 import { Paths } from "@/5.shared/constants";
-import { PaperSlip, SWRType } from "@/5.shared/types";
+import { BasicSlip, SWRType } from "@/5.shared/types";
 import useSWR from "swr";
 
-export const useGetSlip = (id: number): SWRType<PaperSlip> => {
-  const { data } = useSWR<PaperSlip>(Paths.slip.get(id));
+export const useGetSlip = (id: number): SWRType<BasicSlip> => {
+  const { data } = useSWR<BasicSlip>(Paths.slip.get(id));
 
   return { data };
 };

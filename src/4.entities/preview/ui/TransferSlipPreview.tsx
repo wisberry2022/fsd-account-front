@@ -18,7 +18,7 @@ export const TransferSlipPreview: FC<TransferSlipPreviewProps> = (props) => {
             <th colSpan={6} className="slip-bg-color">
               <div className="pre-title">
                 <h2>대체전표</h2>
-                <strong>{getDateFormat(slip?.date)}</strong>
+                <strong>{getDateFormat(new Date(slip?.date as Date))}</strong>
               </div>
             </th>
           </tr>
@@ -42,24 +42,24 @@ export const TransferSlipPreview: FC<TransferSlipPreviewProps> = (props) => {
         <tbody>
           {slip?.entries.map((ent) => {
             return (
-              <tr key={ent.seq}>
-                <td className={`debit ${!ent.debit.subject && "empty"}`}>
-                  {ent.debit.subject}
+              <tr key={ent?.seq}>
+                <td className={`debit ${!ent?.debit?.subject && "empty"}`}>
+                  {ent?.debit?.subject}
                 </td>
-                <td className={`debit ${!ent.debit.desc && "empty"}`}>
-                  {ent.debit.desc}
+                <td className={`debit ${!ent?.debit?.desc && "empty"}`}>
+                  {ent?.debit?.desc}
                 </td>
-                <td className={`debit ${!ent.debit.amount && "empty"}`}>
-                  {ent.debit.amount ? ent.debit.amount : ""}
+                <td className={`debit ${!ent?.debit?.amount && "empty"}`}>
+                  {ent?.debit?.amount ? ent?.debit?.amount : ""}
                 </td>
-                <td className={`credit ${!ent.credit.subject && "empty"}`}>
-                  {ent.credit.subject}
+                <td className={`credit ${!ent?.credit?.subject && "empty"}`}>
+                  {ent?.credit?.subject}
                 </td>
-                <td className={`credit ${!ent.credit.desc && "empty"}`}>
-                  {ent.credit.desc}
+                <td className={`credit ${!ent?.credit?.desc && "empty"}`}>
+                  {ent?.credit?.desc}
                 </td>
-                <td className={`credit ${!ent.credit.amount && "empty"}`}>
-                  {ent.credit.amount ? ent.credit.amount : ""}
+                <td className={`credit ${!ent?.credit?.amount && "empty"}`}>
+                  {ent?.credit?.amount ? ent?.credit?.amount : ""}
                 </td>
               </tr>
             );
@@ -71,7 +71,10 @@ export const TransferSlipPreview: FC<TransferSlipPreviewProps> = (props) => {
               합계
             </th>
             <td>
-              {slip?.entries.reduce((acc, cur) => (acc += cur.debit.amount), 0)}
+              {slip?.entries.reduce(
+                (acc, cur) => (acc += cur?.debit?.amount),
+                0
+              )}
               원
             </td>
             <th colSpan={2} className="totAmt slip-bg-color">
@@ -79,7 +82,7 @@ export const TransferSlipPreview: FC<TransferSlipPreviewProps> = (props) => {
             </th>
             <td>
               {slip?.entries.reduce(
-                (acc, cur) => (acc += cur.credit.amount),
+                (acc, cur) => (acc += cur?.credit?.amount),
                 0
               )}
               원

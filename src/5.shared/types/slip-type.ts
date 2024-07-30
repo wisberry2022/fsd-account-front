@@ -3,10 +3,13 @@ import { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 export type Slip = "RECEIPT" | "WITHDRAWAL" | "TRANSFER";
 export type SlipStatus = "OPENED" | "MODIFYING" | "STAGING" | "CLOSED";
 
-export type PaperSlip = {
+export interface BasicSlip {
   date: Date | null;
   status: SlipStatus;
   slip: Slip;
+}
+
+export interface PaperSlip extends BasicSlip {
   subject: {
     creditId?: number;
     credit: string;
@@ -16,14 +19,14 @@ export type PaperSlip = {
   desc: string;
   amount: number;
   item: string;
-};
+}
 
-export type TransferSlip = {
+export interface TransferSlip extends BasicSlip {
   date: Date | null;
   status: SlipStatus;
   slip: Slip;
   entries: TransferEntry[];
-};
+}
 
 export type TransferEntry = {
   seq: number;

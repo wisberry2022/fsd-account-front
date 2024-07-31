@@ -5,3 +5,7 @@ import { SlipWriteRequest } from "../model/types";
 export const write = async (sendData: SlipWriteRequest): Promise<void> => {
   await RestService.post<SlipWriteRequest>(Paths.slip.write, sendData);
 };
+
+export const deleteSlip = async (id: number): Promise<void> => {
+  await RestService.delete<number>(Paths.slip.delete(id));
+};

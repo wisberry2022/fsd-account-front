@@ -22,6 +22,7 @@ export const Paths = {
   },
   slip: {
     get: (id: number) => `/api/v${apiVersion}/slip/${id}`,
+    delete: (id: number) => `/api/v${apiVersion}/slip/${id}`,
     getAll: (page: number, size: number) =>
       `/api/v${apiVersion}/slip/list?page=${page}&size=${size}`,
     write: `/api/v${apiVersion}/slip`,

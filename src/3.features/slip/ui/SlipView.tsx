@@ -19,6 +19,11 @@ export const SlipView: FC<SlipViewProps> = (props) => {
   const popover = useKeywordPopover<number>();
   const detailPop = useKeywordPopover<number>();
 
+  const mainClose = () => {
+    detailPop.onClose();
+    onClose();
+  };
+
   const onDetail = () => {
     detailPop.onOpen(id);
   };
@@ -27,14 +32,10 @@ export const SlipView: FC<SlipViewProps> = (props) => {
     popover.onOpen(id);
   };
 
-  useEffect(() => {
-    return () => detailPop.onClose();
-  }, []);
-
   return (
     <Dialog
       open={!!id}
-      onClose={onClose}
+      onClose={mainClose}
       width={slip?.slip === "TRANSFER" ? 70 : 50}
     >
       <Dialog.Header>

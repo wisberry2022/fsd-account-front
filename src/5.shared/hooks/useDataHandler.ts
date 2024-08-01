@@ -9,6 +9,16 @@ export const useDataHandler = <T = unknown>(init: T) => {
     }
   }, [init]);
 
+  const _setter = <K extends string | number | Date | boolean | null>(
+    name: string,
+    value: K
+  ) => {
+    setState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const onChangeInput = (
     type: "string" | "number" | "date"
   ): ChangeEventHandler<HTMLInputElement> => {
@@ -23,43 +33,30 @@ export const useDataHandler = <T = unknown>(init: T) => {
       }
       if (type === "string") {
         value = e.target.value;
+      } else {
+        value = e.target.value;
       }
-      setState((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
+      _setter(name, value);
     };
   };
 
   const onCheck: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, checked } = e.target;
-    setState((prev) => ({
-      ...prev,
-      [name]: checked,
-    }));
+    _setter(name, checked);
   };
 
   const onRadio: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
-    setState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    _setter(name, value);
   };
 
   const onRadioBoolean = (name: string, value: boolean) => {
-    setState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    _setter(name, value);
   };
 
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
     const { name, value } = e.target;
-    setState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    _setter(name, value);
   };
 
   return {

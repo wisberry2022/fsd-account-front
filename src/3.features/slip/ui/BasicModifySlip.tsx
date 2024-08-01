@@ -1,14 +1,19 @@
 import "./css/basic-modify-slip.css";
 import { SlipMapperEnum } from "@/5.shared/enums";
 import { PaperSlip } from "@/5.shared/types";
-import { FC } from "react";
+import { PopupTriggerBox } from "@/5.shared/ui";
+import { getYYYYMMDDFormat } from "@/5.shared/utils";
+import { ChangeEventHandler, FC } from "react";
 
 type BasicModifySlipProps = {
   slip: PaperSlip;
+  onSubject: (id: number, name: string) => void;
+  onChangeDate: ChangeEventHandler<HTMLInputElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 const BasicModifySlip: FC<BasicModifySlipProps> = (props) => {
-  const { slip } = props;
+  const { slip, onSubject, onChangeDate, onChange } = props;
 
   return (
     <table id="modify-slip-view">
@@ -17,7 +22,12 @@ const BasicModifySlip: FC<BasicModifySlipProps> = (props) => {
           <th colSpan={4} className="slip-head-color">
             <div className="pre-title">
               <h2>{slip && SlipMapperEnum[slip.slip]}</h2>
-              <input type="date" />
+              <input
+                type="date"
+                name="date"
+                onChange={onChangeDate}
+                value={getYYYYMMDDFormat(new Date(slip?.date as Date))}
+              />
             </div>
           </th>
         </tr>
@@ -26,11 +36,18 @@ const BasicModifySlip: FC<BasicModifySlipProps> = (props) => {
         <tr>
           <th className="slip-head-color">과목</th>
           <td>
-            <input />
+            <PopupTriggerBox
+              value={
+                slip?.slip === "RECEIPT"
+                  ? slip?.subject.credit
+                  : slip?.subject.debit
+              }
+              onClick={() => {}}
+            />
           </td>
           <th className="slip-head-color">항목</th>
           <td>
-            <input value={slip?.item} />
+            <input name="item" value={slip?.item} onChange={onChange} />
           </td>
         </tr>
         <tr className="mid-title">
@@ -43,10 +60,10 @@ const BasicModifySlip: FC<BasicModifySlipProps> = (props) => {
         </tr>
         <tr>
           <td colSpan={3} className="desc">
-            <input value={slip?.desc} />
+            <input name="desc" value={slip?.desc} onChange={onChange} />
           </td>
           <td colSpan={1} className="amount">
-            <input value={slip?.amount} />
+            <input name="amount" value={slip?.amount} onChange={onChange} />
           </td>
         </tr>
       </tbody>

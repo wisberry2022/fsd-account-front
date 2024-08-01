@@ -15,7 +15,7 @@ export const toReceiptSlipRequest = (
     item: slip.item,
     slipType: slip.slip,
     transactionDateTime: slip.date,
-    creditId: slip.subject.creditId,
+    creditId: slip.subject.creditId as number,
   };
 };
 
@@ -28,7 +28,7 @@ export const toWithdrawalSlipRequest = (
     item: slip.item,
     slipType: slip.slip,
     transactionDateTime: slip.date,
-    debitId: slip.subject.debitId,
+    debitId: slip.subject.debitId as number,
   };
 };
 

@@ -1,9 +1,10 @@
 import { BasicSlipPreview, TransferSlipPreview } from "@/4.entities/preview";
 import { useKeywordPopover } from "@/5.shared/hooks";
-import { PaperSlip, TransferSlip } from "@/5.shared/types";
+import { BasicSlip, PaperSlip, TransferSlip } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useGetSlip } from "../api/useGetSlipSWR";
+import { useSlipHandler } from "../libs/useSlipHandler";
 import BasicModifySlip from "./BasicModifySlip";
 import "./css/slip-view.css";
 import { DeleteSlip } from "./DeleteSlip";
@@ -15,9 +16,11 @@ type SlipViewProps = {
 
 export const SlipView: FC<SlipViewProps> = (props) => {
   const { id, onClose } = props;
-  const { data: slip } = useGetSlip(id);
+  const { data } = useGetSlip(id);
   const popover = useKeywordPopover<number>();
   const detailPop = useKeywordPopover<number>();
+  const { state: slip, ...handler } = useSlipHandler(data as BasicSlip);
+
 
   const mainClose = () => {
     detailPop.onClose();
@@ -36,7 +39,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
     <Dialog
       open={!!id}
       onClose={mainClose}
-      width={slip?.slip === "TRANSFER" ? 70 : 50}
+      width={data?.slip === "TRANSFER" ? 70 : 50}
     >
       <Dialog.Header>
         <h3>전표 상세보기 - No. {id}</h3>
@@ -46,7 +49,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
           {slip?.slip === "TRANSFER" ? (
             <TransferSlipPreview slip={slip as TransferSlip} />
           ) : detailPop.open ? (
-            <BasicModifySlip slip={slip as PaperSlip} />
+            <BasicModifySlip slip={slip as PaperSlip} {...handler} />
           ) : (
             <BasicSlipPreview slip={slip as PaperSlip} />
           )}
@@ -57,7 +60,12 @@ export const SlipView: FC<SlipViewProps> = (props) => {
           <button onClick={detailPop.open ? detailPop.onClose : onClose}>
             닫기
           </button>
-          <button className="btn-sky-white" onClick={onDetail}>
+          <button
+            className="btn-sky-white"
+            onClick={
+              detailPop.open ? () => console.log("save ", slip) : onDetail
+            }
+          >
             수정하기
           </button>
           <button className="btn-red-white" onClick={onDelete}>

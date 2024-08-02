@@ -11,10 +11,11 @@ type AccountSelectPopupProps = {
   open: boolean;
   onClose: () => void;
   onConfirm: (account: AccountResponse) => void;
+  width?: number;
 };
 
 export const AccountSelectPopup: FC<AccountSelectPopupProps> = (props) => {
-  const { open, onClose, onConfirm } = props;
+  const { open, onClose, onConfirm, width = 50 } = props;
   const { data } = useGetAccountsSWR();
   const [state, setState] = useState<AccountResponse>({} as AccountResponse);
 
@@ -48,7 +49,7 @@ export const AccountSelectPopup: FC<AccountSelectPopupProps> = (props) => {
   const viewData = getViewData(data ?? []);
 
   return (
-    <Dialog open={open} onClose={onClose} width={50}>
+    <Dialog open={open} onClose={onClose} width={width}>
       <Dialog.Header>
         <div className="left">
           <h3>계정과목 선택</h3>

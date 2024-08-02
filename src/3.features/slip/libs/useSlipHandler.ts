@@ -8,7 +8,7 @@ type Init = {
 };
 type OnSubjectAction = {
   type: "ONSUBJECT";
-  id: number;
+  subjectId: number;
   name: string;
 };
 type OnChangeAction = {
@@ -34,7 +34,7 @@ const reducer = <T extends BasicSlip>(state: T, action: Action) => {
       };
     case "ONSUBJECT":
       if (isPaperSlip(state)) {
-        const subject = getSubject(state.slip, action.id, action.name);
+        const subject = getSubject(state.slip, action.subjectId, action.name);
         return {
           ...state,
           subject: {
@@ -68,8 +68,8 @@ export const useSlipHandler = (slip: BasicSlip) => {
     dispatch({ type: "ONCHANGE", name, value: e.target.valueAsDate });
   };
 
-  const onSubject = (id: number, name: string) => {
-    dispatch({ type: "ONSUBJECT", id, name });
+  const onSubject = (subjectId: number, name: string) => {
+    dispatch({ type: "ONSUBJECT", subjectId, name });
   };
 
   return { state, onChange, onChangeDate, onSubject };

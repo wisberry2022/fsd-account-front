@@ -3,7 +3,8 @@ import { AccountSelectPopup } from "@/4.entities/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { AccountResponse, Entry, TransferSlip } from "@/5.shared/types";
 import { PopupTriggerBox } from "@/5.shared/ui";
-import { ChangeEvent, FC, useState } from "react";
+import { getYYYYMMDDFormat } from "@/5.shared/utils";
+import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
 type ModifyTransferSlipProps = {
@@ -21,11 +22,19 @@ type ModifyTransferSlipProps = {
     name: string
   ) => void;
   onDeleteEntry: (id: number) => void;
+  onChangeDate: ChangeEventHandler<HTMLInputElement>;
   addEntry: () => void;
 };
 
 export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
-  const { slip, onChangeEntry, onSubject, onDeleteEntry, addEntry } = props;
+  const {
+    slip,
+    onChangeEntry,
+    onSubject,
+    onDeleteEntry,
+    addEntry,
+    onChangeDate,
+  } = props;
 
   const onChange = (seq: number, e: ChangeEvent<HTMLInputElement>) => {
     const { dataset, name, value } = e.target;
@@ -80,6 +89,19 @@ export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
 
   return (
     <div id="transfer-modify-view">
+      <div className="trans-dttm-area slip-bg-color">
+        <h3>대체전표</h3>
+        <div className="date-box">
+          <label htmlFor="trans-dttm">거래일자</label>
+          <input
+            id="trans-dttm"
+            type="date"
+            name="date"
+            onChange={onChangeDate}
+            value={getYYYYMMDDFormat(new Date(slip?.date as Date))}
+          />
+        </div>
+      </div>
       <table id="slip">
         <thead>
           <tr>
@@ -166,7 +188,9 @@ export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
         </tbody>
       </table>
       <div className="row-control">
-        <button className="basic-btn btn-sky-white add-row" onClick={addEntry}>행 추가</button>
+        <button className="basic-btn btn-sky-white add-row" onClick={addEntry}>
+          행 추가
+        </button>
       </div>
       {
         <AccountSelectPopup

@@ -3,3 +3,35 @@
   justify-content: center;
   padding-top: 2.5rem;
 }
+
+.trans-dttm-area {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border: 0.1rem solid #000;
+  border-bottom: none;
+}
+
+.trans-dttm-area > h3 {
+  padding: 0 1.5rem;
+  font-size: 1.8rem;
+}
+
+.trans-dttm-area > .date-box {
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.trans-dttm-area > .date-box label {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.trans-dttm-area > .date-box input {
+  padding: 0.5rem 1rem;
+  width: 20rem;
+}

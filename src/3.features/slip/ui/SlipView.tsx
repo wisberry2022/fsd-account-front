@@ -54,6 +54,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
                 onDeleteEntry={handler.deleteEntry}
                 onSubject={handler.onTransferSubject}
                 addEntry={handler.addEntry}
+                onChangeDate={handler.onChangeDate}
               />
             ) : (
               <TransferSlipPreview slip={data as TransferSlip} />

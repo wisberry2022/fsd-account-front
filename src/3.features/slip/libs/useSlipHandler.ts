@@ -1,29 +1,13 @@
-import { BasicSlip, PaperSlip } from "@/5.shared/types";
+import { BasicSlip, PaperSlip, TransferSlip } from "@/5.shared/types";
 import { ChangeEventHandler, useEffect, useReducer } from "react";
 import { getSubject } from "./funs";
-
-type Init = {
-  type: "INIT";
-  data: PaperSlip;
-};
-type OnSubjectAction = {
-  type: "ONSUBJECT";
-  subjectId: number;
-  name: string;
-};
-type OnChangeAction = {
-  type: "ONCHANGE";
-  name: string;
-  value: number | string | Date | null;
-};
-
-type Action = OnChangeAction | OnSubjectAction | Init;
+import { Action } from "./types";
 
 const isPaperSlip = (slip: BasicSlip): slip is PaperSlip => {
   return slip && typeof slip === "object";
 };
 
-const reducer = <T extends BasicSlip>(state: T, action: Action) => {
+const reducer = (state: BasicSlip, action: Action) => {
   switch (action.type) {
     case "INIT":
       return action.data;
@@ -44,6 +28,46 @@ const reducer = <T extends BasicSlip>(state: T, action: Action) => {
         };
       }
       return state;
+    case "ONCHANGE-ENTRY":
+      return {
+        ...state,
+        entries: (state as TransferSlip)?.entries.map((ent) => {
+          if (ent.seq === action.seq) {
+            return {
+              ...ent,
+              [action.ledger]: {
+                ...ent[action.ledger],
+                [action.name]: action.value,
+              },
+            };
+          }
+          return ent;
+        }),
+      };
+    case "ONSUBJECT-TRANSFER":
+      return {
+        ...state,
+        entries: (state as TransferSlip)?.entries.map((ent) => {
+          if (ent.seq === action.seq) {
+            return {
+              ...ent,
+              [action.ledger]: {
+                ...ent[action.ledger],
+                id: action.subjectId,
+                subject: action.name,
+              },
+            };
+          }
+          return ent;
+        }),
+      };
+    case "ONDELETE-ENTRY":
+      return {
+        ...state,
+        entries: (state as TransferSlip)?.entries.filter(
+          (ent) => ent.seq !== action.seq
+        ),
+      };
     default:
       return state;
   }
@@ -72,5 +96,35 @@ export const useSlipHandler = (slip: BasicSlip) => {
     dispatch({ type: "ONSUBJECT", subjectId, name });
   };
 
-  return { state, onChange, onChangeDate, onSubject };
+  const onChangeEntry = (
+    seq: number,
+    ledger: "debit" | "credit",
+    name: string,
+    value: string | number
+  ) => {
+    dispatch({ type: "ONCHANGE-ENTRY", ledger, seq, name, value });
+  };
+
+  const onTransferSubject = (
+    seq: number,
+    ledger: "debit" | "credit",
+    subjectId: number,
+    name: string
+  ) => {
+    dispatch({ type: "ONSUBJECT-TRANSFER", seq, ledger, subjectId, name });
+  };
+
+  const deleteEntry = (seq: number) => {
+    dispatch({ type: "ONDELETE-ENTRY", seq });
+  };
+
+  return {
+    state,
+    onChange,
+    onChangeDate,
+    onSubject,
+    onChangeEntry,
+    onTransferSubject,
+    deleteEntry,
+  };
 };

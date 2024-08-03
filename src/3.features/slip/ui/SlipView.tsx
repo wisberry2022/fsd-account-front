@@ -8,6 +8,7 @@ import { useSlipHandler } from "../libs/useSlipHandler";
 import BasicModifySlip from "./BasicModifySlip";
 import "./css/slip-view.css";
 import { DeleteSlip } from "./DeleteSlip";
+import { ModifyTransferSlip } from "./ModifyTransferSlip";
 
 type SlipViewProps = {
   id: number;
@@ -45,8 +46,17 @@ export const SlipView: FC<SlipViewProps> = (props) => {
       </Dialog.Header>
       <Dialog.Body>
         <div id="slip-view-body">
-          {slip?.slip === "TRANSFER" ? (
-            <TransferSlipPreview slip={slip as TransferSlip} />
+          {data?.slip === "TRANSFER" ? (
+            modifyPop.open ? (
+              <ModifyTransferSlip
+                slip={slip as TransferSlip}
+                onChangeEntry={handler.onChangeEntry}
+                onDeleteEntry={handler.deleteEntry}
+                onSubject={handler.onTransferSubject}
+              />
+            ) : (
+              <TransferSlipPreview slip={data as TransferSlip} />
+            )
           ) : modifyPop.open ? (
             <BasicModifySlip slip={slip as PaperSlip} {...handler} />
           ) : (

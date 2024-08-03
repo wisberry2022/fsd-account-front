@@ -14,8 +14,6 @@ type CorePaginaitionProps = {
 export const CorePaginaition: FC<CorePaginaitionProps> = (props) => {
   const { onClick, page, range, limit, onLeft, onRight } = props;
 
-  console.log("limit ", limit);
-
   return (
     <div id="page-box">
       {!range || <FaArrowLeft className="page-dir-arw" onClick={onLeft} />}

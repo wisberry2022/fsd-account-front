@@ -1,15 +1,29 @@
 import { AccountSelectPopup } from "@/4.entities/account";
-import { useKeywordPopover, useSlipContext } from "@/5.shared/hooks";
-import { AccountResponse, Entry, TransferSlipContext } from "@/5.shared/types";
+import { useKeywordPopover } from "@/5.shared/hooks";
+import { AccountResponse, Entry, TransferSlip } from "@/5.shared/types";
 import { PopupTriggerBox } from "@/5.shared/ui";
 import { ChangeEvent, FC, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import "./transfer-slip.css";
 
-export const TransferSlip: FC = () => {
-  const { slip, onChangeEntry, onChangeSubject, deleteEntry } = useSlipContext(
-    "TRANSFER"
-  ) as TransferSlipContext;
+type ModifyTransferSlipProps = {
+  slip: TransferSlip;
+  onChangeEntry: (
+    id: number,
+    ledger: "debit" | "credit",
+    name: string,
+    value: string | number
+  ) => void;
+  onSubject: (
+    id: number,
+    ledger: "debit" | "credit",
+    subjectId: number,
+    name: string
+  ) => void;
+  onDeleteEntry: (id: number) => void;
+};
+
+export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
+  const { slip, onChangeEntry, onSubject, onDeleteEntry } = props;
 
   const onChange = (seq: number, e: ChangeEvent<HTMLInputElement>) => {
     const { dataset, name, value } = e.target;
@@ -45,14 +59,15 @@ export const TransferSlip: FC = () => {
   };
 
   const onChangeDebit = (seq: number, id: number, name: string) => {
-    onChangeSubject(seq, "debit", id, name);
+    onSubject(seq, "debit", id, name);
   };
 
   const onChangeCredit = (seq: number, id: number, name: string) => {
-    onChangeSubject(seq, "credit", id, name);
+    onSubject(seq, "credit", id, name);
   };
 
   const onConfirm = (value: AccountResponse) => {
+    console.log("value ", value);
     if (popover.open === "debit") {
       onChangeDebit(debit.seq as number, value.id, value.name);
     }
@@ -84,13 +99,13 @@ export const TransferSlip: FC = () => {
           </tr>
         </thead>
         <tbody>
-          {slip.entries.map((ent) => {
+          {slip?.entries.map((ent) => {
             return (
-              <tr key={ent.seq}>
+              <tr key={ent?.seq}>
                 <td className="debit">
                   <PopupTriggerBox
-                    onClick={() => onDebitOpen(ent.seq)}
-                    value={ent.debit.subject}
+                    onClick={() => onDebitOpen(ent?.seq)}
+                    value={ent?.debit.subject}
                   />
                 </td>
                 <td className="debit">
@@ -99,7 +114,7 @@ export const TransferSlip: FC = () => {
                     data-ledger="debit"
                     name="desc"
                     onChange={(e) => onChange(ent.seq, e)}
-                    value={ent.debit.desc}
+                    value={ent?.debit.desc}
                   />
                 </td>
                 <td className="debit">
@@ -139,7 +154,7 @@ export const TransferSlip: FC = () => {
                   {slip.entries.length > 1 && (
                     <FaTrash
                       id="remove-icon"
-                      onClick={() => deleteEntry(ent.seq)}
+                      onClick={() => onDeleteEntry(ent.seq)}
                     />
                   )}
                 </td>
@@ -148,6 +163,7 @@ export const TransferSlip: FC = () => {
           })}
         </tbody>
       </table>
+      <button className="basic-btn add-row">행 추가</button>
       {
         <AccountSelectPopup
           open={!!popover.open}

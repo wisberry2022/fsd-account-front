@@ -5,3 +5,9 @@ export type EntryModel = {
   credit: string;
   creditAmount: number | null;
 };
+
+export type Entry = {
+  id?: number;
+  seq?: number;
+  name: string;
+};

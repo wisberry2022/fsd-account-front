@@ -78,7 +78,6 @@ export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
   };
 
   const onConfirm = (value: AccountResponse) => {
-    console.log("value ", value);
     if (popover.open === "debit") {
       onChangeDebit(debit.seq as number, value.id, value.name);
     }

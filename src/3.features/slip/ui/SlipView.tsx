@@ -3,12 +3,15 @@ import { useKeywordPopover } from "@/5.shared/hooks";
 import { BasicSlip, PaperSlip, TransferSlip } from "@/5.shared/types";
 import { Dialog } from "@/5.shared/ui";
 import { FC } from "react";
+import { update } from "../api/fetcher";
 import { useGetSlip } from "../api/useGetSlipSWR";
 import { useSlipHandler } from "../libs/useSlipHandler";
 import BasicModifySlip from "./BasicModifySlip";
 import "./css/slip-view.css";
 import { DeleteSlip } from "./DeleteSlip";
 import { ModifyTransferSlip } from "./ModifyTransferSlip";
+import { useSWRConfig } from "swr";
+import { Paths } from "@/5.shared/constants";
 
 type SlipViewProps = {
   id: number;
@@ -17,22 +20,30 @@ type SlipViewProps = {
 
 export const SlipView: FC<SlipViewProps> = (props) => {
   const { id, onClose } = props;
-  const { data } = useGetSlip(id);
+  const { data, mutate } = useGetSlip(id);
   const popover = useKeywordPopover<number>();
   const modifyPop = useKeywordPopover<number>();
   const { state: slip, ...handler } = useSlipHandler(data as BasicSlip);
+  const { mutate: parentMutate } = useSWRConfig();
 
   const mainClose = () => {
     modifyPop.onClose();
     onClose();
   };
 
-  const onDetail = () => {
+  const onModify = () => {
     modifyPop.onOpen(id);
   };
 
   const onDelete = () => {
     popover.onOpen(id);
+  };
+
+  const onSave = async () => {
+    await update(slip);
+    modifyPop.onClose();
+    mutate();
+    parentMutate(Paths.slip.getAll);
   };
 
   return (
@@ -73,9 +84,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
           </button>
           <button
             className="btn-sky-white"
-            onClick={
-              modifyPop.open ? () => console.log("save ", slip) : onDetail
-            }
+            onClick={modifyPop.open ? onSave : onModify}
           >
             수정하기
           </button>

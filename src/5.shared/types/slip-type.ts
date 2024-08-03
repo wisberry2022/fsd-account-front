@@ -36,6 +36,7 @@ export type TransferEntry = {
 
 export type SimpleEntry = {
   id: number | null | undefined;
+  subjectId: number | null | undefined;
   subject: string;
   desc: string;
   amount: number;

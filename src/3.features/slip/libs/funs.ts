@@ -5,11 +5,11 @@ export const extractSlipEntryRequest = (
   entries: SimpleEntry[]
 ): SlipEntryRequest[] => {
   return entries
-    .filter((ent) => ent.id)
+    .filter((ent) => ent.subjectId)
     .map((ent) => ({
       amount: ent.amount,
       desc: ent.desc,
-      subjectId: ent.id as number,
+      subjectId: ent.subjectId as number,
     }));
 };
 
@@ -36,12 +36,14 @@ export const getNewEntry = (seq: number): TransferEntry => {
     debit: {
       id: null,
       subject: "",
+      subjectId: null,
       desc: "",
       amount: 0,
     },
     credit: {
       id: null,
       subject: "",
+      subjectId: null,
       desc: "",
       amount: 0,
     },

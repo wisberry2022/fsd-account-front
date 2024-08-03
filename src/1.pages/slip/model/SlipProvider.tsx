@@ -111,12 +111,14 @@ const transferState: TransferSlip = {
       seq: 1,
       debit: {
         id: null,
+        subjectId: null,
         subject: "",
         desc: "",
         amount: 0,
       },
       credit: {
         id: null,
+        subjectId: null,
         subject: "",
         desc: "",
         amount: 0,
@@ -176,7 +178,7 @@ const transferReducer = (
               ...ent,
               [action.ledger]: {
                 ...ent[action.ledger],
-                id: action.id,
+                subjectId: action.id,
                 subject: action.name,
               },
             };

@@ -53,7 +53,7 @@ const reducer = (state: BasicSlip, action: Action) => {
               ...ent,
               [action.ledger]: {
                 ...ent[action.ledger],
-                id: action.subjectId,
+                subjectId: action.subjectId,
                 subject: action.name,
               },
             };
@@ -139,6 +139,6 @@ export const useSlipHandler = (slip: BasicSlip) => {
     onChangeEntry,
     onTransferSubject,
     deleteEntry,
-    addEntry
+    addEntry,
   };
 };

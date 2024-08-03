@@ -32,6 +32,10 @@ type OnDeleteEntryAction = {
   type: "ONDELETE-ENTRY";
   seq: number;
 };
+type OnAddEntry = {
+  type: "ADD-ENTRY";
+  seq: number;
+};
 
 export type Action =
   | OnChangeAction
@@ -39,4 +43,5 @@ export type Action =
   | Init
   | OnChangeEntryAction
   | OnTransferSubjectAtion
-  | OnDeleteEntryAction;
+  | OnDeleteEntryAction
+  | OnAddEntry;

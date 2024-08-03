@@ -1,3 +1,4 @@
+import "./css/modify-transfer-slip.css";
 import { AccountSelectPopup } from "@/4.entities/account";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { AccountResponse, Entry, TransferSlip } from "@/5.shared/types";
@@ -20,10 +21,11 @@ type ModifyTransferSlipProps = {
     name: string
   ) => void;
   onDeleteEntry: (id: number) => void;
+  addEntry: () => void;
 };
 
 export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
-  const { slip, onChangeEntry, onSubject, onDeleteEntry } = props;
+  const { slip, onChangeEntry, onSubject, onDeleteEntry, addEntry } = props;
 
   const onChange = (seq: number, e: ChangeEvent<HTMLInputElement>) => {
     const { dataset, name, value } = e.target;
@@ -77,7 +79,7 @@ export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
   };
 
   return (
-    <div>
+    <div id="transfer-modify-view">
       <table id="slip">
         <thead>
           <tr>
@@ -163,7 +165,9 @@ export const ModifyTransferSlip: FC<ModifyTransferSlipProps> = (props) => {
           })}
         </tbody>
       </table>
-      <button className="basic-btn add-row">행 추가</button>
+      <div className="row-control">
+        <button className="basic-btn btn-sky-white add-row" onClick={addEntry}>행 추가</button>
+      </div>
       {
         <AccountSelectPopup
           open={!!popover.open}

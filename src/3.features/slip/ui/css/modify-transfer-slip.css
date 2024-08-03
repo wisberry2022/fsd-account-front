@@ -1,0 +1,5 @@
+#transfer-modify-view > .row-control {
+  display: flex;
+  justify-content: center;
+  padding-top: 2.5rem;
+}

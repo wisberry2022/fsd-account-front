@@ -1,4 +1,4 @@
-import { ObjType, SimpleEntry, Slip } from "@/5.shared/types";
+import { ObjType, SimpleEntry, Slip, TransferEntry } from "@/5.shared/types";
 import { SlipEntryRequest } from "../model/types";
 
 export const extractSlipEntryRequest = (
@@ -27,5 +27,23 @@ export const getSubject = (
   return {
     debitId: id,
     debit: name,
+  };
+};
+
+export const getNewEntry = (seq: number): TransferEntry => {
+  return {
+    seq,
+    debit: {
+      id: null,
+      subject: "",
+      desc: "",
+      amount: 0,
+    },
+    credit: {
+      id: null,
+      subject: "",
+      desc: "",
+      amount: 0,
+    },
   };
 };

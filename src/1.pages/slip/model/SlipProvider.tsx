@@ -1,13 +1,10 @@
-import { FC, ReactNode, useReducer } from "react";
 import { SlipContext } from "@/5.shared/context";
+import { FC, ReactNode, useReducer } from "react";
 
+import { getNewEntry } from "@/3.features/slip";
 import { PaperSlip } from "@/5.shared/types";
+import { SlipStatus, TransferSlip } from "@/5.shared/types/slip-type";
 import { ChangeEventHandler, useState } from "react";
-import {
-  SlipStatus,
-  TransferEntry,
-  TransferSlip,
-} from "@/5.shared/types/slip-type";
 import { useSlipHandler } from "../libs/hooks";
 import { TransferActionType } from "../libs/types";
 
@@ -128,24 +125,6 @@ const transferState: TransferSlip = {
   ],
 };
 
-const getNewEntry = (seq: number): TransferEntry => {
-  return {
-    seq,
-    debit: {
-      id: null,
-      subject: "",
-      desc: "",
-      amount: 0,
-    },
-    credit: {
-      id: null,
-      subject: "",
-      desc: "",
-      amount: 0,
-    },
-  };
-};
-
 const transferReducer = (
   state: TransferSlip,
   action: TransferActionType
@@ -235,9 +214,14 @@ const useTransferSlip = () => {
     dispatch({ type: "ONCHANGE-ENTRY", ledger, seq, name, value });
   };
 
-  const onChangeSubject = (seq: number, ledger: "debit" | "credit", id:number, name: string) => {
-    dispatch({type: "CHANGE-SUBJECT", seq, ledger, id, name})
-  }
+  const onChangeSubject = (
+    seq: number,
+    ledger: "debit" | "credit",
+    id: number,
+    name: string
+  ) => {
+    dispatch({ type: "CHANGE-SUBJECT", seq, ledger, id, name });
+  };
 
   const onChangeStatus = (status: SlipStatus) => {
     dispatch({ type: "CHANGE-STATUS", status });

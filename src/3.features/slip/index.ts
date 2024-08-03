@@ -5,3 +5,4 @@ export { AddSlipRow } from "./ui/AddSlipRow";
 export { StaingSlip } from "./ui/StagingSlip";
 export { SlipView } from "./ui/SlipView";
 export { DeleteSlip } from "./ui/DeleteSlip";
+export { getNewEntry } from "./libs/funs";

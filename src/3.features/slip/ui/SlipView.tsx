@@ -45,7 +45,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
         <h3>전표 상세보기 - No. {id}</h3>
       </Dialog.Header>
       <Dialog.Body>
-        <div id="slip-view-body">
+        <div id="slip-view-body" className="scroll-bar">
           {data?.slip === "TRANSFER" ? (
             modifyPop.open ? (
               <ModifyTransferSlip
@@ -53,6 +53,7 @@ export const SlipView: FC<SlipViewProps> = (props) => {
                 onChangeEntry={handler.onChangeEntry}
                 onDeleteEntry={handler.deleteEntry}
                 onSubject={handler.onTransferSubject}
+                addEntry={handler.addEntry}
               />
             ) : (
               <TransferSlipPreview slip={data as TransferSlip} />

@@ -1,6 +1,6 @@
 import { BasicSlip, PaperSlip, TransferSlip } from "@/5.shared/types";
 import { ChangeEventHandler, useEffect, useReducer } from "react";
-import { getSubject } from "./funs";
+import { getNewEntry, getSubject } from "./funs";
 import { Action } from "./types";
 
 const isPaperSlip = (slip: BasicSlip): slip is PaperSlip => {
@@ -68,6 +68,13 @@ const reducer = (state: BasicSlip, action: Action) => {
           (ent) => ent.seq !== action.seq
         ),
       };
+    case "ADD-ENTRY":
+      return {
+        ...state,
+        entries: (state as TransferSlip)?.entries.concat(
+          getNewEntry(action.seq)
+        ),
+      };
     default:
       return state;
   }
@@ -118,6 +125,12 @@ export const useSlipHandler = (slip: BasicSlip) => {
     dispatch({ type: "ONDELETE-ENTRY", seq });
   };
 
+  const addEntry = () => {
+    const nextSeq =
+      Math.max(...(state as TransferSlip).entries.map((ent) => ent.seq)) + 1;
+    dispatch({ type: "ADD-ENTRY", seq: nextSeq });
+  };
+
   return {
     state,
     onChange,
@@ -126,5 +139,6 @@ export const useSlipHandler = (slip: BasicSlip) => {
     onChangeEntry,
     onTransferSubject,
     deleteEntry,
+    addEntry
   };
 };

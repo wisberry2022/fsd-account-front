@@ -1,2 +1,2 @@
 export { AccountSubjectCategoryEnum } from "./basic-info";
-export { SlipMapperEnum } from "./slip";
+export { SlipMapperEnum, SlipEnum } from "./slip";

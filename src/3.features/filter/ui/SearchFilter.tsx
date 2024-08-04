@@ -1,15 +1,23 @@
 import "./srch-filter.css";
 import { Dialog } from "@/5.shared/ui";
 import { DepthList } from "@/5.shared/ui";
-import { FC } from "react";
+import { ChangeEventHandler, FC } from "react";
+import { SlipFilterRequestType } from "../model/SlipFilterRequest";
+import { SlipEnum } from "@/5.shared/enums";
+import { getYYYYMMDDFormat } from "@/5.shared/utils";
 
 type SearchFilterProps = {
+  request: SlipFilterRequestType;
+  onChange: (
+    type: "string" | "number" | "date"
+  ) => ChangeEventHandler<HTMLInputElement>;
+  onSelect: ChangeEventHandler<HTMLSelectElement>;
   open: boolean;
   onClose: () => void;
 };
 
 export const SearchFilter: FC<SearchFilterProps> = (props) => {
-  const { open, onClose } = props;
+  const { request, onChange, onSelect, open, onClose } = props;
 
   return (
     <Dialog open={open} onClose={onClose} width={50}>
@@ -20,33 +28,72 @@ export const SearchFilter: FC<SearchFilterProps> = (props) => {
         <div className="filter-body">
           <DepthList title="기간 조회">
             <DepthList.SubList title="등록일자 기준">
-              <input type="date" />
-              <input type="date" />
+              <input
+                type="date"
+                name="startRegDttm"
+                onChange={onChange("date")}
+                value={getYYYYMMDDFormat(
+                  new Date(request.startRegDttm ?? Date.now())
+                )}
+              />
+              <input
+                type="date"
+                name="endRegDttm"
+                onChange={onChange("date")}
+                value={getYYYYMMDDFormat(
+                  new Date(request.endRegDttm ?? Date.now())
+                )}
+              />
             </DepthList.SubList>
             <DepthList.SubList title="거래일자 기준">
-              <input type="date" />
-              <input type="date" />
+              <input
+                type="date"
+                name="startTranDttm"
+                onChange={onChange("date")}
+                value={getYYYYMMDDFormat(
+                  new Date(request.startTranDttm ?? Date.now())
+                )}
+              />
+              <input
+                type="date"
+                name="endTranDttm"
+                onChange={onChange("date")}
+                value={getYYYYMMDDFormat(
+                  new Date(request.endTranDttm ?? Date.now())
+                )}
+              />
             </DepthList.SubList>
           </DepthList>
           <DepthList title="전표 종류">
             <DepthList.SubList title="종류">
-              <select>
-                <option>입금전표</option>
-                <option>출금전표</option>
-                <option>대체전표</option>
+              <select name="slip" onChange={onSelect} value={request.slip}>
+                <option value={SlipEnum.RECEIPT}>입금전표</option>
+                <option value={SlipEnum.WITHDRAWAL}>출금전표</option>
+                <option value={SlipEnum.TRANSFER}>대체전표</option>
               </select>
             </DepthList.SubList>
           </DepthList>
           <DepthList title="키워드 조회">
             <DepthList.SubList title="검색어 입력">
-              <input type="text" placeholder="적요를 입력하세요" />
+              <input
+                type="text"
+                placeholder="적요를 입력하세요"
+                name="keyword"
+                onChange={onChange("string")}
+                value={request.keyword as string}
+              />
             </DepthList.SubList>
           </DepthList>
         </div>
       </Dialog.Body>
       <Dialog.Footer>
         <div className="btn-box right-flex">
-          <button className="btn-sky-white">적용</button>
+          <button
+            className="btn-sky-white"
+            onClick={() => console.log("save ", request)}
+          >
+            적용
+          </button>
         </div>
       </Dialog.Footer>
     </Dialog>

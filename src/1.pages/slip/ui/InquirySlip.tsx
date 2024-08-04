@@ -1,12 +1,17 @@
 import { SlipTable } from "@/2.widgets/slip";
-import { usePopover } from "@/5.shared/hooks";
+import { useDataHandler, usePopover } from "@/5.shared/hooks";
 import { FC } from "react";
 import { FiSettings } from "react-icons/fi";
 import "./css/inquiry-slip.css";
-import { SearchFilter } from "@/3.features/filter";
+import {
+  SearchFilter,
+  SlipFilterRequest,
+  SlipFilterRequestType,
+} from "@/3.features/filter";
 import { TitleAndBtnBar } from "@/5.shared/ui/bar";
 
 const InquirySlip: FC = () => {
+  const state = useDataHandler<SlipFilterRequestType>(SlipFilterRequest);
   const popover = usePopover();
 
   return (
@@ -17,7 +22,13 @@ const InquirySlip: FC = () => {
         icon={<FiSettings />}
       />
       <SlipTable />
-      <SearchFilter open={popover.open} onClose={popover.onClose} />
+      <SearchFilter
+        open={popover.open}
+        onClose={popover.onClose}
+        request={state.state}
+        onChange={state.onChangeInput}
+        onSelect={state.onSelect}
+      />
     </section>
   );
 };

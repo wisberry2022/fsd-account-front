@@ -1,0 +1,25 @@
+#tit-btn-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#tit-btn-bar > h2 {
+  font-size: 2.3rem;
+}
+
+#tit-btn-bar > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+}
+
+#tit-btn-bar > div > #setting-icon {
+  font-size: 1.6rem;
+}
+
+#tit-btn-bar > div > strong {
+  font-size: 1.4rem;
+}

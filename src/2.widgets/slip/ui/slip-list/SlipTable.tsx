@@ -1,17 +1,24 @@
-import { SlipRow } from "@/4.entities/slip";
-import { PagingProvider } from "@/5.shared/provider";
-import { Page } from "@/5.shared/types";
-import { BasicPagination } from "@/5.shared/ui";
-import { FC, useState } from "react";
-import { useGetSlips } from "../../api/useGetSlipSWR";
-import "./css/slip-table.css";
-import { useKeywordPopover } from "@/5.shared/hooks";
+import { SlipFilterRequestType } from "@/3.features/filter";
 import { SlipView } from "@/3.features/slip";
+import { SlipRow } from "@/4.entities/slip";
+import { useKeywordPopover } from "@/5.shared/hooks";
+import { PagingProvider } from "@/5.shared/provider";
+import { Page, SlipList } from "@/5.shared/types";
+import { BasicPagination } from "@/5.shared/ui";
+import { FC, useEffect, useState } from "react";
+import { getSlips } from "../../api/fetcher";
+import "./css/slip-table.css";
+import { useGetSlips } from "../../api/useGetSlipSWR";
 
-export const SlipTable: FC = () => {
+type SlipTableProps = {
+  request: SlipFilterRequestType;
+};
+
+export const SlipTable: FC<SlipTableProps> = (props) => {
+  const { request } = props;
   const [page, setPage] = useState<number>(0);
   const [size] = useState<number>(10);
-  const { data: pageable } = useGetSlips(page, size);
+  const { data: pageable } = useGetSlips(page, size, request);
 
   const detail = useKeywordPopover<number>();
 

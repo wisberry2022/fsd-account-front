@@ -8,7 +8,7 @@ export const RestService = {
     path: string,
     sendData: T
   ): Promise<K> => {
-    return await axiosInstance.post(path, sendData);
+    return (await axiosInstance.post(path, sendData)).data;
   },
   put: async <T = unknown, K = unknown>(
     path: string,

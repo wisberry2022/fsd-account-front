@@ -21,7 +21,7 @@ const InquirySlip: FC = () => {
         btnText="검색필터"
         icon={<FiSettings />}
       />
-      <SlipTable />
+      <SlipTable request={state.state} />
       <SearchFilter
         open={popover.open}
         onClose={popover.onClose}

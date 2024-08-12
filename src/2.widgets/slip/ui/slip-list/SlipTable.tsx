@@ -3,12 +3,11 @@ import { SlipView } from "@/3.features/slip";
 import { SlipRow } from "@/4.entities/slip";
 import { useKeywordPopover } from "@/5.shared/hooks";
 import { PagingProvider } from "@/5.shared/provider";
-import { Page, SlipList } from "@/5.shared/types";
+import { Page } from "@/5.shared/types";
 import { BasicPagination } from "@/5.shared/ui";
-import { FC, useEffect, useState } from "react";
-import { getSlips } from "../../api/fetcher";
-import "./css/slip-table.css";
+import { FC, useState } from "react";
 import { useGetSlips } from "../../api/useGetSlipSWR";
+import "./css/slip-table.css";
 
 type SlipTableProps = {
   request: SlipFilterRequestType;

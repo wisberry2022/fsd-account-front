@@ -1,11 +1,12 @@
 import { Slip } from "@/5.shared/types";
+import { FilterSlipTypeEnum } from "../constants/enum";
 
 export type SlipFilterRequestType = {
   startRegDttm: Date | null;
   endRegDttm: Date | null;
   startTranDttm: Date | null;
   endTranDttm: Date | null;
-  slip: Slip;
+  slip: FilterSlipTypeEnum;
   keyword: string | null;
 };
 
@@ -14,6 +15,6 @@ export const SlipFilterRequest = {
   endRegDttm: null,
   startTranDttm: null,
   endTranDttm: null,
-  slip: null,
+  slip: FilterSlipTypeEnum.TOTAL,
   keyword: "",
 };

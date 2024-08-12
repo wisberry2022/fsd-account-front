@@ -13,6 +13,7 @@ export const useDataHandler = <T = unknown>(init: T) => {
     name: string,
     value: K
   ) => {
+    console.log(name, value);
     setState((prev) => ({
       ...prev,
       [name]: value,
@@ -24,19 +25,15 @@ export const useDataHandler = <T = unknown>(init: T) => {
   ): ChangeEventHandler<HTMLInputElement> => {
     return (e) => {
       const { name } = e.target;
-      let value: string | number | Date | null;
       if (type === "number") {
-        value = e.target.valueAsNumber;
+        _setter(name, e.target.valueAsNumber);
       }
       if (type === "date") {
-        value = e.target.valueAsDate;
+        _setter(name, e.target.valueAsDate);
       }
       if (type === "string") {
-        value = e.target.value;
-      } else {
-        value = e.target.value;
+        _setter(name, e.target.value);
       }
-      _setter(name, value);
     };
   };
 

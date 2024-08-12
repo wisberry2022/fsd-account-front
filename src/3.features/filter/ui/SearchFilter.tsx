@@ -5,6 +5,8 @@ import { ChangeEventHandler, FC } from "react";
 import { SlipFilterRequestType } from "../model/SlipFilterRequest";
 import { SlipEnum } from "@/5.shared/enums";
 import { getYYYYMMDDFormat } from "@/5.shared/utils";
+import { Slip } from "@/5.shared/types";
+import { FilterSlipTypeEnum } from "../constants/enum";
 
 type SearchFilterProps = {
   request: SlipFilterRequestType;
@@ -66,10 +68,15 @@ export const SearchFilter: FC<SearchFilterProps> = (props) => {
           </DepthList>
           <DepthList title="전표 종류">
             <DepthList.SubList title="종류">
-              <select name="slip" onChange={onSelect} value={request.slip}>
-                <option value={SlipEnum.RECEIPT}>입금전표</option>
-                <option value={SlipEnum.WITHDRAWAL}>출금전표</option>
-                <option value={SlipEnum.TRANSFER}>대체전표</option>
+              <select
+                name="slip"
+                onChange={onSelect}
+                value={request.slip as Slip}
+              >
+                <option value={FilterSlipTypeEnum.TOTAL}>전체</option>
+                <option value={FilterSlipTypeEnum.RECEIPT}>입금전표</option>
+                <option value={FilterSlipTypeEnum.WITHDRAWAL}>출금전표</option>
+                <option value={FilterSlipTypeEnum.TRANSFER}>대체전표</option>
               </select>
             </DepthList.SubList>
           </DepthList>

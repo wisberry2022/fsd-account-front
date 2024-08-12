@@ -1,12 +1,10 @@
-import "./srch-filter.css";
-import { Dialog } from "@/5.shared/ui";
-import { DepthList } from "@/5.shared/ui";
-import { ChangeEventHandler, FC } from "react";
-import { SlipFilterRequestType } from "../model/SlipFilterRequest";
-import { SlipEnum } from "@/5.shared/enums";
-import { getYYYYMMDDFormat } from "@/5.shared/utils";
 import { Slip } from "@/5.shared/types";
+import { DepthList, Dialog } from "@/5.shared/ui";
+import { getYYYYMMDDFormat } from "@/5.shared/utils";
+import { ChangeEventHandler, FC } from "react";
 import { FilterSlipTypeEnum } from "../constants/enum";
+import { SlipFilterRequestType } from "../model/SlipFilterRequest";
+import "./srch-filter.css";
 
 type SearchFilterProps = {
   request: SlipFilterRequestType;

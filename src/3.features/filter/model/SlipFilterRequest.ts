@@ -1,4 +1,3 @@
-import { Slip } from "@/5.shared/types";
 import { FilterSlipTypeEnum } from "../constants/enum";
 
 export type SlipFilterRequestType = {

@@ -1,4 +1,3 @@
-import { SlipEnum } from "@/5.shared/enums";
 import { Slip } from "@/5.shared/types";
 
 export type SlipFilterRequestType = {
@@ -15,6 +14,6 @@ export const SlipFilterRequest = {
   endRegDttm: null,
   startTranDttm: null,
   endTranDttm: null,
-  slip: SlipEnum.RECEIPT,
+  slip: null,
   keyword: "",
 };

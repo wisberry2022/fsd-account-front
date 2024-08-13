@@ -11,9 +11,9 @@ export const Slip: FC = () => {
     <div id="slip-page">
       <Header />
       <Container>
-        <BasicTab tabs={["전표 작성", "전표 목록"]}>
-          <WriteSlip />
+        <BasicTab tabs={["전표 목록", "전표 작성"]}>
           <InquirySlip />
+          <WriteSlip />
         </BasicTab>
       </Container>
     </div>

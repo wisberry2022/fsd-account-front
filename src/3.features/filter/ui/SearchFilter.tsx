@@ -1,14 +1,14 @@
+import { useDataHandler } from "@/5.shared/hooks";
 import { Slip } from "@/5.shared/types";
 import { DepthList, Dialog } from "@/5.shared/ui";
 import { getYYYYMMDDFormat } from "@/5.shared/utils";
-import { ChangeEventHandler, FC } from "react";
+import { FC } from "react";
 import { FilterSlipTypeEnum } from "../constants/enum";
 import {
   SlipFilterRequest,
   SlipFilterRequestType,
 } from "../model/SlipFilterRequest";
 import "./srch-filter.css";
-import { useDataHandler } from "@/5.shared/hooks";
 
 type SearchFilterProps = {
   request: SlipFilterRequestType;

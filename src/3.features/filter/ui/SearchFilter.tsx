@@ -3,21 +3,32 @@ import { DepthList, Dialog } from "@/5.shared/ui";
 import { getYYYYMMDDFormat } from "@/5.shared/utils";
 import { ChangeEventHandler, FC } from "react";
 import { FilterSlipTypeEnum } from "../constants/enum";
-import { SlipFilterRequestType } from "../model/SlipFilterRequest";
+import {
+  SlipFilterRequest,
+  SlipFilterRequestType,
+} from "../model/SlipFilterRequest";
 import "./srch-filter.css";
+import { useDataHandler } from "@/5.shared/hooks";
 
 type SearchFilterProps = {
   request: SlipFilterRequestType;
-  onChange: (
-    type: "string" | "number" | "date"
-  ) => ChangeEventHandler<HTMLInputElement>;
-  onSelect: ChangeEventHandler<HTMLSelectElement>;
+  setState: (request: SlipFilterRequestType) => void;
   open: boolean;
   onClose: () => void;
 };
 
 export const SearchFilter: FC<SearchFilterProps> = (props) => {
-  const { request, onChange, onSelect, open, onClose } = props;
+  const { request, setState, open, onClose } = props;
+  const state = useDataHandler<SlipFilterRequestType>(request);
+
+  const onFilter = () => {
+    setState(state.state);
+    onClose();
+  };
+
+  const initFilter = () => {
+    state.setState(SlipFilterRequest);
+  };
 
   return (
     <Dialog open={open} onClose={onClose} width={50}>
@@ -31,36 +42,28 @@ export const SearchFilter: FC<SearchFilterProps> = (props) => {
               <input
                 type="date"
                 name="startRegDttm"
-                onChange={onChange("date")}
-                value={getYYYYMMDDFormat(
-                  new Date(request.startRegDttm ?? Date.now())
-                )}
+                onChange={state.onChangeInput("date")}
+                value={getYYYYMMDDFormat(state.state.startRegDttm)}
               />
               <input
                 type="date"
                 name="endRegDttm"
-                onChange={onChange("date")}
-                value={getYYYYMMDDFormat(
-                  new Date(request.endRegDttm ?? Date.now())
-                )}
+                onChange={state.onChangeInput("date")}
+                value={getYYYYMMDDFormat(state.state.endRegDttm)}
               />
             </DepthList.SubList>
             <DepthList.SubList title="거래일자 기준">
               <input
                 type="date"
                 name="startTranDttm"
-                onChange={onChange("date")}
-                value={getYYYYMMDDFormat(
-                  new Date(request.startTranDttm ?? Date.now())
-                )}
+                onChange={state.onChangeInput("date")}
+                value={getYYYYMMDDFormat(state.state.startTranDttm)}
               />
               <input
                 type="date"
                 name="endTranDttm"
-                onChange={onChange("date")}
-                value={getYYYYMMDDFormat(
-                  new Date(request.endTranDttm ?? Date.now())
-                )}
+                onChange={state.onChangeInput("date")}
+                value={getYYYYMMDDFormat(state.state.endTranDttm)}
               />
             </DepthList.SubList>
           </DepthList>
@@ -68,8 +71,8 @@ export const SearchFilter: FC<SearchFilterProps> = (props) => {
             <DepthList.SubList title="종류">
               <select
                 name="slip"
-                onChange={onSelect}
-                value={request.slip as Slip}
+                onChange={state.onSelect}
+                value={state.state.slip as Slip}
               >
                 <option value={FilterSlipTypeEnum.TOTAL}>전체</option>
                 <option value={FilterSlipTypeEnum.RECEIPT}>입금전표</option>
@@ -84,8 +87,8 @@ export const SearchFilter: FC<SearchFilterProps> = (props) => {
                 type="text"
                 placeholder="적요를 입력하세요"
                 name="keyword"
-                onChange={onChange("string")}
-                value={request.keyword as string}
+                onChange={state.onChangeInput("string")}
+                value={state.state.keyword as string}
               />
             </DepthList.SubList>
           </DepthList>
@@ -93,10 +96,8 @@ export const SearchFilter: FC<SearchFilterProps> = (props) => {
       </Dialog.Body>
       <Dialog.Footer>
         <div className="btn-box right-flex">
-          <button
-            className="btn-sky-white"
-            onClick={() => console.log("save ", request)}
-          >
+          <button onClick={initFilter}>초기화</button>
+          <button className="btn-sky-white" onClick={onFilter}>
             적용
           </button>
         </div>

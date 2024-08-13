@@ -23,11 +23,10 @@ const InquirySlip: FC = () => {
       />
       <SlipTable request={state.state} />
       <SearchFilter
+        setState={state.setState}
         open={popover.open}
         onClose={popover.onClose}
         request={state.state}
-        onChange={state.onChangeInput}
-        onSelect={state.onSelect}
       />
     </section>
   );
